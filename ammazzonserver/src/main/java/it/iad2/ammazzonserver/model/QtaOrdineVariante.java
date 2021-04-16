@@ -14,8 +14,8 @@ public class QtaOrdineVariante {
     @Column
     private int qta;
     
-    // relazione OneToMany con Ordine
-    // relazione OneToMany con ColoreTaglia
+    // relazione ManyToOne con Ordine
+    // relazione ManyToOne con ColoreTaglia
 
     public QtaOrdineVariante() {
     }

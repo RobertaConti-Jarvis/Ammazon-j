@@ -11,9 +11,9 @@ public class ProdottoColore {
     @GeneratedValue
     private Long id;
 
-    // relazione ManyToOne ColoreTaglia
-    // relazione OneToMany con Prodotto
-    // relazione OneToMany con VarianteColore
+    // relazione OneToMany ColoreTaglia
+    // relazione ManyToOne con Prodotto
+    // relazione ManyToOne con VarianteColore
     public ProdottoColore() {
     }
 

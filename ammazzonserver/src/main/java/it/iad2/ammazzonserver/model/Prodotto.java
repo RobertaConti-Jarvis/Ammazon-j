@@ -22,7 +22,7 @@ public class Prodotto implements Serializable {
     @Column
     private Double prezzo;
 
-    // relazione ManyToOne con ProdottoColore
+    // relazione OneToMany con ProdottoColore
     public Prodotto() {
     }
 

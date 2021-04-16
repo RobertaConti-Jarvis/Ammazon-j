@@ -15,7 +15,7 @@ public class VarianteTaglia {
     @Column
     private String codice;
 
-    // relazione ManyToOne ColoreTaglia
+    // relazione OneToMany ColoreTaglia
     public VarianteTaglia() {
     }
 

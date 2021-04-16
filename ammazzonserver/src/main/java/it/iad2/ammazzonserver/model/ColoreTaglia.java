@@ -15,9 +15,9 @@ public class ColoreTaglia {
     @Column
     private int giacenza;
 
-    // relazione ManyToOne QtaOrdineVariante
-    // relazione OneToMany con VarianteTaglia
-    // relazione OneToMany con ProdottoColore
+    // relazione OneToMany QtaOrdineVariante
+    // relazione ManyToOne con VarianteTaglia
+    // relazione ManyToOne con ProdottoColore
     public ColoreTaglia() {
     }
 

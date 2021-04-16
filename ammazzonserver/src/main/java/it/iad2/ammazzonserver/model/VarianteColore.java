@@ -18,7 +18,7 @@ public class VarianteColore {
     @Column
     private String descrizione;
 
-    // relazione ManyToOne ProdottoColore
+    // relazione OneToMany ProdottoColore
     public VarianteColore() {
     }
 

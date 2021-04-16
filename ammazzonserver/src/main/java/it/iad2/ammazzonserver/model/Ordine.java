@@ -22,8 +22,8 @@ public class Ordine {
     @Column
     private String stato = "CARRELLO";
 
-    // relazione ManyToOne UtenteRegistrato
-    // relazione ManyToOne con QtaOrdiniVariante
+    // relazione OneToMany UtenteRegistrato
+    // relazione OneToMany con QtaOrdiniVariante
     public Ordine() {
     }
 
