@@ -1,0 +1,6 @@
+tocTab[tocTab.length] = new Array("0.1.3:1", "", "Casi d&#39;uso accessori", "EARoot/EA1/EA3/EA20.htm", "180.png", "243", "0", "", "Use Case diagram0","{C9300F0E-DE7C-4cef-8771-7ECE022B2B37}");
+tocTab[tocTab.length] = new Array("0.1.3:2", "", "Associa Colori a Prodotti", "EARoot/EA1/EA3/EA24.htm", "7.png", "E2119", "0", "", "UseCase0","{163582F3-F866-4f4b-8BDF-E09F1279B6C1}");
+tocTab[tocTab.length] = new Array("0.1.3:3", "", "Associa Taglie a Colori-Prodotti", "EARoot/EA1/EA3/EA26.htm", "7.png", "E2120", "0", "", "UseCase0","{8288328A-1F8A-43ab-9EE7-99C31C40438C}");
+tocTab[tocTab.length] = new Array("0.1.3:4", "", "Gestisci Colori", "EARoot/EA1/EA3/EA29.htm", "7.png", "E2118", "0", "", "UseCase0","{5BF11365-B52E-48b2-AFA9-9D507DCEC022}");
+tocTab[tocTab.length] = new Array("0.1.3:5", "", "Gestisci Taglie", "EARoot/EA1/EA3/EA30.htm", "7.png", "E2117", "0", "", "UseCase0","{9295D559-0C5B-4abd-944B-DAC4AA84D7C6}");
+tocTab[tocTab.length] = new Array("0.1.3:6", "", "Gestisci Utenti Registrati", "EARoot/EA1/EA3/EA31.htm", "7.png", "E2121", "0", "", "UseCase0","{AA370CF6-5292-474b-96EB-A4DBA023E14F}");

@@ -1,0 +1,9 @@
+tocTab[tocTab.length] = new Array("0.1.5:1", "", "Casi d&#39;uso Catalogo", "EARoot/EA1/EA5/EA38.htm", "180.png", "58", "0", "", "Use Case diagram0","{21C170FE-0D8E-41fb-A52C-C34673500919}");
+tocTab[tocTab.length] = new Array("0.1.5:2", "", "Cancellazione Prodotto", "EARoot/EA1/EA5/EA41.htm", "7.png", "E1889", "0", "", "UseCase0","{D680BC6E-F89A-40b0-A4CE-645BAA53FAD6}");
+tocTab[tocTab.length] = new Array("0.1.5:3", "", "Gestione Prodotti", "EARoot/EA1/EA5/EA43.htm", "7.png", "E1887", "0", "", "UseCase0","{5356A38B-5D9A-4d92-AFF5-4F31515BEA74}");
+tocTab[tocTab.length] = new Array("0.1.5:4", "", "Inserimento prodotto", "EARoot/EA1/EA5/EA44.htm", "7.png", "E1888", "0", "", "UseCase0","{AE9BDE38-49E1-4fe7-8B78-8E21E1225E21}");
+tocTab[tocTab.length] = new Array("0.1.5:5", "", "Modifica Prodotto nel catalogo", "EARoot/EA1/EA5/EA45.htm", "7.png", "E1890", "0", "", "UseCase0","{FCC766FA-DA67-43b5-88A0-67FFCD2E4FE4}");
+tocTab[tocTab.length] = new Array("0.1.5:6", "", "Non pagati", "EARoot/EA1/EA5/EA46.htm", "7.png", "E556", "0", "", "UseCase0","{C65FDF6E-F671-4ac2-8B0A-C8ECA36BA7EF}");
+tocTab[tocTab.length] = new Array("0.1.5:7", "", "Pagati", "EARoot/EA1/EA5/EA47.htm", "7.png", "E557", "0", "", "UseCase0","{FA1BBEE4-F810-4555-B9ED-257ED710F0C6}");
+tocTab[tocTab.length] = new Array("0.1.5:8", "", "Report", "EARoot/EA1/EA5/EA48.htm", "7.png", "E555", "0", "", "UseCase0","{F2EA4C6C-50FE-44b0-9F40-B0FDA2A78AA3}");
+tocTab[tocTab.length] = new Array("0.1.5:9", "", "Sospesi", "EARoot/EA1/EA5/EA49.htm", "7.png", "E558", "0", "", "UseCase0","{BC77049E-F599-46d7-93BB-DF97FFE26E4B}");

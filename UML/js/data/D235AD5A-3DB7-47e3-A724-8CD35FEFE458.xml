@@ -1,0 +1,9 @@
+tocTab[tocTab.length] = new Array("0.1.7:1", "", "Casi d&#39;uso Carrello", "EARoot/EA1/EA7/EA56.htm", "180.png", "246", "0", "", "Use Case diagram0","{C4BD610B-4D20-4f85-945F-6D48DA7C6761}");
+tocTab[tocTab.length] = new Array("0.1.7:2", "", "Aggiungi carrello", "EARoot/EA1/EA7/EA59.htm", "7.png", "E546", "0", "", "UseCase0","{6E8C1568-A415-4ff5-B568-AE4DB2ED9ABB}");
+tocTab[tocTab.length] = new Array("0.1.7:3", "", "Checkout", "EARoot/EA1/EA7/EA61.htm", "7.png", "E549", "0", "", "UseCase0","{49005A2E-A88C-4ff4-BA22-AE03146E0D1D}");
+tocTab[tocTab.length] = new Array("0.1.7:4", "", "Invia e-mail", "EARoot/EA1/EA7/EA62.htm", "7.png", "E553", "0", "", "UseCase0","{2CE3F812-D3B2-4f62-9DDC-89FFA442F8DB}");
+tocTab[tocTab.length] = new Array("0.1.7:5", "", "Mostra carrello", "EARoot/EA1/EA7/EA63.htm", "7.png", "E547", "0", "", "UseCase0","{97DF007E-E1F3-445d-ACBD-DB01350D5C9B}");
+tocTab[tocTab.length] = new Array("0.1.7:6", "", "Pagamento", "EARoot/EA1/EA7/EA64.htm", "7.png", "E552", "0", "", "UseCase0","{56ADA339-668C-4704-970F-74EF6032837B}");
+tocTab[tocTab.length] = new Array("0.1.7:7", "", "Ricerca catalogo", "EARoot/EA1/EA7/EA65.htm", "7.png", "E544", "0", "", "UseCase0","{A550984E-BC31-4375-8BFF-F2583E585992}");
+tocTab[tocTab.length] = new Array("0.1.7:8", "", "Ricerca Prodotto", "EARoot/EA1/EA7/EA66.htm", "7.png", "E1891", "0", "", "UseCase0","{45F91105-67E6-4344-AE3D-DE6F02D85F5B}");
+tocTab[tocTab.length] = new Array("0.1.7:9", "", "Rimuovi prodotto", "EARoot/EA1/EA7/EA67.htm", "7.png", "E548", "0", "", "UseCase0","{62905977-7AAF-4432-8E75-6ACE2ECBBF7B}");

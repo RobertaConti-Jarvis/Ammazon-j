@@ -1,0 +1,6 @@
+tocTab[tocTab.length] = new Array("0.1.2:1", "", "Attori", "EARoot/EA1/EA2/EA12.htm", "180.png", "242", "0", "", "Use Case diagram0","{014C1633-E902-4f77-A409-7044D26B6229}");
+tocTab[tocTab.length] = new Array("0.1.2:2", "", "Gestore", "EARoot/EA1/EA2/EA15.htm", "6.png", "E554", "0", "", "Actor0","{A0771D17-A9EF-4a09-8360-01A70D3D049B}");
+tocTab[tocTab.length] = new Array("0.1.2:3", "", "Programmatore", "EARoot/EA1/EA2/EA16.htm", "6.png", "E2125", "0", "", "Actor0","{4587AC1D-D5E0-4452-B392-5B6A1479FA0D}");
+tocTab[tocTab.length] = new Array("0.1.2:4", "", "Sistema", "EARoot/EA1/EA2/EA17.htm", "6.png", "E2126", "0", "", "Actor0","{D5A82FD0-5D83-43b3-8207-4F7D523D6EA3}");
+tocTab[tocTab.length] = new Array("0.1.2:5", "", "Utente Autenticato", "EARoot/EA1/EA2/EA18.htm", "6.png", "E545", "0", "", "Actor0","{A7AC4A46-9AC7-4b76-ABF3-420A13A8376F}");
+tocTab[tocTab.length] = new Array("0.1.2:6", "", "Utente non autenticato", "EARoot/EA1/EA2/EA19.htm", "6.png", "E543", "0", "", "Actor0","{D4FB9EEF-08DC-4383-9CA2-2A15573D0029}");
