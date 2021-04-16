@@ -1,5 +1,4 @@
 # Ammazon-j
-# scarsefour-j
 
 Gruppo 1: Aulicino https://meet.google.com/oic-qtaa-wgj + https://meet.google.com/puo-iesb-rvo
 
