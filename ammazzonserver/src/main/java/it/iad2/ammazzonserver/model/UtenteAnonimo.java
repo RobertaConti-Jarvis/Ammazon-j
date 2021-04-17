@@ -1,17 +1,21 @@
 package it.iad2.ammazzonserver.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-//import java.io.Serializable;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import java.io.Serializable;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 //public class UtenteAnonimo implements Serializable {
-public class UtenteAnonimo {
+public class UtenteAnonimo implements Serializable {
 
     @Id
     @GeneratedValue
@@ -20,11 +24,26 @@ public class UtenteAnonimo {
     @Column
     private String tokenAnonimo;
 
+    // ??? CHIEDERE AL PROFESSORE SE QUESTA RELAZIONE E' INUTILE AVENDO IMPLEMENTATO LA STRATEGIA DI EREDITARIETà SINGLE_TABLE
+    // relazione OneToOne con Ordine
+    @JsonIgnoreProperties(value = "utenteAnonimo", allowGetters = true, allowSetters = true)
+    @OneToOne(cascade = CascadeType.REMOVE)
+    @JoinColumn(referencedColumnName = "id")
+    private Ordine ordine;
+
     public UtenteAnonimo() {
     }
 
     public UtenteAnonimo(String tokenAnonimo) {
         this.tokenAnonimo = tokenAnonimo;
+    }
+
+    public Ordine getOrdine() {
+        return ordine;
+    }
+
+    public void setOrdine(Ordine ordine) {
+        this.ordine = ordine;
     }
 
     public Long getId() {
@@ -45,7 +64,9 @@ public class UtenteAnonimo {
 
     @Override
     public String toString() {
-        return "UtenteAnonimo{" + "id=" + id + ", tokenAnonimo=" + tokenAnonimo + '}';
+        return "UtenteAnonimo{" + "id=" + id + ", tokenAnonimo=" + tokenAnonimo + ", ordine=" + ordine + '}';
     }
+
+    
 
 }

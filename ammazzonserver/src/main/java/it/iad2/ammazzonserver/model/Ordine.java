@@ -1,13 +1,23 @@
 package it.iad2.ammazzonserver.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import java.io.Serializable;
 
 @Entity
-public class Ordine {
+public class Ordine implements Serializable {
 
     @Id
     @GeneratedValue
@@ -22,14 +32,57 @@ public class Ordine {
     @Column
     private String stato = "CARRELLO";
 
-    // relazione OneToMany UtenteRegistrato
+    // ??? CHIEDERE AL PROFESSORE SE QUESTA RELAZIONE E' INUTILE AVENDO IMPLEMENTATO LA STRATEGIA DI EREDITARIETà SINGLE_TABLE
+    // relazione OneToOne UtenteAnonimo ??? 
+    @JsonIgnore
+    @OneToOne(cascade = CascadeType.REMOVE, mappedBy = "ordine")
+    private UtenteAnonimo utenteAnonimo;
+    // relazione ManyToOne UtenteRegistrato
+    @JsonIgnoreProperties(value = "listaOrdine", allowGetters = true, allowSetters = true)
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "id")
+    private UtenteRegistrato utenteRegistrato;
     // relazione OneToMany con QtaOrdiniVariante
+    @JsonIgnoreProperties(value = "ordine", allowGetters = true, allowSetters = true)
+    @OneToMany(mappedBy = "ordine")
+    private List<QtaOrdineVariante> listaQtaOrdineVariante;
+
     public Ordine() {
     }
 
     public Ordine(LocalDate data, int numero) {
         this.data = data;
         this.numero = numero;
+    }
+
+    public UtenteAnonimo getUtenteAnonimo() {
+        return utenteAnonimo;
+    }
+
+    public void setUtenteAnonimo(UtenteAnonimo utenteAnonimo) {
+        this.utenteAnonimo = utenteAnonimo;
+    }
+
+    public UtenteRegistrato getUtenteRegistrato() {
+        return utenteRegistrato;
+    }
+
+    public void setUtenteRegistrato(UtenteRegistrato utenteRegistrato) {
+        this.utenteRegistrato = utenteRegistrato;
+    }
+
+    public List<QtaOrdineVariante> getListaQtaOrdineVariante() {
+        if (listaQtaOrdineVariante == null) {
+            listaQtaOrdineVariante = new ArrayList<>();
+        }
+        return listaQtaOrdineVariante;
+    }
+
+    public void setListaQtaOrdineVariante(List<QtaOrdineVariante> listaQtaOrdineVariante) {
+        if (listaQtaOrdineVariante == null) {
+            listaQtaOrdineVariante = new ArrayList<>();
+        }
+        this.listaQtaOrdineVariante = listaQtaOrdineVariante;
     }
 
     public Long getId() {
@@ -66,7 +119,7 @@ public class Ordine {
 
     @Override
     public String toString() {
-        return "Ordine{" + "id=" + id + ", data=" + data + ", numero=" + numero + ", stato=" + stato + '}';
+        return "Ordine{" + "id=" + id + ", data=" + data + ", numero=" + numero + ", stato=" + stato + ", utenteAnonimo=" + utenteAnonimo + ", utenteRegistrato=" + utenteRegistrato + ", listaQtaOrdineVariante=" + listaQtaOrdineVariante + '}';
     }
 
 }

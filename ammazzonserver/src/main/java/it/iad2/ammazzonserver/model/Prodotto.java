@@ -1,9 +1,14 @@
 package it.iad2.ammazzonserver.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.OneToMany;
 import java.io.Serializable;
 
 @Entity
@@ -23,6 +28,10 @@ public class Prodotto implements Serializable {
     private Double prezzo;
 
     // relazione OneToMany con ProdottoColore
+    @JsonIgnoreProperties(value = "prodotto", allowGetters = true, allowSetters = true)
+    @OneToMany(mappedBy = "prodotto")
+    private List<ProdottoColore> listaProdottoColore;
+
     public Prodotto() {
     }
 
@@ -30,6 +39,20 @@ public class Prodotto implements Serializable {
         this.codice = codice;
         this.descrizione = descrizione;
         this.prezzo = prezzo;
+    }
+
+    public List<ProdottoColore> getListaProdottoColore() {
+        if (listaProdottoColore == null) {
+            listaProdottoColore = new ArrayList<>();
+        }
+        return listaProdottoColore;
+    }
+
+    public void setListaProdottoColore(List<ProdottoColore> listaProdottoColore) {
+        if (listaProdottoColore == null) {
+            listaProdottoColore = new ArrayList<>();
+        }
+        this.listaProdottoColore = listaProdottoColore;
     }
 
     public Long getId() {
@@ -66,7 +89,7 @@ public class Prodotto implements Serializable {
 
     @Override
     public String toString() {
-        return "Prodotto{" + "id=" + id + ", codice=" + codice + ", descrizione=" + descrizione + ", prezzo=" + prezzo + '}';
+        return "Prodotto{" + "id=" + id + ", codice=" + codice + ", descrizione=" + descrizione + ", prezzo=" + prezzo + ", listaProdottoColore=" + listaProdottoColore + '}';
     }
 
 }

@@ -1,10 +1,15 @@
 package it.iad2.ammazzonserver.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import java.io.Serializable;
 
 @Entity
-public class UtenteRegistrato extends UtenteAnonimo {
+public class UtenteRegistrato extends UtenteAnonimo implements Serializable{
 
     @Column
     private String nome;
@@ -25,6 +30,10 @@ public class UtenteRegistrato extends UtenteAnonimo {
     private String tokenRegistrato;
 
     // relazione OneToMany con Ordini
+    @JsonIgnoreProperties(value = "utenteRegistrato")
+    @OneToMany(mappedBy = "utenteRegistrato")
+    private List<Ordine> listaOrdine;
+
     public UtenteRegistrato() {
     }
 
@@ -35,6 +44,20 @@ public class UtenteRegistrato extends UtenteAnonimo {
         this.password = password;
         this.codiceFiscale = codiceFiscale;
         this.tokenRegistrato = tokenRegistrato;
+    }
+
+    public List<Ordine> getListaOrdine() {
+        if (listaOrdine == null) {
+            listaOrdine = new ArrayList<>();
+        }
+        return listaOrdine;
+    }
+
+    public void setListaOrdine(List<Ordine> listaOrdine) {
+        if (listaOrdine == null) {
+            listaOrdine = new ArrayList<>();
+        }
+        this.listaOrdine = listaOrdine;
     }
 
     public String getNome() {
@@ -87,7 +110,7 @@ public class UtenteRegistrato extends UtenteAnonimo {
 
     @Override
     public String toString() {
-        return "UtenteRegistrato{" + "nome=" + nome + ", cognome=" + cognome + ", username=" + username + ", password=" + password + ", codiceFiscale=" + codiceFiscale + ", tokenRegistrato=" + tokenRegistrato + '}';
+        return "UtenteRegistrato{" + "nome=" + nome + ", cognome=" + cognome + ", username=" + username + ", password=" + password + ", codiceFiscale=" + codiceFiscale + ", tokenRegistrato=" + tokenRegistrato + ", listaOrdine=" + listaOrdine + '}';
     }
 
 }
