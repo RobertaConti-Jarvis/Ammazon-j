@@ -2,7 +2,7 @@ package it.iad2.ammazzonserver.service;
 
 import it.iad2.ammazzonserver.dto.ListaProdottiColoriDto;
 import it.iad2.ammazzonserver.dto.ListaProdottiDto;
-import it.iad2.ammazzonserver.dto.ListaTaglieDto;
+import it.iad2.ammazzonserver.dto.ListaColoreTaglieDto;
 import it.iad2.ammazzonserver.model.ColoreTaglia;
 import it.iad2.ammazzonserver.model.Prodotto;
 import it.iad2.ammazzonserver.model.ProdottoColore;
@@ -33,7 +33,7 @@ public interface AssociaTaglieColoriProdService {
      * @return ListaTaglieDto classe che contiene una lista di
      * @see ColoreTaglia
      */
-    ListaTaglieDto mostraTaglieAssociateAProdottoColore(ProdottoColore prodColore);
+    ListaColoreTaglieDto mostraTaglieAssociateAProdottoColore(ProdottoColore prodColore);
     
     /**
      * Mostra una lista di taglie non associate al prodotto-colore selezionato
@@ -42,7 +42,7 @@ public interface AssociaTaglieColoriProdService {
      * @return ListaTaglieDto classe che contiene una lista di
      * @see ColoreTaglia
      */
-    ListaTaglieDto mostraTaglieNonAssociateAProdottoColore(ProdottoColore prodColore);
+    ListaColoreTaglieDto mostraTaglieNonAssociateAProdottoColore(ProdottoColore prodColore);
     
     /**
      * Disassocia la taglia selezionata dal ProdottoColore
@@ -53,7 +53,7 @@ public interface AssociaTaglieColoriProdService {
      * @return ListaTaglieDto classe che contiene una lista di
      * @see ColoreTaglia
      */
-    ListaTaglieDto rimuoviTaglia(ColoreTaglia taglia, ProdottoColore prodColore);
+    ListaColoreTaglieDto rimuoviTaglia(ColoreTaglia taglia, ProdottoColore prodColore);
     
     /**
      * Associa la taglia selezionata al ProdottoColore
@@ -64,7 +64,7 @@ public interface AssociaTaglieColoriProdService {
      * @return ListaTaglieDto classe che contiene una lista di
      * @see ColoreTaglia
      */
-    ListaTaglieDto associaTaglia(ColoreTaglia taglia, ProdottoColore prodColore);
+    ListaColoreTaglieDto associaTaglia(ColoreTaglia taglia, ProdottoColore prodColore);
     
     /**
      * Associa tutte le taglie al ProdottoColore
@@ -73,7 +73,7 @@ public interface AssociaTaglieColoriProdService {
      * @return ListaTaglieDto classe che contiene una lista di
      * @see ColoreTaglia
      */
-    ListaTaglieDto associaTutteLeTaglie(ProdottoColore prodColore);
+    ListaColoreTaglieDto associaTutteLeTaglie(ProdottoColore prodColore);
     
     /**
      * Disassocia tutte le taglie al ProdottoColore
@@ -82,5 +82,5 @@ public interface AssociaTaglieColoriProdService {
      * @return ListaTaglieDto classe che contiene una lista di
      * @see ColoreTaglia
      */
-    ListaTaglieDto disassociaTutteLeTaglie(ProdottoColore prodColore);
+    ListaColoreTaglieDto disassociaTutteLeTaglie(ProdottoColore prodColore);
 }
