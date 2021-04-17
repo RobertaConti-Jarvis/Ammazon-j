@@ -42,7 +42,8 @@ public class AssociaTaglieColoriProdController {
     @RequestMapping("/mostra-coloretaglie-disponibili")
     @ResponseBody
     public ListaColoreTaglieDto mostraColoreTaglieDisponibili(@RequestBody ProdottoColoreDto dto){
-        return associaTaglieCPService.mostraTaglieNonAssociateAProdottoColore(dto.getProdottoColore());
+        //TODO
+        return null;
     }
     
     @RequestMapping("/rimuovi-colore-taglia")
@@ -62,13 +63,15 @@ public class AssociaTaglieColoriProdController {
     @RequestMapping("/associa-tutti-colore-taglia")
     @ResponseBody
     public ListaColoreTaglieDto associaTuttiColoreTaglia(@RequestBody ProdottoColoreDto dto){
-        return associaTaglieCPService.associaTuttiColoriTaglie(dto.getProdottoColore());
+        //TODO
+        return null;
     }
     
     @RequestMapping("/disassocia-tutti-colore-taglia")
     @ResponseBody
     public ListaColoreTaglieDto disassociaTuttiColoreTaglia(@RequestBody ProdottoColoreDto dto){
-        return associaTaglieCPService.disassociaTuttiColoriTaglie(dto.getProdottoColore());
+        //TODO
+        return null;
     }
 
 }

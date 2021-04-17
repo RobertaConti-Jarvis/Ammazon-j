@@ -1,8 +1,9 @@
 package it.iad2.ammazzonserver.service;
 
-import it.iad2.ammazzonserver.dto.ListaProdottiColoriDto;
 import it.iad2.ammazzonserver.dto.ListaProdottiDto;
 import it.iad2.ammazzonserver.dto.ListaColoreTaglieDto;
+import it.iad2.ammazzonserver.dto.ListaProdottiColoriDto;
+import it.iad2.ammazzonserver.dto.ListaVarianteColoreDto;
 import it.iad2.ammazzonserver.model.ColoreTaglia;
 import it.iad2.ammazzonserver.model.Prodotto;
 import it.iad2.ammazzonserver.model.ProdottoColore;

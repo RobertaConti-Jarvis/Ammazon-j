@@ -1,8 +1,8 @@
 package it.iad2.ammazzonserver.serviceimpl;
 
-import it.iad2.ammazzonserver.dto.ListaProdottiColoriDto;
 import it.iad2.ammazzonserver.dto.ListaProdottiDto;
 import it.iad2.ammazzonserver.dto.ListaColoreTaglieDto;
+import it.iad2.ammazzonserver.dto.ListaProdottiColoriDto;
 import it.iad2.ammazzonserver.model.ColoreTaglia;
 import it.iad2.ammazzonserver.model.Prodotto;
 import it.iad2.ammazzonserver.model.ProdottoColore;
@@ -20,10 +20,10 @@ public class AssociaTaglieColoriProdServiceImpl implements AssociaTaglieColoriPr
     ProdottoRepository prodottoRepository;
     
     @Autowired
-    ProdottoColoreRepository prodottoColoreRepository;
-
-    @Autowired
     ColoreTagliaRepository coloreTagliaRepository;
+    
+    @Autowired
+    ProdottoColoreRepository prodottoColoreRepository;
     
     @Override
     public ListaProdottiDto cercaProdottiPerCodiceDescrizione(String criterio) {
@@ -33,12 +33,14 @@ public class AssociaTaglieColoriProdServiceImpl implements AssociaTaglieColoriPr
 
     @Override
     public ListaProdottiColoriDto mostraColoriAssociatiAProdotto(Prodotto prodotto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new ListaProdottiColoriDto(
+                prodottoColoreRepository.trovaListaVarianteColoreProdotto(prodotto.getId()));
     }
 
     @Override
     public ListaColoreTaglieDto mostraTaglieAssociateAProdottoColore(ProdottoColore prodColore) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new ListaColoreTaglieDto(
+                coloreTagliaRepository.trovaListaVarianteColoreProdotto(prodColore.getId()));
     }
 
     @Override

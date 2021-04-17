@@ -10,5 +10,4 @@ public interface VarianteTagliaRepository extends JpaRepository<VarianteTaglia, 
     
     List<VarianteTaglia> findByCodiceEquals(String codice);
     
-    
 }
