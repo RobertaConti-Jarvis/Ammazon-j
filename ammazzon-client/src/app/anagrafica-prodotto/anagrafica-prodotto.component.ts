@@ -23,6 +23,7 @@ export class AnagraficaProdottoComponent implements OnInit, AutomabileCrud {
   searchCriterion: string;
   automa: Automa;
   stato: State;
+
   buttonNuovaVisible: boolean = true;
   formDivVisible: boolean;
   campiNonEditabili: boolean = false;
@@ -96,7 +97,7 @@ export class AnagraficaProdottoComponent implements OnInit, AutomabileCrud {
     let dto: ProdottoDto = new ProdottoDto();
     dto.prodotto = this.prodotto;
     let oss: Observable<ListaProdottiDto> = this.http.post<ListaProdottiDto>
-      ('http://localhost:8080/conferma-prodotto', dto);
+      ('http://localhost:8080/aggiungi-prodotto', dto);
     oss.subscribe(c => this.listaProdotti = c.listaProdotti);
     this.tabellaProdottiVisibile = true;
     this.prodotto = new Prodotto();
@@ -130,12 +131,12 @@ export class AnagraficaProdottoComponent implements OnInit, AutomabileCrud {
     this.stato = this.automa.next(new AddEvent());
   }
 
-  cercaPerCodice() {
+  cercaPerDescrizione() {
     let dto: CriterioRicercaDto = new CriterioRicercaDto();
     dto.criterio = this.searchCriterion;
-    let oss: Observable<ProdottoDto> = this.http.post<ProdottoDto>
+    let oss: Observable<ListaProdottiDto> = this.http.post<ListaProdottiDto>
       ("http://localhost:8080/cerca-prodotto", dto);
-    oss.subscribe(c => this.prodotto = c.prodotto);
+    oss.subscribe(c => this.listaProdotti = c.listaProdotti);
     this.automa.next(new RicercaEvent());
   }
 
@@ -164,9 +165,9 @@ export class AnagraficaProdottoComponent implements OnInit, AutomabileCrud {
   }
 
   aggiorna() {
-    let oz: Observable<ListaProdottiDto> = this.http.get<ListaProdottiDto>(
+    let oss: Observable<ListaProdottiDto> = this.http.get<ListaProdottiDto>(
       "http://localhost:8080/aggiorna-prodotto");
-    oz.subscribe(a => this.listaProdotti = a.listaProdotti);
+    oss.subscribe(a => this.listaProdotti = a.listaProdotti);
   }
 
   vaiA(s: string) {

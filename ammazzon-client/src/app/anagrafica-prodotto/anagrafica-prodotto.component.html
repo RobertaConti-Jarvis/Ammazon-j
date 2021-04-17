@@ -23,8 +23,8 @@
   <br>
   <hr>
   <div *ngIf="searchVisible">
-    <input type="text" placeholder="Cerca per codice" [(ngModel)]="searchCriterion" class="inputSearch">
-    <button (click)="cercaPerCodice()" class="button">Cerca</button>
+    <input type="text" placeholder="Cerca per descrizione" [(ngModel)]="searchCriterion" class="inputSearch">
+    <button (click)="cercaPerDescizione()" class="button">Cerca</button>
   </div>
   <table *ngIf="tabellaProdottiVisibile" class="scrolldown">
     <thead>
