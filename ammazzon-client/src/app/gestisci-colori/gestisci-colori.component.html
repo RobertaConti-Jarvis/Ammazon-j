@@ -1,16 +1,18 @@
 <h2>Gestisci-Colori</h2>
 <button (click)="nuova()" *ngIf='nuovaVis'>nuova</button>
+<div *ngIf = "formDivVisible">
 <input type="text" placeholder="codice" [(ngModel)]="colore.codice" [disabled]='campiNonEditabili'>
 <input type="text" placeholder="descrizione" [(ngModel)]="colore.descrizione" [disabled]='campiNonEditabili'>
+</div>
 <button (click)="modifica()" *ngIf='modRim'>modifica</button>
 <button (click)="rimuovi()" *ngIf='modRim'>rimuovi</button>
-<button (click)="conferma()" *ngIf='confAn'>conferma</button>
-<button (click)="annulla()" *ngIf='confAn'>annulla</button>
+<button (click)="conferma()" *ngIf='confAnnVisible'>conferma</button>
+<button (click)="annulla()" *ngIf='confAnnVisible'>annulla</button>
 <br>
-<input type="text" placeholder="Cerca per codice" [(ngModel)]="searchCriterion">
-<button (click)="cercaPerCodice()">Cerca</button>
+<input type="text" placeholder="Cerca per codice" [(ngModel)]="searchCriterion" [disabled]= "searchVisible">
+<button (click)="cercaPerCodice()" [disabled]= "searchVisible">Cerca</button>
 <br>
-<table *ngIf=tabellaColoriVis>
+<table *ngIf="tabellaColoriVis">
     <thead>
         <tr>
             <th>
