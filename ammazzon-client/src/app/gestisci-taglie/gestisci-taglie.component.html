@@ -1,0 +1,35 @@
+<body>
+    <div>
+        <h1>GESTIONE TAGLIE</h1>
+    </div>
+    <button (click)="nuova()" *ngIf="buttonNuovaVisible">Nuova</button>
+    <div *ngIf="formDivVisible">
+        <input type="text" placeholder="codice" [(ngModel)]="posizione.codice" [disabled]="campiNonEditabili"
+            class="input">
+        <input type="text" placeholder="descrizione" [(ngModel)]="posizione.descrizione" [disabled]="campiNonEditabili"
+            class="input">
+        <br>
+        <button (click)="modifica()" *ngIf="!confAnnVisible">Modifica</button>
+        <button (click)="conferma()" *ngIf="confAnnVisible">Conferma</button>
+        <button (click)="annulla()" *ngIf="confAnnVisible">Annulla</button>
+        <button (click)="rimuovi()" *ngIf="!confAnnVisible">Rimuovi</button>
+    </div>
+    <br>
+    <input type="text" placeholder="cerca" [(ngModel)]="criterio" *ngIf="searchVisible">
+    <button (click)="cerca()" *ngIf="searchVisible">Cerca</button>
+    <br>
+    <div>
+        <table *ngIf="searchVisible">
+            <tr>
+                <th>Codice</th>
+                <th></th>
+            </tr>
+            <tr *ngFor="let t of taglie">
+                <td>{{t.codice}}</td>
+                <td>
+                    <button (click)="seleziona(t)">Seleziona</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>

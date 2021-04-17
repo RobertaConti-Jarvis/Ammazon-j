@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GestisciTaglieComponent } from './gestisci-taglie/gestisci-taglie.component';
 import { AssociaTaglieColoriComponent } from './associa-taglie-colori/associa-taglie-colori.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { AssociaTaglieColoriComponent } from './associa-taglie-colori/associa-ta
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
