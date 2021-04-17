@@ -7,9 +7,15 @@ import it.iad2.ammazzonserver.model.ColoreTaglia;
 import it.iad2.ammazzonserver.model.Prodotto;
 import it.iad2.ammazzonserver.model.ProdottoColore;
 import it.iad2.ammazzonserver.service.AssociaTaglieColoriProdService;
+import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
 
+@Service
 public class AssociaTaglieColoriProdServiceImpl implements AssociaTaglieColoriProdService{
 
+    //TODO: iniettare i repository opportuni e implementare i metodi
+    //@Autowired
+    
     @Override
     public ListaProdottiDto cercaProdottiPerCodiceDescrizione(String criterio) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -31,22 +37,22 @@ public class AssociaTaglieColoriProdServiceImpl implements AssociaTaglieColoriPr
     }
 
     @Override
-    public ListaColoreTaglieDto rimuoviTaglia(ColoreTaglia taglia, ProdottoColore prodColore) {
+    public ListaColoreTaglieDto rimuoviColoreTaglia(ColoreTaglia taglia, ProdottoColore prodColore) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public ListaColoreTaglieDto associaTaglia(ColoreTaglia taglia, ProdottoColore prodColore) {
+    public ListaColoreTaglieDto associaColoreTaglia(ColoreTaglia taglia, ProdottoColore prodColore) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public ListaColoreTaglieDto associaTutteLeTaglie(ProdottoColore prodColore) {
+    public ListaColoreTaglieDto associaTuttiColoriTaglie(ProdottoColore prodColore) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public ListaColoreTaglieDto disassociaTutteLeTaglie(ProdottoColore prodColore) {
+    public ListaColoreTaglieDto disassociaTuttiColoriTaglie(ProdottoColore prodColore) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
