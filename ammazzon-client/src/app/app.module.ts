@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AnagraficaProdottoComponent } from './anagrafica-prodotto/anagrafica-prodotto.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { GestisciColoriComponent } from './gestisci-colori/gestisci-colori.component';
 
 @NgModule({
   declarations: [
@@ -16,13 +17,14 @@ import { HomePageComponent } from './home-page/home-page.component';
     GestisciTaglieComponent,
     AssociaTaglieColoriComponent,
     AnagraficaProdottoComponent,
-    HomePageComponent
+    HomePageComponent,
+    GestisciColoriComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
