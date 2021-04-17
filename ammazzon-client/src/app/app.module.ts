@@ -7,12 +7,16 @@ import { GestisciTaglieComponent } from './gestisci-taglie/gestisci-taglie.compo
 import { AssociaTaglieColoriComponent } from './associa-taglie-colori/associa-taglie-colori.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AnagraficaProdottoComponent } from './anagrafica-prodotto/anagrafica-prodotto.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GestisciTaglieComponent,
-    AssociaTaglieColoriComponent
+    AssociaTaglieColoriComponent,
+    AnagraficaProdottoComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,

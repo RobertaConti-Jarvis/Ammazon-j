@@ -1,0 +1,47 @@
+<body>
+  <h2>Anagrafica Prodotti</h2>
+
+  <h4 *ngIf="labelNuovoProdotto">
+    Inserire prodotto
+  </h4><button (click)="nuova()" *ngIf="buttonNuovaVisible" class="button">Nuova</button>
+  <br>
+
+  <div *ngIf="formDivVisible">
+    <input type="text" placeholder="codice" [(ngModel)]="prodotto.codice" [disabled]="campiNonEditabili" class="input">
+    <input type="text" placeholder="descrizione" [(ngModel)]="prodotto.descrizione" [disabled]="campiNonEditabili"
+      class="input">
+    <input type="text" placeholder="prezzo" [(ngModel)]="prodotto.prezzo" [disabled]="campiNonEditabili" class="input">
+  </div>
+  <p *ngIf="labelMessaggioErrore">{{errore}}</p>
+  <br>
+  <div>
+    <button (click)="modifica()" *ngIf="modRimVisible" class="button">Modifica</button>
+    <button (click)="conferma()" *ngIf="confAnnVisible" class="button">Conferma</button>
+    <button (click)="annulla()" *ngIf="confAnnVisible" class="button">Annulla</button>
+    <button (click)="rimuovi()" *ngIf="modRimVisible" class="button">Rimuovi</button>
+  </div>
+  <br>
+  <hr>
+  <div *ngIf="searchVisible">
+    <input type="text" placeholder="Cerca per codice" [(ngModel)]="searchCriterion" class="inputSearch">
+    <button (click)="cercaPerCodice()" class="button">Cerca</button>
+  </div>
+  <table *ngIf="tabellaProdottiVisibile" class="scrolldown">
+    <thead>
+      <tr>
+        <th>Codice</th>
+        <th>Descrizione</th>
+        <th>Prezzo</th>
+        <th>Seleziona</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of listaProdotti">
+        <td>{{p.codice}}</td>
+        <td>{{p.descrizione}}</td>
+        <td>{{p.prezzo}}</td>
+        <td><button (click)="seleziona(p)" class="button">Seleziona</button></td>
+      </tr>
+    </tbody>
+  </table>
+</body>

@@ -1,0 +1,534 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+    margin: 0;
+    padding-left: 70px;
+    padding-right: 100px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+h2 {
+    text-align: top;
+}
+
+/* IMPAGINAZIONE DASHBOARD */
+
+.headDash {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: right;
+    width: 97%;
+}
+
+.divvone::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+[class*="col-"] {
+    float: left;
+    padding: 15px;
+}
+
+.col-3 {
+    width: 25%;
+}
+
+/* col 1-12 -> width: 8.33%; 16.66%; 25%;
+33.33%; 41.66%; 50%; 58.33%; 66.66%;
+75%; 83.33%; 91.66%; 100%; */
+
+/* HEADER ANAGRAFICA */
+
+/*.headAnagrafica {
+    position: relative;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-transform: uppercase;
+    font-size: 35px;
+    letter-spacing: 2px;
+    overflow: hidden;
+    background: linear-gradient(90deg, #000, rgb(0, 0, 0), #000);
+    background-repeat: no-repeat;
+    background-size: 80%;
+    animation: animate 4s linear;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: rgba(255, 255, 255, 0);
+}*/
+
+@keyframes animate {
+    0% {
+        background-position: -500%;
+    }
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #CCCCCC;
+    height: 1px;
+    margin-bottom: 25px;
+}
+
+/* LINK HOMEPAGE */
+
+.link {
+    font-size: 21px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: lighter;
+    color: black;
+    text-decoration: solid;
+}
+
+.link:hover {
+    color: orangered;
+}
+
+.link:active {
+    color: rgb(192, 54, 3);
+}
+
+/* CAMPI INPUT */
+
+/*.inputBarcode {
+    width: 70%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-image: url('../assets/barcodeS.png');
+    background-size: 45px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    text-align: right;
+}
+
+.inputSearch {
+    width: 200px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-image: url('../assets/searchicon.png');
+    background-size: 43px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    text-align: right;
+}*/
+
+.input {
+    width: 150px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    padding: 12px 20px 12px 35px;
+    text-align: right;
+}
+
+/* BOTTONI */
+
+.button {
+    background-color: #f8f8f8;
+    border: 1px solid rgb(60, 204, 125);
+    color: rgb(0, 0, 0);
+    padding: 13px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    transition-duration: 0.5s;
+}
+
+.buttonSel:nth-child(odd) {
+    background-color: #f8f8f8;
+    border: 1px solid rgb(240, 142, 13);
+    color: rgb(0, 0, 0);
+    padding: 13px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    transition-duration: 0.5s;
+}
+
+.button:disabled {
+    opacity: 50%;
+}
+
+.button:hover:enabled {
+    background-color: rgb(60, 204, 125);
+    color: rgb(0, 0, 0);
+}
+
+.buttonSel:hover:enabled {
+    background-color: #ff9e44;
+    color: rgb(0, 0, 0);
+}
+
+#butVediPrezzo {
+    height: 70px;
+    /* width: 200px; */
+    width: 75%;
+    text-align: center;
+}
+
+#butChiudiScontrino {
+    height: 135px;
+    /*width: 200px;*/
+    width: 75%;
+}
+
+#butStorna {
+    height: 95px;
+    /*width: 190px;*/
+    width: 75%;
+}
+
+#butAnnScontrino {
+    height: 50px;
+    /* width: 200px; */
+    width: 75%;
+}
+
+#butAnnulla {
+    height: 50px;
+    /* width: 200px; */
+    width: 75%;
+}
+
+#butConferma {
+    height: 50px;
+    /* width: 200px; */
+    width: 75%;
+}
+
+.scrolldown {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border: 1px solid black;
+    border-style: solid;
+    width: 100%;
+    height: 250px;
+    background-color: #ffffff;
+}
+
+/* table {
+}
+
+table.scrolldown {
+    width: 100%;
+    border-spacing: 0;
+    border: 2px solid black;
+    height: 300px;
+    table-layout: fixed;
+}
+
+table.scrolldown tbody, table.scrolldown thead {
+    display: block;
+}
+
+table.scrolldown tbody {
+    height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+} */
+
+/* thead tr th {
+    height: 40px;
+    line-height: 40px;
+    width: 500px;
+}
+
+tbody {
+}
+
+tbody td {
+    width: 500px;
+}
+
+td, th {
+    text-align: center;
+}
+
+thead th {
+    background-color: #333;
+    color: white;
+}
+
+tr:nth-child(odd) {
+    background-color: #ff9e44;
+}
+
+tr:nth-child(even) {} */
+
+/* TABELLA DASHBOARD */
+
+[class*="tab-"] {
+    float: left;
+    padding: 15px;
+}
+
+.tab-1 {
+    width: 70%;
+    border-spacing: 0;
+    border: 1px solid black;
+    float: left;
+}
+
+.tab-1 tbody, .tab-1 thead {
+    display: block;
+}
+
+thead tr th {
+    height: 40px;
+    line-height: 40px;
+    width: 800px;
+}
+
+.tab-1 tbody {
+    height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+tbody {
+    border-top: 2px solid black;
+}
+
+tbody td {
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+td, th {
+    text-align: center;
+    width: 800px;
+}
+
+thead th {
+    background-color: #333;
+    color: white;
+}
+
+tr:nth-child(odd) {
+    background-color: #ff9e44;
+    height: 45px;
+}
+
+tr:nth-child(even) {
+    height: 45px;
+}
+
+/* .tab-1::after{
+    width: 65%;
+    float: left;
+    padding: 15px;
+    border: 1px solid blue;
+} */
+
+/* .tab-2::after {
+    width: 35%;
+} */
+
+/* #tabDash {
+    position: absolute;
+    padding-bottom: 240px;
+    width: 65%;
+} */
+
+/* TOTALE DASH */
+.tab-2 {
+    /* position: absolute; */
+    float: right;
+    font-size: 35px;
+    width: 30%;
+    height: 50%;
+    text-align: right;
+}
+
+/* ELEMENTO DASH */
+
+[class*="elem"] {
+    float: left;
+    width: 100%;
+    padding: 15px;
+}
+
+.elem::after {
+    width: 50%;
+    text-align: start;
+}
+
+/* TOOLBAR MENU */
+
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+}
+
+.navbar a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition-duration: 0.5s;
+}
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+.dropdown .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+    transition-duration: 0.5s;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: rgb(219, 121, 0);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+p.titoliHome {
+    writing-mode: vertical-rl;
+}
+
+/* TABELLE HOME PAGE */
+
+.wrapper {
+    margin: 0 auto;
+    /* width: 960px; */
+    width: 100%;
+    background: #EFEFEF;
+    float: left;
+}
+
+.rotateObj {
+    height: 200px;
+}
+
+.rotateObj h2 {
+    position: relative;
+    float: left;
+    background: rgb(219, 121, 0);
+    width: 120px;
+    height: 300px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+
+.rotateObj h2 span {
+    width: 150px;
+    /* same as height of .rotateObj */
+    transform-origin: 120px 70px;
+    display: inline-block;
+    transform: rotate(-90deg);
+    text-align: center;
+}
+
+.rotateObj h2.active {
+    background: rgb(10, 165, 49);
+}
+
+.rotateObj h2.active2 {
+    background: rgb(10, 165, 49);
+}
+
+.rotateObj .content {
+    float: left;
+    width: 230px;
+    height: 100%;
+    padding: 20px;
+}
+
+.logo {
+   position: relative;
+    width: 35%;
+    float: right;
+}
+
+/* IMMAGINI SELF SLIDE */
+
+.fling-minislide {
+    width: 65%;
+    min-height: 330px;
+    overflow: hidden;
+    position: relative;
+    float: left;
+}
+
+.fling-minislide img {
+    position: absolute;
+    animation: fling-minislide 15s infinite;
+    opacity: 0;
+    width: 100%;
+    height: auto;
+}
+
+@keyframes fling-minislide {
+    25% {
+        opacity: 1;
+    }
+    40% {
+        opacity: 0;
+    }
+}
+
+.fling-minislide img:nth-child(3) {
+    animation-delay: 10s;
+}
+
+.fling-minislide img:nth-child(2) {
+    animation-delay: 5s;
+}
+
+.fling-minislide img:nth-child(1) {
+    animation-delay: 0s;
+}
