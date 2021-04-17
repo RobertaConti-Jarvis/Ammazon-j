@@ -1,4 +1,4 @@
-package it.iad2.ammazzonserver.service.impl;
+package it.iad2.ammazzonserver.serviceimpl;
 
 import it.iad2.ammazzonserver.dto.ListaProdottiColoriDto;
 import it.iad2.ammazzonserver.dto.ListaProdottiDto;
@@ -6,19 +6,29 @@ import it.iad2.ammazzonserver.dto.ListaColoreTaglieDto;
 import it.iad2.ammazzonserver.model.ColoreTaglia;
 import it.iad2.ammazzonserver.model.Prodotto;
 import it.iad2.ammazzonserver.model.ProdottoColore;
+import it.iad2.ammazzonserver.repository.ColoreTagliaRepository;
+import it.iad2.ammazzonserver.repository.ProdottoColoreRepository;
+import it.iad2.ammazzonserver.repository.ProdottoRepository;
 import it.iad2.ammazzonserver.service.AssociaTaglieColoriProdService;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
-public class AssociaTaglieColoriProdServiceImpl implements AssociaTaglieColoriProdService{
+public class AssociaTaglieColoriProdServiceImpl implements AssociaTaglieColoriProdService {
 
-    //TODO: iniettare i repository opportuni e implementare i metodi
-    //@Autowired
+    @Autowired
+    ProdottoRepository prodottoRepository;
+    
+    @Autowired
+    ProdottoColoreRepository prodottoColoreRepository;
+
+    @Autowired
+    ColoreTagliaRepository coloreTagliaRepository;
     
     @Override
     public ListaProdottiDto cercaProdottiPerCodiceDescrizione(String criterio) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new ListaProdottiDto(
+                prodottoRepository.findByCodiceEqualsOrDescrizioneLike(criterio, criterio));
     }
 
     @Override
