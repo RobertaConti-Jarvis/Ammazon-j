@@ -32,7 +32,7 @@
         <tr *ngFor="let c of listaProdottiColori">
           <td>{{c.nome}}</td>
           <td>
-            <button (click)="selezionaColore(c)" class="buttonSel">Seleziona</button>
+            <button (click)="selezionaColore(c)" (click)="selezionaColoreDis(c)" class="buttonSel">Seleziona</button>
           </td>
         </tr>
       </tbody>
