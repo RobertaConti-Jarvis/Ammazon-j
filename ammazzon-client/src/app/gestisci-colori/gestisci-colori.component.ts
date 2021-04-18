@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { AddEvent, AnnullaEvent, ConfermaEvent, ModificaEvent, RimuoviEvent } from '../automa-crud/eventi';
 import { Observable } from 'rxjs';
 import { ListaVarianteColoreDto } from '../dto/lista-variante-colore-dto';
+import { VarianteColoreDto } from '../dto/variante-colore-dto';
 
 @Component({
   selector: 'app-gestisci-colori',
@@ -14,7 +15,7 @@ import { ListaVarianteColoreDto } from '../dto/lista-variante-colore-dto';
   styleUrls: ['./gestisci-colori.component.css']
 })
 export class GestisciColoriComponent implements OnInit, AutomabileCrud {
-  colore: VarianteColore = new VarianteColore();
+  varianteColore: VarianteColore = new VarianteColore();
   listaColori: VarianteColore[] = [];
   automa: Automa;
   stato: State;
@@ -87,11 +88,20 @@ export class GestisciColoriComponent implements OnInit, AutomabileCrud {
   rimuoviAction() { }
 
   aggiungiAction() { 
-
+    let dto: VarianteColoreDto = new VarianteColoreDto();
+    dto.varianteColore = this.varianteColore
+    let ox: Observable<ListaVarianteColoreDto> = this.http.post<ListaVarianteColoreDto>(
+      "http://localhost:8080/aggiungi-variante-colore",dto);
+      ox.subscribe(c=>this.listaColori = c.listaVarianteColore);
   }
 
   modificaAction() {
-    this.stato = this.automa.next(new ModificaEvent());
+    let dto: VarianteColoreDto = new VarianteColoreDto();
+    dto.varianteColore = this.varianteColore
+    let ox: Observable<ListaVarianteColoreDto> = this.http.post<ListaVarianteColoreDto>(
+      "http://localhost:8080/modifica-variante-colore",dto);
+      ox.subscribe(c=>this.listaColori = c.listaVarianteColore);
+
    }
 
   nuova() { 
