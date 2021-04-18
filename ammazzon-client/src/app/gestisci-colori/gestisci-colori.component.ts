@@ -46,18 +46,20 @@ export class GestisciColoriComponent implements OnInit, AutomabileCrud {
     this.confAnnVisible = false;
     this.buttonNuovaVisible = true;
     this.formDivVisible = false;
-    this.searchVisible = true;
+    this.searchVisible = false;
 
   }
 
   goToAggiungi() {
-    this.buttonNuovaVisible = false;
+    this.buttonNuovaVisible = true;
     this.formDivVisible = true;
     this.campiNonEditabili = false;
     this.confAnnVisible = true;
     this.modRim = false;
-    this.searchVisible = false;
+    this.searchVisible = true;
     this.tabellaColoriVis = true;
+    this.nuovaVis = false;
+    console.log('sei nello stato aggiungi');
 
   }
 
@@ -93,6 +95,7 @@ export class GestisciColoriComponent implements OnInit, AutomabileCrud {
     let ox: Observable<ListaVarianteColoreDto> = this.http.post<ListaVarianteColoreDto>(
       "http://localhost:8080/aggiungi-variante-colore",dto);
       ox.subscribe(c=>this.listaColori = c.listaVarianteColore);
+
   }
 
   modificaAction() {
@@ -106,22 +109,27 @@ export class GestisciColoriComponent implements OnInit, AutomabileCrud {
 
   nuova() { 
     this.stato = this.automa.next(new AddEvent());
+    console.log('sei nello stato nuova');
   }
 
   modifica() {
     this.stato = this.automa.next(new ModificaEvent());
+    console.log('sei nello stato modifica');
    }
 
   rimuovi() {
     this.stato = this.automa.next(new RimuoviEvent());
+    console.log('sei nello stato rimuovi');
    }
 
   conferma() {
     this.automa.next(new ConfermaEvent());
+    console.log('sei nello stato conferma');
    }
 
   annulla() { 
     this.automa.next(new AnnullaEvent());
+    console.log('sei nello stato annulla');
   }
 
   aggiorna(){
@@ -131,6 +139,10 @@ export class GestisciColoriComponent implements OnInit, AutomabileCrud {
   }
 
   cercaPerCodice() { }
+
+  seleziona(c) {
+
+  }
 
 
 }

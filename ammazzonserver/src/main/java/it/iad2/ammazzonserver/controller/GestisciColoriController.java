@@ -31,14 +31,14 @@ public class GestisciColoriController {
     @RequestMapping("/aggiungi-variante-colore")
     @ResponseBody
     ListaVarianteColoreDto aggiungiAction(@RequestBody VarianteColoreDto dto){
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       return gestisciColoriService.aggiungiAction(dto.getVarianteColore());
     }
 
     //modificaAction
     @RequestMapping("modifica-variante-colore")
     @ResponseBody
     ListaVarianteColoreDto modificaAction(@RequestBody VarianteColoreDto dto){
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       return gestisciColoriService.aggiungiAction(dto.getVarianteColore());
     }
 
     //cercaPerCodice

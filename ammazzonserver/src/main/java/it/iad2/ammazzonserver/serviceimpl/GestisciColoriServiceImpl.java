@@ -32,12 +32,14 @@ public class GestisciColoriServiceImpl implements GestisciColoriService {
 
     @Override
     public ListaVarianteColoreDto aggiungiAction(VarianteColore varianteColore) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        varianteColoreRepository.save(varianteColore);
+        return aggiorna();
     }
 
     @Override
     public ListaVarianteColoreDto modificaAction(VarianteColore varianteColore) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        varianteColoreRepository.save(varianteColore);
+        return aggiorna();
     }
 
     @Override
