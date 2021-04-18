@@ -49,10 +49,10 @@ public class GestisciColoriController {
     }
 
     //aggiorna
-    @RequestMapping("")
+    @RequestMapping("aggiorna-variante-colore")
     @ResponseBody
     ListaVarianteColoreDto aggiorna(){
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       return gestisciColoriService.aggiorna();
     }
     
 
