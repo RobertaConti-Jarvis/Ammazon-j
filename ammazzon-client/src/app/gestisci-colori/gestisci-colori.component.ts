@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Automa } from '../automa-crud/automa';
 import { AutomabileCrud, State } from '../automa-crud/state';
 import { VarianteColore } from '../entità/variante-colore';
+import { HttpClient } from '@angular/common/http';
+import { AddEvent, AnnullaEvent, ConfermaEvent, ModificaEvent, RimuoviEvent } from '../automa-crud/eventi';
+import { Observable } from 'rxjs';
+import { ListaVarianteColoreDto } from '../dto/lista-variante-colore-dto';
 
 @Component({
   selector: 'app-gestisci-colori',
@@ -28,10 +33,11 @@ export class GestisciColoriComponent implements OnInit, AutomabileCrud {
 
 
 
-  constructor() { }
+  constructor(private http: HttpClient, private router: Router) { }
 
 
   ngOnInit(): void {
+    this.aggiorna();
     this.automa = new Automa(this);
   }
 
@@ -80,21 +86,42 @@ export class GestisciColoriComponent implements OnInit, AutomabileCrud {
   }
   rimuoviAction() { }
 
-  aggiungiAction() { }
+  aggiungiAction() { 
 
-  modificaAction() { }
+  }
 
-  nuova() { }
+  modificaAction() {
+    this.stato = this.automa.next(new ModificaEvent());
+   }
 
-  modifica() { }
+  nuova() { 
+    this.stato = this.automa.next(new AddEvent());
+  }
 
-  rimuovi() { }
+  modifica() {
+    this.stato = this.automa.next(new ModificaEvent());
+   }
 
-  conferma() { }
+  rimuovi() {
+    this.stato = this.automa.next(new RimuoviEvent());
+   }
 
-  annulla() { }
+  conferma() {
+    this.automa.next(new ConfermaEvent());
+   }
+
+  annulla() { 
+    this.automa.next(new AnnullaEvent());
+  }
+
+  aggiorna(){
+    let ax: Observable<ListaVarianteColoreDto> = this.http.get<ListaVarianteColoreDto>(
+      "http://localhost:8080/aggiorna-variante-colore");
+      ax.subscribe(a=>this.listaColori = a.listaVarianteColore);
+  }
 
   cercaPerCodice() { }
+
 
 }
 
