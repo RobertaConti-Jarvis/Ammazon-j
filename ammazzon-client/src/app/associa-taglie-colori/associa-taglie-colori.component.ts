@@ -39,6 +39,7 @@ export class AssociaTaglieColoriComponent implements OnInit {
   }
 
   selezionaProdotto(p: Prodotto){
+    this.prodotto = new Prodotto();
     this.prodotto.id = p.id;
     this.prodotto.codice = p.codice;
     this.prodotto.descrizione = p.descrizione;
