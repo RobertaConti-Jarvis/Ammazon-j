@@ -16,18 +16,19 @@ import org.springframework.stereotype.Service;
 @Service
 @Transactional
 public class GestisciColoriServiceImpl implements GestisciColoriService {
-    
+
     @Autowired
     VarianteColoreRepository varianteColoreRepository;
 
     @Override
     public ListaVarianteColoreDto cercaPerCodice(String criterio) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new ListaVarianteColoreDto(varianteColoreRepository.findByCodiceContains(criterio));
     }
 
     @Override
     public ListaVarianteColoreDto rimuoviAction(VarianteColore varianteColore) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        varianteColoreRepository.delete(varianteColore);
+        return aggiorna();
     }
 
     @Override
@@ -45,7 +46,7 @@ public class GestisciColoriServiceImpl implements GestisciColoriService {
     @Override
     public ListaVarianteColoreDto aggiorna() {
         return new ListaVarianteColoreDto(varianteColoreRepository.findAll());
-        
+
     }
-    
+
 }

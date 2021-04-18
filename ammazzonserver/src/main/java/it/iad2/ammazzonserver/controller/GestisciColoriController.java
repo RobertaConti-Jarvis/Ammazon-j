@@ -24,7 +24,7 @@ public class GestisciColoriController {
     @RequestMapping("/rimuovi-variante-colore")
     @ResponseBody
     ListaVarianteColoreDto rimuoviAction(@RequestBody VarianteColoreDto dto){
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return gestisciColoriService.rimuoviAction(dto.getVarianteColore());
     }
 
     //aggiungiAction
@@ -45,9 +45,10 @@ public class GestisciColoriController {
     @RequestMapping("cerca-variante-colore")
     @ResponseBody
     ListaVarianteColoreDto cercaPerCodice(@RequestBody CriterioRicercaDto dto){
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return gestisciColoriService.cercaPerCodice(dto.getCriterio());
     }
 
+    
     //aggiorna
     @RequestMapping("aggiorna-variante-colore")
     @ResponseBody
