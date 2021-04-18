@@ -15,7 +15,7 @@ public class GestioneTaglieServiceImpl implements GestioneTaglieService {
 
     @Override
     public List<VarianteTaglia> ricerca(String criterio) {
-        return varianteTagliaRepository.findByCodiceEquals(criterio);
+        return varianteTagliaRepository.findByCodiceContains(criterio);
     }
 
     @Override

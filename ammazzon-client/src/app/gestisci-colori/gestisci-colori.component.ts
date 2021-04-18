@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Automa } from '../automa-crud/automa';
 import { AutomabileCrud, State } from '../automa-crud/state';
-import { Colore } from '../entità/colore';
+import { VarianteColore } from '../entità/variante-colore';
 
 @Component({
   selector: 'app-gestisci-colori',
@@ -9,8 +9,8 @@ import { Colore } from '../entità/colore';
   styleUrls: ['./gestisci-colori.component.css']
 })
 export class GestisciColoriComponent implements OnInit, AutomabileCrud {
-  colore: Colore = new Colore();
-  listaColori: Colore[] = [];
+  colore: VarianteColore = new VarianteColore();
+  listaColori: VarianteColore[] = [];
   automa: Automa;
   stato: State;
   searchCriterion: string;
@@ -81,7 +81,7 @@ export class GestisciColoriComponent implements OnInit, AutomabileCrud {
   rimuoviAction() { }
 
   aggiungiAction() { }
-  
+
   modificaAction() { }
 
   nuova() { }

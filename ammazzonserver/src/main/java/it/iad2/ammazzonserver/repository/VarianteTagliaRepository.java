@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface VarianteTagliaRepository extends JpaRepository<VarianteTaglia, Long>{
     
-    List<VarianteTaglia> findByCodiceEquals(String codice);
+    List<VarianteTaglia> findByCodiceContains(String codice);
     
 }
