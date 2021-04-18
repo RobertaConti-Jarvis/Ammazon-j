@@ -1,4 +1,4 @@
-export class Colore{
+export class VarianteColore{
     id:number;
     codice:string;
     descrizione:string;
