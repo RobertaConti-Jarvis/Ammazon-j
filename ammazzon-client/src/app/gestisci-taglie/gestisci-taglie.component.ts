@@ -16,8 +16,8 @@ import { CriterioRicercaDto } from '../dto/criterio-ricerca-dto';
 })
 export class GestisciTaglieComponent implements OnInit, AutomabileCrud {
 
-  taglia: VarianteTaglia = new VarianteTaglia;
-  taglie: VarianteTaglia [] = [];
+  taglia: VarianteTaglia = new VarianteTaglia();
+  taglie: VarianteTaglia[] = [];
   criterio: string = "";
   automa: Automa;
   stato: State;
@@ -41,7 +41,7 @@ export class GestisciTaglieComponent implements OnInit, AutomabileCrud {
       dto.taglia = this.taglia;
       let oss: Observable<ListaVarianteTagliaDto> = this.http.post<ListaVarianteTagliaDto>(
         'http://localhost:8080/aggiungi-taglie', dto);
-      oss.subscribe(r => this.taglie = r.listaTaglie);
+      oss.subscribe(r => this.taglie = r.listaVarianteTaglie);
     }
   }
 
@@ -51,7 +51,7 @@ export class GestisciTaglieComponent implements OnInit, AutomabileCrud {
       dto.taglia = this.taglia;
       let oss: Observable<ListaVarianteTagliaDto> = this.http.post<ListaVarianteTagliaDto>(
         'http://localhost:8080/modifica-taglie', dto);
-      oss.subscribe(r => this.taglie = r.listaTaglie);
+      oss.subscribe(r => this.taglie = r.listaVarianteTaglie);
     }
   }
 
@@ -61,15 +61,14 @@ export class GestisciTaglieComponent implements OnInit, AutomabileCrud {
       dto.taglia = this.taglia;
       let oss: Observable<ListaVarianteTagliaDto> = this.http.post<ListaVarianteTagliaDto>(
         'http://localhost:8080/rimuovi-taglie', dto);
-      oss.subscribe(r => this.taglie = r.listaTaglie);
+      oss.subscribe(r => this.taglie = r.listaVarianteTaglie);
     }
     console.log("Siamo in rimuoviAction");
   }
 
   nuova() {
-    if (this.taglia.codice == null) {
-      this.stato = this.automa.next(new AddEvent());
-    }
+    this.taglia.codice = "";
+    this.stato = this.automa.next(new AddEvent());
   }
 
   modifica() {
@@ -96,8 +95,8 @@ export class GestisciTaglieComponent implements OnInit, AutomabileCrud {
   cerca() {
     let dto: CriterioRicercaDto = new CriterioRicercaDto();
     dto.criterio = this.criterio;
-    let oss: Observable<ListaVarianteTagliaDto> = this.http.post<ListaVarianteTagliaDto>('http://localhost:8080/ricerca-posizioni', dto);
-    oss.subscribe(r => this.taglie = r.listaTaglie);
+    let oss: Observable<ListaVarianteTagliaDto> = this.http.post<ListaVarianteTagliaDto>('http://localhost:8080/ricerca-taglie', dto);
+    oss.subscribe(r => this.taglie = r.listaVarianteTaglie);
     this.automa.next(new RicercaEvent());
   }
 
@@ -108,8 +107,8 @@ export class GestisciTaglieComponent implements OnInit, AutomabileCrud {
   }
 
   aggiorna() {
-    let oss: Observable<ListaVarianteTagliaDto> = this.http.get<ListaVarianteTagliaDto>('http://localhost:8080/aggiorna-posizioni');
-    oss.subscribe(r => this.taglie = r.listaTaglie);
+    let oss: Observable<ListaVarianteTagliaDto> = this.http.get<ListaVarianteTagliaDto>('http://localhost:8080/aggiorna-taglie');
+    oss.subscribe(r => this.taglie = r.listaVarianteTaglie);
   }
 
   goToAggiungi() {
