@@ -42,7 +42,8 @@ public class GestisciColoriServiceImpl implements GestisciColoriService {
 
     @Override
     public ListaVarianteColoreDto aggiorna() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new ListaVarianteColoreDto(varianteColoreRepository.findAll());
+        
     }
     
 }
