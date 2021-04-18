@@ -8,6 +8,7 @@ import { AddEvent, AnnullaEvent, ConfermaEvent, ModificaEvent, RimuoviEvent } fr
 import { Observable } from 'rxjs';
 import { ListaVarianteColoreDto } from '../dto/lista-variante-colore-dto';
 import { VarianteColoreDto } from '../dto/variante-colore-dto';
+import { CriterioRicercaDto } from '../dto/criterio-ricerca-dto';
 
 @Component({
   selector: 'app-gestisci-colori',
@@ -87,14 +88,21 @@ export class GestisciColoriComponent implements OnInit, AutomabileCrud {
     this.confAnnVisible = true;
     this.searchVisible = false;
   }
-  rimuoviAction() { }
 
-  aggiungiAction() { 
+  rimuoviAction() {
+    let dto: VarianteColoreDto = new VarianteColoreDto();
+    dto.varianteColore = this.varianteColore;
+    let oss: Observable<ListaVarianteColoreDto> = this.http.post<ListaVarianteColoreDto>
+      ("http://localhost:8080/rimuovi-variante-colore", dto);
+    oss.subscribe(r => this.listaColori = r.listaVarianteColore);
+  }
+
+  aggiungiAction() {
     let dto: VarianteColoreDto = new VarianteColoreDto();
     dto.varianteColore = this.varianteColore
     let ox: Observable<ListaVarianteColoreDto> = this.http.post<ListaVarianteColoreDto>(
-      "http://localhost:8080/aggiungi-variante-colore",dto);
-      ox.subscribe(c=>this.listaColori = c.listaVarianteColore);
+      "http://localhost:8080/aggiungi-variante-colore", dto);
+    ox.subscribe(c => this.listaColori = c.listaVarianteColore);
 
   }
 
@@ -102,12 +110,27 @@ export class GestisciColoriComponent implements OnInit, AutomabileCrud {
     let dto: VarianteColoreDto = new VarianteColoreDto();
     dto.varianteColore = this.varianteColore
     let ox: Observable<ListaVarianteColoreDto> = this.http.post<ListaVarianteColoreDto>(
-      "http://localhost:8080/modifica-variante-colore",dto);
-      ox.subscribe(c=>this.listaColori = c.listaVarianteColore);
+      "http://localhost:8080/modifica-variante-colore", dto);
+    ox.subscribe(c => this.listaColori = c.listaVarianteColore);
 
-   }
+  }
 
-  nuova() { 
+  aggiorna() {
+    let ax: Observable<ListaVarianteColoreDto> = this.http.get<ListaVarianteColoreDto>(
+      "http://localhost:8080/aggiorna-variante-colore");
+    ax.subscribe(a => this.listaColori = a.listaVarianteColore);
+  }
+
+  cercaPerCodice() {
+    let dto: CriterioRicercaDto = new CriterioRicercaDto();
+    dto.criterio = this.searchCriterion;
+    let oss: Observable<ListaVarianteColoreDto> = this.http.post<ListaVarianteColoreDto>(
+      "http://localhost:8080/cerca-variante-colore", dto);
+    oss.subscribe(f => this.listaColori = f.listaVarianteColore);
+
+  }
+
+  nuova() {
     this.stato = this.automa.next(new AddEvent());
     console.log('sei nello stato nuova');
   }
@@ -115,35 +138,39 @@ export class GestisciColoriComponent implements OnInit, AutomabileCrud {
   modifica() {
     this.stato = this.automa.next(new ModificaEvent());
     console.log('sei nello stato modifica');
-   }
+  }
 
   rimuovi() {
     this.stato = this.automa.next(new RimuoviEvent());
     console.log('sei nello stato rimuovi');
-   }
+  }
 
   conferma() {
     this.automa.next(new ConfermaEvent());
     console.log('sei nello stato conferma');
-   }
+  }
 
-  annulla() { 
+  annulla() {
     this.automa.next(new AnnullaEvent());
     console.log('sei nello stato annulla');
   }
 
-  aggiorna(){
-    let ax: Observable<ListaVarianteColoreDto> = this.http.get<ListaVarianteColoreDto>(
-      "http://localhost:8080/aggiorna-variante-colore");
-      ax.subscribe(a=>this.listaColori = a.listaVarianteColore);
-  }
-
-  cercaPerCodice() { }
-
   seleziona(c) {
-
+    this.varianteColore = c;
   }
-
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
