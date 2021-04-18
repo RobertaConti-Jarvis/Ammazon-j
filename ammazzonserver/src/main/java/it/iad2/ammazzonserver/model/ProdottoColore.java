@@ -1,5 +1,6 @@
 package it.iad2.ammazzonserver.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,16 +20,16 @@ public class ProdottoColore implements Serializable {
     private Long id;
 
     // relazione OneToMany ColoreTaglia
-    @JsonIgnoreProperties(value = "prodottoColore")
+    @JsonIgnore
     @OneToMany(mappedBy = "prodottoColore")
     private List<ColoreTaglia> listaColoreTaglia;
     // relazione ManyToOne con Prodotto
-    @JsonIgnoreProperties(value = "listaProdottoColore")
+    @JsonIgnoreProperties(value = "listaProdottoColore", allowGetters = true , allowSetters = true)
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
     private Prodotto prodotto;
     // relazione ManyToOne con VarianteColore
-    @JsonIgnoreProperties(value = "listaProdottoColore")
+    @JsonIgnoreProperties(value = "listaProdottoColore", allowGetters = true , allowSetters = true)
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
     private VarianteColore varianteColore;

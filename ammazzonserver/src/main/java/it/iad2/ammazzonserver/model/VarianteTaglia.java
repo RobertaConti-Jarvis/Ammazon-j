@@ -1,6 +1,6 @@
 package it.iad2.ammazzonserver.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
@@ -21,7 +21,7 @@ public class VarianteTaglia implements Serializable{
     private String codice;
 
     // relazione OneToMany ColoreTaglia
-    @JsonIgnoreProperties(value = "varianteTaglia")
+    @JsonIgnore
     @OneToMany(mappedBy = "varianteTaglia")
     private List<ColoreTaglia> listaColoreTaglia;
 

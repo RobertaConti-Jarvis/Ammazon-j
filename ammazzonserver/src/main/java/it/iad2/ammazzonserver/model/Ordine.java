@@ -43,7 +43,7 @@ public class Ordine implements Serializable {
     @JoinColumn(referencedColumnName = "id")
     private UtenteRegistrato utenteRegistrato;
     // relazione OneToMany con QtaOrdiniVariante
-    @JsonIgnoreProperties(value = "ordine", allowGetters = true, allowSetters = true)
+    @JsonIgnore
     @OneToMany(mappedBy = "ordine")
     private List<QtaOrdineVariante> listaQtaOrdineVariante;
 

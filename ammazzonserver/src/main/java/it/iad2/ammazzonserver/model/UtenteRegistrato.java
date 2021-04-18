@@ -1,5 +1,6 @@
 package it.iad2.ammazzonserver.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +31,7 @@ public class UtenteRegistrato extends UtenteAnonimo implements Serializable{
     private String tokenRegistrato;
 
     // relazione OneToMany con Ordini
-    @JsonIgnoreProperties(value = "utenteRegistrato")
+    @JsonIgnore
     @OneToMany(mappedBy = "utenteRegistrato")
     private List<Ordine> listaOrdine;
 

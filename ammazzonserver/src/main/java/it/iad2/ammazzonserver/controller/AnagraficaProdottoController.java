@@ -5,10 +5,14 @@ import it.iad2.ammazzonserver.dto.ListaProdottiDto;
 import it.iad2.ammazzonserver.dto.ProdottoDto;
 import it.iad2.ammazzonserver.service.AnagraficaProdottoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
+@CrossOrigin("*")
+@RestController
 public class AnagraficaProdottoController {
 
     @Autowired

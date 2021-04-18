@@ -1,5 +1,6 @@
 package it.iad2.ammazzonserver.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -26,7 +27,7 @@ public class UtenteAnonimo implements Serializable {
 
     // ??? CHIEDERE AL PROFESSORE SE QUESTA RELAZIONE E' INUTILE AVENDO IMPLEMENTATO LA STRATEGIA DI EREDITARIETà SINGLE_TABLE
     // relazione OneToOne con Ordine
-    @JsonIgnoreProperties(value = "utenteAnonimo", allowGetters = true, allowSetters = true)
+    @JsonIgnore
     @OneToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(referencedColumnName = "id")
     private Ordine ordine;

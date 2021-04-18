@@ -1,5 +1,6 @@
 package it.iad2.ammazzonserver.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,7 +29,7 @@ public class Prodotto implements Serializable {
     private Double prezzo;
 
     // relazione OneToMany con ProdottoColore
-    @JsonIgnoreProperties(value = "prodotto", allowGetters = true, allowSetters = true)
+    @JsonIgnore
     @OneToMany(mappedBy = "prodotto")
     private List<ProdottoColore> listaProdottoColore;
 
