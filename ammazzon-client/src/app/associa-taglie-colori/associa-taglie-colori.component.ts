@@ -39,31 +39,24 @@ export class AssociaTaglieColoriComponent implements OnInit {
   }
 
   selezionaProdotto(p: Prodotto){
-    this.prodotto = new Prodotto();
-    this.prodotto.id = p.id;
-    this.prodotto.codice = p.codice;
-    this.prodotto.descrizione = p.descrizione;
-    this.prodotto.prezzo = p.prezzo;
     let dto: ProdottoDto = new ProdottoDto();
-    dto.prodotto = this.prodotto;
+    dto.prodotto = p;
     let oss: Observable<ListaProdottiColoreDto> = this.http.post<ListaProdottiColoreDto>('http://localhost:8080/mostra-prodotto-colori', dto);
     oss.subscribe(r => this.listaProdottiColori = r.listaProdottiColore);
   }
 
   selezionaColore(c: ProdottoColore){
-    this.prodottoColore.id = c.id;
     let dto: ProdottoColoreDto = new ProdottoColoreDto();
-    dto.prodottoColore = this.prodottoColore;
+    dto.prodottoColore = c;
     let oss: Observable<ListaColoreTaglieDto> = this.http.post<ListaColoreTaglieDto>('http://localhost:8080/mostra-coloretaglie-associate', dto);
     oss.subscribe(r => this.listaColoreTagliaAss = r.listaColoreTaglie);
   }
 
   selezionaColoreDis(c: ProdottoColore){
-    this.prodottoColore.id = c.id;
-    let dto: ProdottoColoreDto = new ProdottoColoreDto();
-    dto.prodottoColore = this.prodottoColore;
-    let oss: Observable<ListaColoreTaglieDto> = this.http.post<ListaColoreTaglieDto>('http://localhost:8080/mostra-coloretaglie-disponibili', dto);
-    oss.subscribe(r => this.listaColoreTagliaDis = r.listaColoreTaglie);
+    // let dto: ProdottoColoreDto = new ProdottoColoreDto();
+    // dto.prodottoColore = c;
+    // let oss: Observable<ListaColoreTaglieDto> = this.http.post<ListaColoreTaglieDto>('http://localhost:8080/mostra-coloretaglie-disponibili', dto);
+    // oss.subscribe(r => this.listaColoreTagliaDis = r.listaColoreTaglie);
   }
 
   rimuovi(t){

@@ -48,7 +48,8 @@
       </thead>
       <tbody>
         <tr *ngFor="let t of listaColoreTagliaAss">
-          <td>{{t.nome}}</td>
+          <td>{{t.id}}</td>
+          <td>{{t.varianteTaglia.codice}}</td>
           <td>
             <button (click)="rimuovi(t)" class="buttonSel">></button>
           </td>
