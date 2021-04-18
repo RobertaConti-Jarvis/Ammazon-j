@@ -4,7 +4,7 @@ import { Automa } from '../automa-crud/automa';
 import { AutomabileCrud, State } from '../automa-crud/state';
 import { VarianteColore } from '../entità/variante-colore';
 import { HttpClient } from '@angular/common/http';
-import { AddEvent, AnnullaEvent, ConfermaEvent, ModificaEvent, RimuoviEvent } from '../automa-crud/eventi';
+import { AddEvent, AnnullaEvent, ConfermaEvent, ModificaEvent, RimuoviEvent, SelezionaEvent } from '../automa-crud/eventi';
 import { Observable } from 'rxjs';
 import { ListaVarianteColoreDto } from '../dto/lista-variante-colore-dto';
 import { VarianteColoreDto } from '../dto/variante-colore-dto';
@@ -39,7 +39,7 @@ export class GestisciColoriComponent implements OnInit, AutomabileCrud {
 
 
   ngOnInit(): void {
-    this.aggiorna();
+   // this.aggiorna();
     this.automa = new Automa(this);
   }
 
@@ -48,6 +48,8 @@ export class GestisciColoriComponent implements OnInit, AutomabileCrud {
     this.buttonNuovaVisible = true;
     this.formDivVisible = false;
     this.searchVisible = false;
+    this.nuovaVis = true;
+    console.log('sei nello stato ricerca');
 
   }
 
@@ -65,17 +67,25 @@ export class GestisciColoriComponent implements OnInit, AutomabileCrud {
   }
 
   goToVisualizza() {
-
-
+    this.buttonNuovaVisible = false;
+    this.formDivVisible = true;
+    this.campiNonEditabili = false;
+    this.confAnnVisible = false;
+    this.modRim = true;
+    this.searchVisible = false;
+    this.tabellaColoriVis = true;
+    this.nuovaVis = true;
+    console.log('sei nello stato visualizza');
   }
 
   goToModifica() {
     this.buttonNuovaVisible = false;
     this.formDivVisible = true;
-    this.campiNonEditabili = false;
+    this.campiNonEditabili = true;
     this.confAnnVisible = true;
     this.modRim = false;
     this.searchVisible = false;
+    console.log('sei nello stato modifica');
   }
 
   goToRimuovi() {
@@ -87,7 +97,13 @@ export class GestisciColoriComponent implements OnInit, AutomabileCrud {
     this.modRim = false;
     this.confAnnVisible = true;
     this.searchVisible = false;
+    console.log('sei nello stato rimuovi');
   }
+
+
+
+
+
 
   rimuoviAction() {
     let dto: VarianteColoreDto = new VarianteColoreDto();
@@ -132,31 +148,36 @@ export class GestisciColoriComponent implements OnInit, AutomabileCrud {
 
   nuova() {
     this.stato = this.automa.next(new AddEvent());
-    console.log('sei nello stato nuova');
+
   }
 
   modifica() {
     this.stato = this.automa.next(new ModificaEvent());
-    console.log('sei nello stato modifica');
+
   }
 
   rimuovi() {
     this.stato = this.automa.next(new RimuoviEvent());
-    console.log('sei nello stato rimuovi');
+
   }
 
   conferma() {
     this.automa.next(new ConfermaEvent());
-    console.log('sei nello stato conferma');
+
   }
 
   annulla() {
+    
     this.automa.next(new AnnullaEvent());
-    console.log('sei nello stato annulla');
+    this.searchCriterion = "";
+
   }
 
   seleziona(c) {
     this.varianteColore = c;
+    this.stato = this.automa.next(new SelezionaEvent());
+    this.searchCriterion = "";
+
   }
 }
 
