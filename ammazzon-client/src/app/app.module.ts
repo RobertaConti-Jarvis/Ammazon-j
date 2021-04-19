@@ -11,10 +11,19 @@ import { AnagraficaProdottoComponent } from './anagrafica-prodotto/anagrafica-pr
 import { HomePageComponent } from './home-page/home-page.component';
 import { GestisciColoriComponent } from './gestisci-colori/gestisci-colori.component';
 import { PaginationComponent } from './pagination/pagination.component';
+<<<<<<< Updated upstream
 import { AssociaColoriAProdottiComponent } from './associa-colori-a-prodotti/associa-colori-a-prodotti.component';
+=======
+<<<<<<< HEAD
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+=======
+import { AssociaColoriAProdottiComponent } from './associa-colori-a-prodotti/associa-colori-a-prodotti.component';
+>>>>>>> c0c58f4d82accfcd3edd81eec9db0489033eca66
+>>>>>>> Stashed changes
 
 @NgModule({
-  declarations: [
+  declarations: [		
     AppComponent,
     GestisciTaglieComponent,
     AssociaTaglieColoriComponent,
@@ -22,8 +31,17 @@ import { AssociaColoriAProdottiComponent } from './associa-colori-a-prodotti/ass
     HomePageComponent,
     GestisciColoriComponent,
     PaginationComponent,
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+      HeaderComponent,
+      FooterComponent
+   ],
+=======
+>>>>>>> Stashed changes
     AssociaColoriAProdottiComponent,
   ],
+>>>>>>> c0c58f4d82accfcd3edd81eec9db0489033eca66
   imports: [
     BrowserModule,
     AppRoutingModule,
