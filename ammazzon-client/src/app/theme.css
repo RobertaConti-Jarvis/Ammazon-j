@@ -4,6 +4,17 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(185, 247, 255);
+    width: auto;
+    height: 70%;
+    padding:30px 30px 30px 30px;
+}
+footer{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(7, 32, 36);
+    width: auto;
+    height: 30%;
+    padding:30px 30px 30px 30px;
 }
 
 h1 {
@@ -46,27 +57,6 @@ h2 {
     width: 25%;
 }
 
-/* col 1-12 -> width: 8.33%; 16.66%; 25%;
-33.33%; 41.66%; 50%; 58.33%; 66.66%;
-75%; 83.33%; 91.66%; 100%; */
-
-/* HEADER ANAGRAFICA */
-
-/*.headAnagrafica {
-    position: relative;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    text-transform: uppercase;
-    font-size: 35px;
-    letter-spacing: 2px;
-    overflow: hidden;
-    background: linear-gradient(90deg, #000, rgb(0, 0, 0), #000);
-    background-repeat: no-repeat;
-    background-size: 80%;
-    animation: animate 4s linear;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: rgba(255, 255, 255, 0);
-}*/
-
 @keyframes animate {
     0% {
         background-position: -500%;
@@ -99,22 +89,9 @@ hr {
 }
 
 /* CAMPI INPUT */
-
-/*.inputBarcode {
-    width: 70%;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    background-image: url('../assets/barcodeS.png');
-    background-size: 45px;
-    background-repeat: no-repeat;
-    padding: 12px 20px 12px 40px;
-    text-align: right;
-}*/
-
 .inputSearch {
-    width: 200px;
+    width: auto;
+    height: 45px;
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 4px;
@@ -125,7 +102,6 @@ hr {
     padding: 12px 20px 12px 40px;
     text-align: right;
 }
-
 .input {
     width: 150px;
     box-sizing: border-box;
@@ -135,85 +111,56 @@ hr {
     padding: 12px 20px 12px 35px;
     text-align: right;
 }
+input {
+    height: 40px;
+    width: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    text-align: right;
+}
 
 /* BOTTONI */
 
-.button {
-    background-color: #f8f8f8;
-    border: 1px solid rgb(60, 204, 125);
-    color: rgb(0, 0, 0);
-    padding: 13px 32px;
-    text-align: center;
-    text-decoration: none;
+Button {
+    box-shadow: 3px 4px 0px 0px #1564ad;
+    background: linear-gradient(to bottom, #79bbff 5%, #378de5 100%);
+    background-color: #79bbff;
+    border-radius: 5px;
+    border: 1px solid #337bc4;
+    height: 40px;
+    width: auto;
     display: inline-block;
-    font-size: 16px;
-    border-radius: 4px;
-    transition-duration: 0.5s;
-}
-
-.buttonSel:nth-child(odd) {
-    background-color: #f8f8f8;
-    border: 1px solid rgb(240, 142, 13);
-    color: rgb(0, 0, 0);
-    padding: 13px 32px;
-    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 17px;
+    font-weight: bold;
+    padding: 5px 15px;
     text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 4px;
-    transition-duration: 0.5s;
+    text-shadow: 0px 1px 0px #528ecc;
 }
 
-.button:disabled {
-    opacity: 50%;
+Button:hover {
+    background: linear-gradient(to bottom, #378de5 5%, #79bbff 100%);
+    background-color: #378de5;
 }
 
-.button:hover:enabled {
-    background-color: rgb(60, 204, 125);
-    color: rgb(0, 0, 0);
+Button:active {
+    position: relative;
+    top: 1px;
 }
 
-.buttonSel:hover:enabled {
-    background-color: #ff9e44;
-    color: rgb(0, 0, 0);
-}
-
-#butVediPrezzo {
-    height: 70px;
-    /* width: 200px; */
-    width: 75%;
-    text-align: center;
-}
-
-#butChiudiScontrino {
-    height: 135px;
-    /*width: 200px;*/
-    width: 75%;
-}
-
-#butStorna {
-    height: 95px;
-    /*width: 190px;*/
-    width: 75%;
-}
-
-#butAnnScontrino {
-    height: 50px;
-    /* width: 200px; */
-    width: 75%;
-}
-
-#butAnnulla {
-    height: 50px;
-    /* width: 200px; */
-    width: 75%;
-}
-
-#butConferma {
-    height: 50px;
-    /* width: 200px; */
-    width: 75%;
-}
+/* BOTTONI */
 
 .scrolldown {
     overflow-y: scroll;
@@ -224,55 +171,6 @@ hr {
     height: 250px;
     background-color: #ffffff;
 }
-
-/* table {
-}
-
-table.scrolldown {
-    width: 100%;
-    border-spacing: 0;
-    border: 2px solid black;
-    height: 300px;
-    table-layout: fixed;
-}
-
-table.scrolldown tbody, table.scrolldown thead {
-    display: block;
-}
-
-table.scrolldown tbody {
-    height: 300px;
-    overflow-y: auto;
-    overflow-x: hidden;
-} */
-
-/* thead tr th {
-    height: 40px;
-    line-height: 40px;
-    width: 500px;
-}
-
-tbody {
-}
-
-tbody td {
-    width: 500px;
-}
-
-td, th {
-    text-align: center;
-}
-
-thead th {
-    background-color: #333;
-    color: white;
-}
-
-tr:nth-child(odd) {
-    background-color: #ff9e44;
-}
-
-tr:nth-child(even) {} */
 
 /* TABELLA DASHBOARD */
 
@@ -305,12 +203,12 @@ thead tr th {
 }
 
 tbody {
-    border-top: 2px solid black;
+    border-top: 1px solid black;
 }
 
 tbody td {
-    border-right: 2px solid black;
-    border-bottom: 2px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
 }
 
 td, th {
@@ -319,12 +217,12 @@ td, th {
 }
 
 thead th {
-    background-color: #333;
+    background-color: rgb(6, 35, 59);
     color: white;
 }
 
 tr:nth-child(odd) {
-    background-color: #ff9e44;
+    background-color: #80d7ff;
     height: 45px;
 }
 
@@ -350,6 +248,7 @@ tr:nth-child(even) {
 } */
 
 /* TOTALE DASH */
+
 .tab-2 {
     /* position: absolute; */
     float: right;
@@ -489,7 +388,7 @@ p.titoliHome {
 }
 
 .logo {
-   position: relative;
+    position: relative;
     width: 35%;
     float: right;
 }

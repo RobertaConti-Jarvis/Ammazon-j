@@ -11,7 +11,8 @@ import { AnagraficaProdottoComponent } from './anagrafica-prodotto/anagrafica-pr
 import { HomePageComponent } from './home-page/home-page.component';
 import { GestisciColoriComponent } from './gestisci-colori/gestisci-colori.component';
 import { PaginationComponent } from './pagination/pagination.component';
-import { AssociaColoriAProdottiComponent } from './associa-colori-a-prodotti/associa-colori-a-prodotti.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -22,15 +23,12 @@ import { AssociaColoriAProdottiComponent } from './associa-colori-a-prodotti/ass
     HomePageComponent,
     GestisciColoriComponent,
     PaginationComponent,
-    AssociaColoriAProdottiComponent,
+    HeaderComponent,
+    FooterComponent,
+    
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
