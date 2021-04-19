@@ -13,6 +13,7 @@ import { GestisciColoriComponent } from './gestisci-colori/gestisci-colori.compo
 import { PaginationComponent } from './pagination/pagination.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { AssociaColoriAProdottiComponent } from './associa-colori-a-prodotti/associa-colori-a-prodotti.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { FooterComponent } from './footer/footer.component';
     PaginationComponent,
     HeaderComponent,
     FooterComponent,
+    AssociaColoriAProdottiComponent,
     
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],

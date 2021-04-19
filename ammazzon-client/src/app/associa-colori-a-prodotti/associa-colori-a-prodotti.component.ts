@@ -9,12 +9,11 @@ import { ProdottoColore } from '../entità/prodotto-colore';
 })
 export class AssociaColoriAProdottiComponent implements OnInit {
 
-
-  searchCriterion:string="";
-  prodotto:Prodotto = new Prodotto();
-  listaProdotti:Prodotto[]=[];
-  coloriAssociati:ProdottoColore[]=[];
-  coloriNonAssociati:ProdottoColore[]=[];
+  prodotto: Prodotto = new Prodotto();
+  criterio: string;
+  listaProdotti: Prodotto[] = [];
+  coloriAssociati: ProdottoColore[] = [];
+  coloriNonAssociati: ProdottoColore[] = [];
 
   constructor() { }
 
@@ -27,10 +26,10 @@ export class AssociaColoriAProdottiComponent implements OnInit {
   }
 
 
-  seleziona(p){
+  seleziona(p) {
 
   }
-  spostaInDisponibili(ca){
+  spostaInDisponibili(ca) {
 
   }
 
