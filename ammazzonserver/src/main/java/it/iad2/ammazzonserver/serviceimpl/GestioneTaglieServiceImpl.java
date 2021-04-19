@@ -43,20 +43,28 @@ public class GestioneTaglieServiceImpl implements GestioneTaglieService {
     @Override
     public List<VarianteTaglia> rimuovi(VarianteTaglia taglia) {
         List<ColoreTaglia> coloriTaglia = taglia.getListaColoreTaglia();
-//      prendi prodotto colore
+
+        //      prendi prodotto colore
         coloriTaglia.forEach(r -> {
             ProdottoColore pc = r.getProdottoColore();
             pc.getListaColoreTaglia().removeIf((t) -> t.getId().equals(r.getId()));
             prodottoColoreRepository.save(pc);
+            r.setProdottoColore(null);
+             VarianteTaglia vt = r.getVarianteTaglia();
+             vt.getListaColoreTaglia().removeIf((t) -> t.getId().equals(r.getId()));
+              varianteTagliaRepository.save(vt);
+              r.setVarianteTaglia(null);
+              coloreTagliaRepository.save(r); // FIXME: forse si può rimuovere 
+             coloreTagliaRepository.delete(r);
         });
-//      rimuovi taglia da prodotto colore
 
-        coloriTaglia.forEach(r -> {
-            VarianteTaglia vt = r.getVarianteTaglia();
-            vt.getListaColoreTaglia().removeIf((t) -> t.getId().equals(r.getId()));
-            varianteTagliaRepository.save(vt);
-            coloreTagliaRepository.delete(r);
-        });
+        //      rimuovi taglia da prodotto colore
+//        coloriTaglia.forEach(r -> {
+//            VarianteTaglia vt = r.getVarianteTaglia();
+//            vt.getListaColoreTaglia().removeIf((t) -> t.getId().equals(r.getId()));
+//            varianteTagliaRepository.save(vt);
+//            coloreTagliaRepository.delete(r);
+//        });
         varianteTagliaRepository.delete(taglia);
         return aggiorna();
     }
