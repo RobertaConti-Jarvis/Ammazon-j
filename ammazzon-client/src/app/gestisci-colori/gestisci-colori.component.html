@@ -1,16 +1,16 @@
 <h2>Gestisci-Colori</h2>
 <button (click)="nuova()" *ngIf='nuovaVis'>nuova</button>
 <div *ngIf = "formDivVisible">
-<input type="text" placeholder="codice" [(ngModel)]="varianteColore.codice" [disabled]='campiNonEditabili'>
-<input type="text" placeholder="descrizione" [(ngModel)]="varianteColore.descrizione" [disabled]='campiNonEditabili'>
+<input type="text" placeholder="codice" [(ngModel)]="codice" [disabled]='campiNonEditabili'>
+<input type="text" placeholder="descrizione" [(ngModel)]="descrizione" [disabled]='campiNonEditabili'>
 </div>
 <button (click)="modifica()" *ngIf='modRim'>modifica</button>
 <button (click)="rimuovi()" *ngIf='modRim'>rimuovi</button>
 <button (click)="conferma()" *ngIf='confAnnVisible'>conferma</button>
 <button (click)="annulla()" *ngIf='confAnnVisible'>annulla</button>
 <br>
-<input type="text" placeholder="Cerca per codice" [(ngModel)]="searchCriterion" [disabled]= "searchVisible">
-<button (click)="cercaPerCodice()" [disabled]= "searchVisible">Cerca</button>
+<input type="text" placeholder="Cerca per codice" [(ngModel)]="searchCriterion" [disabled]= "searchVisible" *ngIf='cercaVisible'>
+<button (click)="cercaPerCodice()" [disabled]= "searchVisible" *ngIf='cercaVisible'>Cerca</button>
 <br>
 <table *ngIf="tabellaColoriVis">
     <thead>

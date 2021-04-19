@@ -17,6 +17,8 @@ import { CriterioRicercaDto } from '../dto/criterio-ricerca-dto';
 })
 export class GestisciColoriComponent implements OnInit, AutomabileCrud {
   varianteColore: VarianteColore = new VarianteColore();
+  codice: string;
+  descrizione: string;
   listaColori: VarianteColore[] = [];
   automa: Automa;
   stato: State;
@@ -30,6 +32,7 @@ export class GestisciColoriComponent implements OnInit, AutomabileCrud {
   confAnnVisible: boolean;
   searchVisible: boolean = true;
   tabellaColoriVis: boolean = true;
+  cercaVisible: boolean = true;
 
 
 
@@ -39,7 +42,7 @@ export class GestisciColoriComponent implements OnInit, AutomabileCrud {
 
 
   ngOnInit(): void {
-   // this.aggiorna();
+    this.aggiorna();
     this.automa = new Automa(this);
   }
 
@@ -62,6 +65,8 @@ export class GestisciColoriComponent implements OnInit, AutomabileCrud {
     this.searchVisible = true;
     this.tabellaColoriVis = true;
     this.nuovaVis = false;
+    this.codice="";
+    this.descrizione="";
     console.log('sei nello stato aggiungi');
 
   }
@@ -85,6 +90,7 @@ export class GestisciColoriComponent implements OnInit, AutomabileCrud {
     this.confAnnVisible = true;
     this.modRim = false;
     this.searchVisible = false;
+    this.cercaVisible= false;
     console.log('sei nello stato modifica');
   }
 
@@ -107,6 +113,8 @@ export class GestisciColoriComponent implements OnInit, AutomabileCrud {
 
   rimuoviAction() {
     let dto: VarianteColoreDto = new VarianteColoreDto();
+    this.varianteColore.codice = this.codice;
+    this.varianteColore.descrizione = this.descrizione;
     dto.varianteColore = this.varianteColore;
     let oss: Observable<ListaVarianteColoreDto> = this.http.post<ListaVarianteColoreDto>
       ("http://localhost:8080/rimuovi-variante-colore", dto);
@@ -115,6 +123,8 @@ export class GestisciColoriComponent implements OnInit, AutomabileCrud {
 
   aggiungiAction() {
     let dto: VarianteColoreDto = new VarianteColoreDto();
+    this.varianteColore.codice = this.codice;
+    this.varianteColore.descrizione = this.descrizione;
     dto.varianteColore = this.varianteColore
     let ox: Observable<ListaVarianteColoreDto> = this.http.post<ListaVarianteColoreDto>(
       "http://localhost:8080/aggiungi-variante-colore", dto);
@@ -124,6 +134,8 @@ export class GestisciColoriComponent implements OnInit, AutomabileCrud {
 
   modificaAction() {
     let dto: VarianteColoreDto = new VarianteColoreDto();
+    this.varianteColore.codice = this.codice;
+    this.varianteColore.descrizione = this.descrizione;
     dto.varianteColore = this.varianteColore
     let ox: Observable<ListaVarianteColoreDto> = this.http.post<ListaVarianteColoreDto>(
       "http://localhost:8080/modifica-variante-colore", dto);
@@ -167,13 +179,18 @@ export class GestisciColoriComponent implements OnInit, AutomabileCrud {
   }
 
   annulla() {
-    
+
     this.automa.next(new AnnullaEvent());
     this.searchCriterion = "";
 
   }
 
   seleziona(c) {
+   // this.varianteColore.codice=this.codice;
+   // this.varianteColore.descrizione=this.descrizione;
+   this.codice=c.codice;
+    this.descrizione=c.descrizione;
+    this.varianteColore = c;
     this.varianteColore = c;
     this.stato = this.automa.next(new SelezionaEvent());
     this.searchCriterion = "";
