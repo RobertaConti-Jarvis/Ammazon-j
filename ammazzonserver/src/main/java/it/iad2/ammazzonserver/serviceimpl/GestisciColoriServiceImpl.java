@@ -9,6 +9,8 @@ import it.iad2.ammazzonserver.dto.ListaVarianteColoreDto;
 import it.iad2.ammazzonserver.model.VarianteColore;
 import it.iad2.ammazzonserver.repository.VarianteColoreRepository;
 import it.iad2.ammazzonserver.service.GestisciColoriService;
+import java.util.ArrayList;
+import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +24,13 @@ public class GestisciColoriServiceImpl implements GestisciColoriService {
 
     @Override
     public ListaVarianteColoreDto cercaPerCodice(String criterio) {
-        return new ListaVarianteColoreDto(varianteColoreRepository.findByCodiceContains(criterio));
+        List<VarianteColore> lista = new ArrayList<>();
+        if (criterio == null) {
+            lista = varianteColoreRepository.findAll();
+        } else {
+            lista = varianteColoreRepository.findByCodiceContains(criterio);
+        }
+        return new ListaVarianteColoreDto(lista);
     }
 
     @Override
