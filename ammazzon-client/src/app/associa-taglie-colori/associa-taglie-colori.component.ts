@@ -10,6 +10,8 @@ import { ListaProdottiColoreDto } from '../dto/lista-prodotti-colore-dto';
 import { ListaColoreTaglieDto } from '../dto/lista-colore-taglie-dto';
 import { ProdottoDto } from '../dto/prodotto-dto';
 import { ProdottoColoreDto } from '../dto/prodotto-colore-dto';
+import { ListaVarianteTagliaDto } from '../dto/lista-variante-taglia-dto';
+import { VarianteTaglia } from '../entità/variante-taglia';
 
 @Component({
   selector: 'app-associa-taglie-colori',
@@ -24,7 +26,8 @@ export class AssociaTaglieColoriComponent implements OnInit {
   prodottoColore: ProdottoColore;
   listaProdottiColori: ProdottoColore[] = [];
   listaColoreTagliaAss: ColoreTaglia[] = [];
-  listaColoreTagliaDis: ColoreTaglia[] = [];
+  listaVarianteTagliaDis: VarianteTaglia[] = [];
+
 
   constructor(private http: HttpClient) { }
 
@@ -53,10 +56,10 @@ export class AssociaTaglieColoriComponent implements OnInit {
   }
 
   selezionaColoreDis(c: ProdottoColore){
-    // let dto: ProdottoColoreDto = new ProdottoColoreDto();
-    // dto.prodottoColore = c;
-    // let oss: Observable<ListaColoreTaglieDto> = this.http.post<ListaColoreTaglieDto>('http://localhost:8080/mostra-coloretaglie-disponibili', dto);
-    // oss.subscribe(r => this.listaColoreTagliaDis = r.listaColoreTaglie);
+    let dto: ProdottoColoreDto = new ProdottoColoreDto();
+    dto.prodottoColore = c;
+    let oss: Observable<ListaVarianteTagliaDto> = this.http.post<ListaVarianteTagliaDto>('http://localhost:8080/mostra-coloretaglie-disponibili', dto);
+    oss.subscribe(r => this.listaVarianteTagliaDis = r.listaVarianteTaglie);
   }
 
   rimuovi(t){

@@ -3,7 +3,7 @@ package it.iad2.ammazzonserver.service;
 import it.iad2.ammazzonserver.dto.ListaProdottiDto;
 import it.iad2.ammazzonserver.dto.ListaColoreTaglieDto;
 import it.iad2.ammazzonserver.dto.ListaProdottiColoriDto;
-import it.iad2.ammazzonserver.dto.ListaVarianteColoreDto;
+import it.iad2.ammazzonserver.dto.ListaVarianteTaglieDto;
 import it.iad2.ammazzonserver.model.ColoreTaglia;
 import it.iad2.ammazzonserver.model.Prodotto;
 import it.iad2.ammazzonserver.model.ProdottoColore;
@@ -40,10 +40,10 @@ public interface AssociaTaglieColoriProdService {
      * Mostra una lista di taglie non associate al prodotto-colore selezionato
      * @param prodColore criterio di ricerca di tipo
      * @see ProdottoColore
-     * @return ListaTaglieDto classe che contiene una lista di
-     * @see ColoreTaglia
+     * @return ListaVarianteTaglieDto classe che contiene una lista di
+     * @see VarianteTaglia
      */
-    ListaColoreTaglieDto mostraTaglieNonAssociateAProdottoColore(ProdottoColore prodColore);
+    ListaVarianteTaglieDto mostraTaglieNonAssociateAProdottoColore(ProdottoColore prodColore);
     
     /**
      * Disassocia la taglia selezionata dal ProdottoColore

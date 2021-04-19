@@ -4,6 +4,7 @@ import it.iad2.ammazzonserver.dto.CriterioRicercaDto;
 import it.iad2.ammazzonserver.dto.ListaColoreTaglieDto;
 import it.iad2.ammazzonserver.dto.ListaProdottiColoriDto;
 import it.iad2.ammazzonserver.dto.ListaProdottiDto;
+import it.iad2.ammazzonserver.dto.ListaVarianteTaglieDto;
 import it.iad2.ammazzonserver.dto.ProdottoColoreDto;
 import it.iad2.ammazzonserver.dto.ProdottoDto;
 import it.iad2.ammazzonserver.service.AssociaTaglieColoriProdService;
@@ -41,9 +42,8 @@ public class AssociaTaglieColoriProdController {
     
     @RequestMapping("/mostra-coloretaglie-disponibili")
     @ResponseBody
-    public ListaColoreTaglieDto mostraColoreTaglieDisponibili(@RequestBody ProdottoColoreDto dto){
-        //TODO
-        return null;
+    public ListaVarianteTaglieDto mostraColoreTaglieDisponibili(@RequestBody ProdottoColoreDto dto){
+        return associaTaglieCPService.mostraTaglieNonAssociateAProdottoColore(dto.getProdottoColore());
     }
     
     @RequestMapping("/rimuovi-colore-taglia")
