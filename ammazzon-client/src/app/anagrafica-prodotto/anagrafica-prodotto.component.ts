@@ -116,8 +116,6 @@ export class AnagraficaProdottoComponent implements OnInit, AutomabileCrud {
     oss.subscribe(c => this.listaProdotti = c.listaProdotti);
     this.tabellaProdottiVisibile = true;
     this.prodotto = new Prodotto();
-    //Errore , se passato il metodo next genera loop
-    //this.automa.next(new ConfermaEvent());
   }
 
   modificaAction() {
@@ -128,7 +126,6 @@ export class AnagraficaProdottoComponent implements OnInit, AutomabileCrud {
     let ox: Observable<ListaProdottiDto> = this.http.post<ListaProdottiDto>
       ('http://localhost:8080/modifica-prodotto', dto);
     ox.subscribe(r => this.listaProdotti = r.listaProdotti);
-    //this.stato = this.automa.next(new ModificaEvent());
   }
 
   rimuoviAction() {
@@ -139,7 +136,6 @@ export class AnagraficaProdottoComponent implements OnInit, AutomabileCrud {
     let oss: Observable<ListaProdottiDto> = this.http.post<ListaProdottiDto>
       ('http://localhost:8080/rimuovi-prodotto', dto);
     oss.subscribe(r => this.listaProdotti = r.listaProdotti);
-    //this.stato = this.automa.next(new RimuoviEvent());
   }
 
   nuova() {
@@ -160,11 +156,6 @@ export class AnagraficaProdottoComponent implements OnInit, AutomabileCrud {
   }
 
   conferma() {
-    /*if (this.prodotto.codice == "" ||
-      this.prodotto.descrizione == "" ||
-      this.prodotto.prezzo == null ||
-      this.labelMessaggioErrore = true;
-*/
     this.automa.next(new ConfermaEvent());
     this.prodotto = new Prodotto();
   }
@@ -213,6 +204,7 @@ export class AnagraficaProdottoComponent implements OnInit, AutomabileCrud {
         ("http://localhost:8080/carica-prodotti-paginati", dto); // <--- personalizzare 
       oss.subscribe(v => {
         this.listaProdotti = v.listaElemPag.content; // <--- Personalizzare
+        console.log("lista: " + this.listaProdotti);
         this.totalPages = v.listaElemPag.totalPages;
         this.numPag = this.numPaginaV - 1;
         console.log("totalPages: " + v.listaElemPag.totalPages);
@@ -277,6 +269,5 @@ export class AnagraficaProdottoComponent implements OnInit, AutomabileCrud {
     this.numPag = 0;
     this.numPaginaV = this.numPag + 1;
     this.caricaProdottiPaginati(this.numPaginaV); // <--- personalizzare
-    this.tabellaProdottiVisibile = false; // <--- personalizzare     
   }
 }
