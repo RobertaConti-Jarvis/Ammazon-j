@@ -24,6 +24,7 @@ import { AssociaColoriAProdottiComponent } from './associa-colori-a-prodotti/ass
     HomePageComponent,
     GestisciColoriComponent,
     PaginationComponent,
+    AssociaColoriAProdottiComponent,
     HeaderComponent,
     FooterComponent,
     AssociaColoriAProdottiComponent,
