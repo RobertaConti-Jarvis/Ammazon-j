@@ -11,6 +11,7 @@ import { AnagraficaProdottoComponent } from './anagrafica-prodotto/anagrafica-pr
 import { HomePageComponent } from './home-page/home-page.component';
 import { GestisciColoriComponent } from './gestisci-colori/gestisci-colori.component';
 import { PaginationComponent } from './pagination/pagination.component';
+import { AssociaColoriAProdottiComponent } from './associa-colori-a-prodotti/associa-colori-a-prodotti.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { PaginationComponent } from './pagination/pagination.component';
     HomePageComponent,
     GestisciColoriComponent,
     PaginationComponent,
+    AssociaColoriAProdottiComponent,
   ],
   imports: [
     BrowserModule,
