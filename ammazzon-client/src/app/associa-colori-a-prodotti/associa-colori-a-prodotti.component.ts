@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Prodotto } from '../entità/prodotto';
+import { ProdottoColore } from '../entità/prodotto-colore';
 
 @Component({
   selector: 'app-associa-colori-a-prodotti',
@@ -12,6 +13,8 @@ export class AssociaColoriAProdottiComponent implements OnInit {
   searchCriterion:String="";
   prodotto:Prodotto = new Prodotto();
   listaProdotti:Prodotto[]=[];
+  coloriAssociati:ProdottoColore[]=[];
+  coloriNonAssociati:ProdottoColore[]=[];
 
   constructor() { }
 
@@ -22,4 +25,21 @@ export class AssociaColoriAProdottiComponent implements OnInit {
   cercaProdotto() {
 
   }
+
+
+  seleziona(p){
+
+  }
+  spostaInDisponibili(ca){
+
+  }
+
+  associaTuttiColori() {
+
+  }
+
+  disassociaTuttiColori() {
+
+  }
+
 }
