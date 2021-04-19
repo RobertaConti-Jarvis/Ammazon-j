@@ -10,7 +10,7 @@ import { ProdottoColore } from '../entità/prodotto-colore';
 export class AssociaColoriAProdottiComponent implements OnInit {
 
 
-  searchCriterion:String="";
+  searchCriterion:string="";
   prodotto:Prodotto = new Prodotto();
   listaProdotti:Prodotto[]=[];
   coloriAssociati:ProdottoColore[]=[];
