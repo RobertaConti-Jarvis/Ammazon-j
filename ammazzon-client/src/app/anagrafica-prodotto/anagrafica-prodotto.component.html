@@ -10,7 +10,7 @@
     <input type="text" placeholder="codice" [(ngModel)]="prodotto.codice" [disabled]="campiNonEditabili" class="input">
     <input type="text" placeholder="descrizione" [(ngModel)]="prodotto.descrizione" [disabled]="campiNonEditabili"
       class="input">
-    <input type="text" placeholder="prezzo" [(ngModel)]="prodotto.prezzo" [disabled]="campiNonEditabili" class="input">
+    <input type="number" placeholder="prezzo" [(ngModel)]="prodotto.prezzo" [disabled]="campiNonEditabili" class="input">
   </div>
   <p *ngIf="labelMessaggioErrore">{{errore}}</p>
   <br>
@@ -23,25 +23,38 @@
   <br>
   <hr>
   <div *ngIf="searchVisible">
-    <input type="text" placeholder="Cerca per descrizione" [(ngModel)]="searchCriterion" class="inputSearch">
-    <button (click)="cercaPerDescizione()" class="button">Cerca</button>
+    <input type="text" class="inputSearch" placeholder="Cerca per descrizione" [(ngModel)]="searchCriterion" class="inputSearch">
+    <button (click)="cercaPerDescrizione()" class="button">Cerca</button>
   </div>
-  <table *ngIf="tabellaProdottiVisibile" class="scrolldown">
-    <thead>
-      <tr>
-        <th>Codice</th>
-        <th>Descrizione</th>
-        <th>Prezzo</th>
-        <th>Seleziona</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let p of listaProdotti">
-        <td>{{p.codice}}</td>
-        <td>{{p.descrizione}}</td>
-        <td>{{p.prezzo}}</td>
-        <td><button (click)="seleziona(p)" class="button">Seleziona</button></td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="scrolldown">
+    <table *ngIf="tabellaProdottiVisibile">
+      <thead>
+        <tr>
+          <th>Codice</th>
+          <th>Descrizione</th>
+          <th>Prezzo</th>
+          <th>Seleziona</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of listaProdotti">
+          <td>{{p.codice}}</td>
+          <td>{{p.descrizione}}</td>
+          <td>{{p.prezzo}}</td>
+          <td><button (click)="seleziona(p)" class="buttonSel">Seleziona</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <app-pagination 
+              (next)="goToNext($event)" 
+              (prev)="goToPrevious($event)" 
+              (first)="goToFirst($event)"
+              (last)="goToLast($event)" 
+              (numPaginaO)="caricaProdottiPaginati($event)" 
+              (pagSize)="setElemPag($event)"
+              [numPaginaV]=numPaginaV 
+              [totalPages]=totalPages 
+              [elemPag]=elemPag>
+  </app-pagination>
 </body>

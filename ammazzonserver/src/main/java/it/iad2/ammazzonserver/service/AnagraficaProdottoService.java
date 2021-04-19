@@ -1,9 +1,8 @@
 package it.iad2.ammazzonserver.service;
 
-import it.iad2.ammazzonserver.dto.ListaProdottiDto;
-import it.iad2.ammazzonserver.dto.ProdottoDto;
 import it.iad2.ammazzonserver.model.Prodotto;
 import java.util.List;
+import org.springframework.data.domain.Page;
 
 /**
  *
@@ -26,4 +25,6 @@ public interface AnagraficaProdottoService {
     List<Prodotto> aggiornaProdotto();
 
     List<Prodotto> cercaProdotto(String cerca);
+    
+    Page<Prodotto> elementiPaginati(int numPage, int elemPage);
 }

@@ -1,7 +1,9 @@
 package it.iad2.ammazzonserver.controller;
 
 import it.iad2.ammazzonserver.dto.CriterioRicercaDto;
+import it.iad2.ammazzonserver.dto.DatiPageDto;
 import it.iad2.ammazzonserver.dto.ListaProdottiDto;
+import it.iad2.ammazzonserver.dto.PageDto;
 import it.iad2.ammazzonserver.dto.ProdottoDto;
 import it.iad2.ammazzonserver.service.AnagraficaProdottoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,7 @@ public class AnagraficaProdottoController {
     @RequestMapping("/modifica-prodotto")
     @ResponseBody
     public ListaProdottiDto modificaProdotto(@RequestBody ProdottoDto dto) {
+        System.out.println("SONO IN MODIFICA PRODOTTO SERVICEiMPL");
         return new ListaProdottiDto(anagraficaProdottoService.modificaProdotto(dto.getProdotto()));
     }
 
@@ -47,4 +50,11 @@ public class AnagraficaProdottoController {
     public ListaProdottiDto cercaProdotto(@RequestBody CriterioRicercaDto dto) {
         return new ListaProdottiDto(anagraficaProdottoService.cercaProdotto(dto.getCriterio()));
     }
+
+    @RequestMapping("/carica-prodotti-paginati")
+    @ResponseBody
+    public PageDto elementiPaginati(@RequestBody DatiPageDto dto) {
+        return new PageDto(anagraficaProdottoService.elementiPaginati(dto.getNumPag(), dto.getElemPag()));
+    }
+
 }

@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AnagraficaProdottoComponent } from './anagrafica-prodotto/anagrafica-prodotto.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { GestisciColoriComponent } from './gestisci-colori/gestisci-colori.component';
+import { PaginationComponent } from './pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { GestisciColoriComponent } from './gestisci-colori/gestisci-colori.compo
     AnagraficaProdottoComponent,
     HomePageComponent,
     GestisciColoriComponent,
+    PaginationComponent,
   ],
   imports: [
     BrowserModule,
