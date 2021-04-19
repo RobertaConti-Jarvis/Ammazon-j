@@ -37,8 +37,6 @@ import org.springframework.stereotype.Service;
 public class GeneraDatiTestServiceImpl implements GeneraDatiTestService {
 
     @Autowired
-    ColoreTagliaRepository coloreTagliaRepository;
-    @Autowired
     OrdineRepository ordineRepository;
     @Autowired
     ProdottoColoreRepository prodottoColoreRepository;
@@ -46,6 +44,8 @@ public class GeneraDatiTestServiceImpl implements GeneraDatiTestService {
     ProdottoRepository prodottoRepository;
     @Autowired
     QtaOrdineVarianteRepository qtaOrdineVarianteRepository;
+    @Autowired
+    ColoreTagliaRepository coloreTagliaRepository;
     @Autowired
     UtenteAnonimoRepository utenteAnonimoRepository;
     @Autowired
@@ -59,13 +59,14 @@ public class GeneraDatiTestServiceImpl implements GeneraDatiTestService {
     public void generaDatiTest() {
 
         //ripulisco il DB
-        coloreTagliaRepository.deleteAllInBatch();
-        ordineRepository.deleteAllInBatch();
-        prodottoColoreRepository.deleteAllInBatch();
-        prodottoRepository.deleteAllInBatch();
+        disassociaUtente();
         qtaOrdineVarianteRepository.deleteAllInBatch();
+        ordineRepository.deleteAllInBatch();
         utenteAnonimoRepository.deleteAllInBatch();
         utenteRegistratoRepository.deleteAllInBatch();
+        coloreTagliaRepository.deleteAllInBatch();
+        prodottoColoreRepository.deleteAllInBatch();
+        prodottoRepository.deleteAllInBatch();
         varianteColoreRepository.deleteAllInBatch();
         varianteTagliaRepository.deleteAllInBatch();
 
@@ -194,22 +195,43 @@ public class GeneraDatiTestServiceImpl implements GeneraDatiTestService {
             c.setListaProdottoColore(listaProdottoColore);
             varianteColoreRepository.save(c);
         });
-        i=0;
+        i = 0;
         for (ProdottoColore prodottoColore1 : listaProdottoColore) {
             prodottoColore1.setVarianteColore(listaVarianteColore.get(i++));
             prodottoColoreRepository.save(prodottoColore1);
         }
         //Associo VaraianteTaglia a ColoreTaglia
         List<VarianteTaglia> listaVarianteTaglia = varianteTagliaRepository.findAll().subList(0, 20);
-        listaVarianteTaglia.forEach(h ->{
+        listaVarianteTaglia.forEach(h -> {
             h.setListaColoreTaglia(listaColoreTaglia);
             varianteTagliaRepository.save(h);
         });
-        i=0;
-        for (ColoreTaglia coloreTaglia:listaColoreTaglia) {
+        i = 0;
+        for (ColoreTaglia coloreTaglia : listaColoreTaglia) {
             coloreTaglia.setVarianteTaglia(listaVarianteTaglia.get(i++));
             coloreTagliaRepository.save(coloreTaglia);
         }
 
+    }
+
+    //disassocio tutti gli utenti con gli ordini
+    @Override
+    public void disassociaUtente() {
+        List<Ordine> ordiniDel = ordineRepository.findAll();
+        ordiniDel.forEach(s -> {
+            s.setUtenteAnonimo(null);
+            s.setUtenteRegistrato(null);
+            ordineRepository.save(s);
+        });
+        List<UtenteAnonimo> utentiA = utenteAnonimoRepository.findAll();
+        utentiA.forEach(u -> {
+            u.setOrdine(null);
+            utenteAnonimoRepository.save(u);
+        });
+        List<UtenteRegistrato> utentiR = utenteRegistratoRepository.findAll();
+        utentiR.forEach(ur -> {
+            ur.setOrdine(null);
+            utenteRegistratoRepository.save(ur);
+        });
     }
 }

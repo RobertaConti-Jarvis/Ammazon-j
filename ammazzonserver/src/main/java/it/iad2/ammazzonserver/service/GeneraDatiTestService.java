@@ -12,5 +12,6 @@ package it.iad2.ammazzonserver.service;
 public interface GeneraDatiTestService {
 
     void generaDatiTest();
+    void disassociaUtente();
 
 }
