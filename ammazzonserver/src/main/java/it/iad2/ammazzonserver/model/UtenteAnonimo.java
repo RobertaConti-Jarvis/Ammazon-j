@@ -12,10 +12,11 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import java.io.Serializable;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "Utente")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-//public class UtenteAnonimo implements Serializable {
 public class UtenteAnonimo implements Serializable {
 
     @Id
@@ -25,10 +26,9 @@ public class UtenteAnonimo implements Serializable {
     @Column
     private String tokenAnonimo;
 
-    // ??? CHIEDERE AL PROFESSORE SE QUESTA RELAZIONE E' INUTILE AVENDO IMPLEMENTATO LA STRATEGIA DI EREDITARIETà SINGLE_TABLE
     // relazione OneToOne con Ordine
     @JsonIgnore
-    @OneToOne(cascade = CascadeType.REMOVE)
+    @OneToOne
     @JoinColumn(referencedColumnName = "id")
     private Ordine ordine;
 

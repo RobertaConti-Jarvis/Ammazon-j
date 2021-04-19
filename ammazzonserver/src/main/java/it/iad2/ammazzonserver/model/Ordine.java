@@ -6,7 +6,6 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,10 +32,9 @@ public class Ordine implements Serializable {
     @Column
     private String stato = "CARRELLO";
 
-    // ??? CHIEDERE AL PROFESSORE SE QUESTA RELAZIONE E' INUTILE AVENDO IMPLEMENTATO LA STRATEGIA DI EREDITARIETà SINGLE_TABLE
-    // relazione OneToOne UtenteAnonimo ??? 
+    // relazione OneToOne UtenteAnonimo
     @JsonIgnore
-    @OneToOne(cascade = CascadeType.REMOVE, mappedBy = "ordine")
+    @OneToOne(mappedBy = "ordine")
     private UtenteAnonimo utenteAnonimo;
     // relazione ManyToOne UtenteRegistrato
     @JsonIgnoreProperties(value = "listaOrdine", allowGetters = true, allowSetters = true)

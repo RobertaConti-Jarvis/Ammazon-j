@@ -1,12 +1,10 @@
 package it.iad2.ammazzonserver.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.OneToMany;
