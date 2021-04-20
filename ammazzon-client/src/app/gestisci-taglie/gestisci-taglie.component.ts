@@ -12,7 +12,7 @@ import { CriterioRicercaDto } from '../dto/criterio-ricerca-dto';
 @Component({
   selector: 'app-gestisci-taglie',
   templateUrl: './gestisci-taglie.component.html',
-  styleUrls: ['./gestisci-taglie.component.css']
+  styleUrls: ['../theme.css']
 })
 export class GestisciTaglieComponent implements OnInit, AutomabileCrud {
 
