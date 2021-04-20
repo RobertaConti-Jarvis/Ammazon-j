@@ -14,7 +14,7 @@ public class AssociaColoriProdottiServiceImpl implements AssociaColoriProdottiSe
 
     @Override
     public ListaProdottiDto cercaProdotto(String criterio) {
-        return new ListaProdottiDto(prodottoRepository.cercaPerCriterio(criterio));
+        return new ListaProdottiDto(prodottoRepository.cercaPerCriterio(criterio, "%" + criterio + "%"));
     }
 
 }
