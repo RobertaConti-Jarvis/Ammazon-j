@@ -4,7 +4,7 @@
 
 .head {
     background-color: rgb(6, 35, 59);
-    height: 130px;
+    height: auto;
     width: 100%;
     padding: 30px 30px 30px 30px;
 }
@@ -13,7 +13,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: rgb(185, 247, 255);
     width: auto;
-    height: 70%;
+    height: auto;
     padding: 30px 30px 30px 30px;
 }
 
@@ -21,7 +21,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: rgb(3, 16, 27);
     width: auto;
-    height: 200px;
+    height: auto;
     padding: 30px 30px 30px 30px;
 }
 
@@ -39,57 +39,21 @@ h1 {
 h2 {
     text-align: top;
 }
-.toolbar{
+
+.toolbar {
     font-family: Arial, Helvetica, sans-serif;
     columns: #ffffff;
     background: linear-gradient(to bottom, #79bbff 5%, #378de5 100%);
     width: auto;
-    height: 60px;
+    height: auto;
     padding: 20px 20px 20px 20px;
 }
+
 .margine {
     margin-top: 10px;
     margin-bottom: 10px;
     margin-left: 20px;
     margin-right: 20px;
-}
-
-/* IMPAGINAZIONE DASHBOARD */
-
-.headDash {
-    font-family: Verdana, Arial, Helvetica, sans-serif;
-    font-size: 25px;
-    font-weight: bold;
-    text-align: right;
-    width: 97%;
-}
-
-.divvone::after {
-    content: "";
-    clear: both;
-    display: table;
-}
-
-[class*="col-"] {
-    float: left;
-    padding: 15px;
-}
-
-.col-3 {
-    width: 25%;
-}
-
-@keyframes animate {
-    0% {
-        background-position: -500%;
-    }
-}
-
-hr {
-    border: none;
-    border-top: 1px solid #CCCCCC;
-    height: 1px;
-    margin-bottom: 25px;
 }
 
 /* LINK HOMEPAGE */
@@ -412,47 +376,28 @@ p.titoliHome {
     padding: 20px;
 }
 
-.logo {
-    position: relative;
-    width: 35%;
-    float: right;
+.float {
+    float:right
 }
 
 /* IMMAGINI SELF SLIDE */
 
 .fling-minislide {
-    width: 65%;
-    min-height: 330px;
-    overflow: hidden;
-    position: relative;
-    float: left;
+    
+    width:100%; 
+    height:450px; 
+    overflow:hidden; 
+    position:relative; 
+    
 }
+.fling-minislide img{ 
+    position:absolute; 
+    animation:fling-minislide 15s infinite; 
+    opacity:0; 
+    width: 100%; 
+    height: auto;}
 
-.fling-minislide img {
-    position: absolute;
-    animation: fling-minislide 15s infinite;
-    opacity: 0;
-    width: 100%;
-    height: auto;
-}
-
-@keyframes fling-minislide {
-    25% {
-        opacity: 1;
-    }
-    40% {
-        opacity: 0;
-    }
-}
-
-.fling-minislide img:nth-child(3) {
-    animation-delay: 10s;
-}
-
-.fling-minislide img:nth-child(2) {
-    animation-delay: 5s;
-}
-
-.fling-minislide img:nth-child(1) {
-    animation-delay: 0s;
-}
+@keyframes fling-minislide {25%{opacity:1;} 40%{opacity:0;}}
+.fling-minislide img:nth-child(1){animation-delay:0s;}
+.fling-minislide img:nth-child(2){animation-delay:5s;}
+.fling-minislide img:nth-child(3){animation-delay:10s;}
