@@ -2,6 +2,13 @@
     box-sizing: border-box;
 }
 
+.head {
+    background-color: rgb(6, 35, 59);
+    height: 130px;
+    width: 100%;
+    padding: 30px 30px 30px 30px;
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: rgb(185, 247, 255);
@@ -10,11 +17,11 @@ body {
     padding: 30px 30px 30px 30px;
 }
 
-footer {
+.footer {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: rgb(7, 32, 36);
+    background-color: rgb(3, 16, 27);
     width: auto;
-    height: 30%;
+    height: 200px;
     padding: 30px 30px 30px 30px;
 }
 
@@ -31,6 +38,20 @@ h1 {
 
 h2 {
     text-align: top;
+}
+.toolbar{
+    font-family: Arial, Helvetica, sans-serif;
+    columns: #ffffff;
+    background: linear-gradient(to bottom, #79bbff 5%, #378de5 100%);
+    width: auto;
+    height: 60px;
+    padding: 20px 20px 20px 20px;
+}
+.margine {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 /* IMPAGINAZIONE DASHBOARD */
@@ -77,21 +98,17 @@ hr {
     font-size: 21px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: lighter;
-    color: black;
+    color: rgb(9, 18, 46);
     text-decoration: solid;
 }
 
 .link:hover {
-    color: orangered;
+    color: rgb(255, 255, 255);
 }
 
 .link:active {
-    color: rgb(192, 54, 3);
+    color: rgb(107, 66, 255);
 }
-
-/* LOGO */
-
-
 
 /* CAMPI INPUT */
 
