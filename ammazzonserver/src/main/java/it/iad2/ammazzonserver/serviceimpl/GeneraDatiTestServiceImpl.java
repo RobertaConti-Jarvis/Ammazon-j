@@ -26,6 +26,7 @@ import it.iad2.ammazzonserver.repository.VarianteTagliaRepository;
 import it.iad2.ammazzonserver.service.GeneraDatiTestService;
 import java.time.LocalDate;
 import java.util.List;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +35,7 @@ import org.springframework.stereotype.Service;
  * @author matte
  */
 @Service
+@Transactional
 public class GeneraDatiTestServiceImpl implements GeneraDatiTestService {
 
     @Autowired

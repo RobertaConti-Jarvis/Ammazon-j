@@ -29,8 +29,7 @@ public class GestisciUtenteRegistratoServiceImpl implements GestisciUtenteRegist
 
     @Override
     public List<UtenteRegistrato> modificaUtenteRegistrato(UtenteRegistrato utente) {
-        utenteRegistratoRepository.save(utente);
-        return aggiorna();
+        return aggiungiUtenteRegistrato(utente);
     }
 
     @Override

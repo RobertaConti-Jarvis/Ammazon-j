@@ -31,6 +31,7 @@ export class GestioneUtenteRegistratoComponent implements OnInit, AutomabileCrud
 
   constructor(private http: HttpClient) {
     this.automa = new Automa(this);
+    this.aggiorna();
   }
 
   goToRicerca() {
@@ -52,9 +53,9 @@ export class GestioneUtenteRegistratoComponent implements OnInit, AutomabileCrud
   goToVisualizza() {
     this.nuovaVisible = true;
     this.cercaVisible = true;
-    this.rimuoviModificaVisible = false;
+    this.rimuoviModificaVisible = true;
     this.confermaAnnullaVisible = false;
-    this.formsVisible = false;
+    this.formsVisible = true;
     this.inputDisabled = false;
   }
   goToModifica() {
@@ -123,6 +124,12 @@ export class GestioneUtenteRegistratoComponent implements OnInit, AutomabileCrud
   nuovo(): void {
     this.utenteRegistrato = new UtenteRegistrato();
     this.automa.next(new AddEvent);
+  }
+
+  aggiorna():void{
+    const oss: Observable<ListaUtenteregistratoDto> = this.http
+    .get<ListaUtenteregistratoDto>("http://localhost:8080/aggiorna-utente");
+    oss.subscribe(s => this.listaUtentiRegistrati = s.listaUtenti);
   }
 
   ngOnInit(): void {

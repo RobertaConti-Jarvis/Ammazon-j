@@ -1,10 +1,10 @@
 <app-header></app-header>
 <div *ngIf="formsVisible">
-    <input type="text" [disabled]="inputDisabled" placeholder="nome" [(ngModel)]="utenteRegistrato.nome" class="input">
-    <input type="text" [disabled]="inputDisabled" placeholder="cognome" [(ngModel)]="utenteRegistrato.cognome" class="input">
-    <input type="text" [disabled]="inputDisabled" placeholder="username" [(ngModel)]="utenteRegistrato.username" class="input">
-    <input type="text" [disabled]="inputDisabled" placeholder="password" [(ngModel)]="utenteRegistrato.password" class="input">
-    <input type="text" [disabled]="inputDisabled" placeholder="codice fiscale" [(ngModel)]="utenteRegistrato.codiceFiscale" class="input">
+    <input type="text" [disabled]="!inputDisabled" placeholder="nome" [(ngModel)]="utenteRegistrato.nome" class="input">
+    <input type="text" [disabled]="!inputDisabled" placeholder="cognome" [(ngModel)]="utenteRegistrato.cognome" class="input">
+    <input type="text" [disabled]="!inputDisabled" placeholder="username" [(ngModel)]="utenteRegistrato.username" class="input">
+    <input type="password" [disabled]="!inputDisabled" placeholder="password" [(ngModel)]="utenteRegistrato.password" class="input">
+    <input type="text" [disabled]="!inputDisabled" placeholder="codice fiscale" [(ngModel)]="utenteRegistrato.codiceFiscale" class="input">
     <br>
     <button (click)="modifica()" *ngIf="rimuoviModificaVisible" class="button">Modifica</button>
     <button (click)="conferma()" *ngIf="confermaAnnullaVisible" class="button">Conferma</button>
