@@ -21,7 +21,7 @@ public class ColoreTaglia implements Serializable {
     private Long id;
 
     @Column
-    private int giacenza;
+    private int giacenza = 0;
 
     // relazione OneToMany QtaOrdineVariante
     @JsonIgnore
