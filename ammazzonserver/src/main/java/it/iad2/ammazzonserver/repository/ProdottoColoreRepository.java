@@ -18,7 +18,7 @@ public interface ProdottoColoreRepository extends JpaRepository<ProdottoColore, 
     List<ProdottoColore> trovaListaVarianteColoreProdotto(@Param("id") Long id);
 
     @Query("select vc from Prodotto p"
-           + " join p.listaProdottoColore pc"
+            + " join p.listaProdottoColore pc"
             + " join pc.varianteColore vc"
             + " where p.id=:id")
     List<VarianteColore> selezionaColoriAssociatiProdotto(@Param("id") Long id);
