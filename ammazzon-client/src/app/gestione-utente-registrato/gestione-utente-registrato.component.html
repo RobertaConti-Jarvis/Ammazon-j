@@ -1,39 +1,46 @@
 <app-header></app-header>
-<div *ngIf="formsVisible">
-    <input type="text" [disabled]="!inputDisabled" placeholder="nome" [(ngModel)]="utenteRegistrato.nome" class="input">
-    <input type="text" [disabled]="!inputDisabled" placeholder="cognome" [(ngModel)]="utenteRegistrato.cognome" class="input">
-    <input type="text" [disabled]="!inputDisabled" placeholder="username" [(ngModel)]="utenteRegistrato.username" class="input">
-    <input type="password" [disabled]="!inputDisabled" placeholder="password" [(ngModel)]="utenteRegistrato.password" class="input">
-    <input type="text" [disabled]="!inputDisabled" placeholder="codice fiscale" [(ngModel)]="utenteRegistrato.codiceFiscale" class="input">
-    <br>
-    <button (click)="modifica()" *ngIf="rimuoviModificaVisible" class="button">Modifica</button>
-    <button (click)="conferma()" *ngIf="confermaAnnullaVisible" class="button">Conferma</button>
-    <button (click)="annulla()" *ngIf="confermaAnnullaVisible" class="button">Annulla</button>
-    <button (click)="rimuovi()" *ngIf="rimuoviModificaVisible" class="button">Rimuovi</button>
-</div>
-<br> <br>
-<button (click)="nuovo()" *ngIf="nuovaVisible" class="button">Nuova</button>
-<br> <br>
-<div *ngIf="cercaVisible">
-    <div>
-        <input type="text" placeholder="username" [(ngModel)]="criterio" class="inputSearch">
-        <button (click)="cerca()" class="button">Cerca</button>
+<body>
+    <div *ngIf="formsVisible">
+        <input type="text" [disabled]="!inputDisabled" placeholder="nome" [(ngModel)]="utenteRegistrato.nome"
+            class="input">
+        <input type="text" [disabled]="!inputDisabled" placeholder="cognome" [(ngModel)]="utenteRegistrato.cognome"
+            class="input">
+        <input type="text" [disabled]="!inputDisabled" placeholder="username" [(ngModel)]="utenteRegistrato.username"
+            class="input">
+        <input type="password" [disabled]="!inputDisabled" placeholder="password"
+            [(ngModel)]="utenteRegistrato.password" class="input">
+        <input type="text" [disabled]="!inputDisabled" placeholder="codice fiscale"
+            [(ngModel)]="utenteRegistrato.codiceFiscale" class="input">
+        <br>
+        <button (click)="modifica()" *ngIf="rimuoviModificaVisible" class="button">Modifica</button>
+        <button (click)="conferma()" *ngIf="confermaAnnullaVisible" class="button">Conferma</button>
+        <button (click)="annulla()" *ngIf="confermaAnnullaVisible" class="button">Annulla</button>
+        <button (click)="rimuovi()" *ngIf="rimuoviModificaVisible" class="button">Rimuovi</button>
     </div>
-    <br><br>
-    <table>
-        <tr>
-            <th>Username</th>
-            <th>Nome</th>
-            <th>Cognome</th>
-            <th>Codice fiscale</th>
-        </tr>
-        <tr *ngFor="let u of listaUtentiRegistrati">
-            <td> {{u.username}}</td>
-            <td>{{u.nome}}</td>
-            <td>{{u.cognome}}</td>
-            <td>{{u.codiceFiscale}}</td>
-            <td><button (click)="seleziona(u)" class="button">Seleziona</button> </td>
-        </tr>
-    </table>
-</div>
+    <br> <br>
+    <button (click)="nuovo()" *ngIf="nuovaVisible" class="button">Nuova</button>
+    <br> <br>
+    <div *ngIf="cercaVisible">
+        <div>
+            <input type="text" placeholder="username" [(ngModel)]="criterio" class="inputSearch">
+            <button (click)="cerca()" class="button">Cerca</button>
+        </div>
+        <br><br>
+        <table>
+            <tr>
+                <th>Username</th>
+                <th>Nome</th>
+                <th>Cognome</th>
+                <th>Codice fiscale</th>
+            </tr>
+            <tr *ngFor="let u of listaUtentiRegistrati">
+                <td> {{u.username}}</td>
+                <td>{{u.nome}}</td>
+                <td>{{u.cognome}}</td>
+                <td>{{u.codiceFiscale}}</td>
+                <td><button (click)="seleziona(u)" class="button">Seleziona</button> </td>
+            </tr>
+        </table>
+    </div>
+</body>
 <app-footer></app-footer>
