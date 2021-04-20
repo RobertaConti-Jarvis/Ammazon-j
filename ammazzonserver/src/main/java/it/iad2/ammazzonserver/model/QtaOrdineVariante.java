@@ -72,7 +72,9 @@ public class QtaOrdineVariante implements Serializable {
 
     @Override
     public String toString() {
-        return "QtaOrdineVariante{" + "id=" + id + ", qta=" + qta + ", ordine=" + ordine + ", coloreTaglia=" + coloreTaglia + '}';
+        return "QtaOrdineVariante{" + "id=" + id + ", qta=" + qta
+                + ", ordine=" + ordine == null ? null : ordine.getId()
+                + ", coloreTaglia=" + coloreTaglia == null ? null : coloreTaglia.getId() + "}";
     }
 
 }

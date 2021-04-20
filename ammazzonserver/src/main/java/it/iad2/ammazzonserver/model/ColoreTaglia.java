@@ -93,7 +93,10 @@ public class ColoreTaglia implements Serializable {
 
     @Override
     public String toString() {
-        return "ColoreTaglia{" + "id=" + id + ", giacenza=" + giacenza + ", listaQtaOrdineVariante=" + listaQtaOrdineVariante + ", varianteTaglia=" + varianteTaglia + ", prodottoColore=" + prodottoColore + '}';
+        return "ColoreTaglia{" + "id=" + id + ", giacenza=" + giacenza 
+                + ", listaQtaOrdineVariante=" + listaQtaOrdineVariante == null ? null: listaQtaOrdineVariante.size()
+                + ", varianteTaglia=" + varianteTaglia 
+                + ", prodottoColore=" + prodottoColore + '}';
     }
 
 }

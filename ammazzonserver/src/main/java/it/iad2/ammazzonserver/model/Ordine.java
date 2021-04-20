@@ -15,7 +15,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-
 @Entity
 public class Ordine implements Serializable {
 
@@ -118,7 +117,11 @@ public class Ordine implements Serializable {
 
     @Override
     public String toString() {
-        return "Ordine{" + "id=" + id + ", data=" + data + ", numero=" + numero + ", stato=" + stato + ", utenteAnonimo=" + utenteAnonimo + ", utenteRegistrato=" + utenteRegistrato + ", listaQtaOrdineVariante=" + listaQtaOrdineVariante + '}';
+        return "Ordine{" + "id=" + id + ", data=" + data + ", numero=" + numero 
+                + ", stato=" + stato + ", utenteAnonimo=" 
+                + utenteAnonimo == null ? null : utenteAnonimo.getId() 
+                + ", utenteRegistrato=" + utenteRegistrato == null ? null : utenteRegistrato.getId()
+                + ", listaQtaOrdineVariante=" + listaQtaOrdineVariante == null ? null : listaQtaOrdineVariante.size() + "}";
     }
 
 }

@@ -1,5 +1,6 @@
 package it.iad2.ammazzonserver.controller;
 
+import it.iad2.ammazzonserver.dto.ColoreTagliaDto;
 import it.iad2.ammazzonserver.dto.CriterioRicercaDto;
 import it.iad2.ammazzonserver.dto.ListaColoreTaglieDto;
 import it.iad2.ammazzonserver.dto.ListaProdottiColoriDto;
@@ -48,9 +49,9 @@ public class AssociaTaglieColoriProdController {
     
     @RequestMapping("/rimuovi-colore-taglia")
     @ResponseBody
-    public ListaColoreTaglieDto rimuoviColoreTaglia(){
-        //TODO: implementare col dto corretto (dopo associazione entità
-        return null;
+    public ListaColoreTaglieDto rimuoviColoreTaglia(@RequestBody ColoreTagliaDto dto){
+        return associaTaglieCPService.rimuoviColoreTaglia
+        (dto.getColoreTaglia(), dto.getColoreTaglia().getProdottoColore());
     }
     
     @RequestMapping("/associa-colore-taglia")
