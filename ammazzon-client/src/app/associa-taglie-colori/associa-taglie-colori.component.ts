@@ -12,11 +12,12 @@ import { ProdottoDto } from '../dto/prodotto-dto';
 import { ProdottoColoreDto } from '../dto/prodotto-colore-dto';
 import { ListaVarianteTagliaDto } from '../dto/lista-variante-taglia-dto';
 import { VarianteTaglia } from '../entità/variante-taglia';
+import { ColoreTagliaDto } from '../dto/colore-taglia-dto';
 
 @Component({
   selector: 'app-associa-taglie-colori',
   templateUrl: './associa-taglie-colori.component.html',
-  styleUrls: ['./associa-taglie-colori.component.css']
+  styleUrls: ['../theme.css']
 })
 export class AssociaTaglieColoriComponent implements OnInit {
   
@@ -62,8 +63,13 @@ export class AssociaTaglieColoriComponent implements OnInit {
     oss.subscribe(r => this.listaVarianteTagliaDis = r.listaVarianteTaglie);
   }
 
-  rimuovi(t){
-    
+  rimuovi(t: ColoreTaglia){
+    let dto: ColoreTagliaDto = new ColoreTagliaDto();
+    dto.coloreTaglia = t;
+    let oss: Observable<ListaColoreTaglieDto> = this.http.post<ListaColoreTaglieDto>('http://localhost:8080/rimuovi-colore-taglia', dto);
+    oss.subscribe(r => this.listaColoreTagliaAss = r.listaColoreTaglie);
+    //aggiorno la tabella delle taglie disponibili
+    this.selezionaColoreDis(t.prodottoColore);
   }
 
   rimuoviAll(){
