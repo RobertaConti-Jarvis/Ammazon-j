@@ -33,7 +33,7 @@ public class AssociaTaglieColoriProdServiceImpl implements AssociaTaglieColoriPr
     @Override
     public ListaProdottiDto cercaProdottiPerCodiceDescrizione(String criterio) {
         return new ListaProdottiDto(
-                prodottoRepository.cercaEqualsCodiceLikeDescrizione(criterio, criterio));
+                prodottoRepository.cercaPerCriterio(criterio));
     }
 
     @Override
