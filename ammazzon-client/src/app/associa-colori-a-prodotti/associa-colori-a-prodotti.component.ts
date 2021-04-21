@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { CriterioRicercaDto } from '../dto/criterio-ricerca-dto';
 import { ListaProdottiDto } from '../dto/lista-prodotti-dto';
 import { ListeColoriProdottoDto } from '../dto/liste-colori-prodotto-dto';
+import { ProdottoColoreDto } from '../dto/prodotto-colore-dto';
 import { ProdottoDto } from '../dto/prodotto-dto';
 import { Prodotto } from '../entità/prodotto';
 import { ProdottoColore } from '../entità/prodotto-colore';
@@ -22,6 +23,7 @@ export class AssociaColoriAProdottiComponent implements OnInit {
   coloriAssociati: VarianteColore[] = [];
   coloriNonAssociati: VarianteColore[] = [];
   varianteColore:VarianteColore = new VarianteColore();
+  prodottoColore:ProdottoColore = new ProdottoColore();
 
   constructor(private http: HttpClient) { }
 
@@ -54,15 +56,44 @@ export class AssociaColoriAProdottiComponent implements OnInit {
 
 
   }
-  spostaInDisponibili(ca) {
+  spostaInDisponibili(ca:VarianteColore) {
+    this.varianteColore = ca;
+    this.prodottoColore.prodotto = this.prodotto;
+    this.prodottoColore.varianteColore = this.varianteColore;
+    let dto: ProdottoColoreDto = new ProdottoColoreDto();
+    dto.prodottoColore = this.prodottoColore;
+    let oss: Observable<ListeColoriProdottoDto> = this.http.post<ListeColoriProdottoDto>(
+      "http://localhost:8080/sposta-in-disponibili",dto);
+      oss.subscribe(r => {
+        this.coloriAssociati = r.coloriAssociati;
+        this.coloriNonAssociati = r.coloriNonAssociati;
+      });
+    
 
   }
 
   associaTuttiColori() {
+    
 
   }
 
   disassociaTuttiColori() {
+
+  }
+
+  spostaInAssociati(na:VarianteColore){
+    this.varianteColore = na;
+    this.prodottoColore.prodotto = this.prodotto;
+    this.prodottoColore.varianteColore = this.varianteColore;
+    let dto: ProdottoColoreDto = new ProdottoColoreDto();
+    dto.prodottoColore = this.prodottoColore;
+    let oss: Observable<ListeColoriProdottoDto> = this.http.post<ListeColoriProdottoDto>(
+      "http://localhost:8080/sposta-in-disponibili",dto);
+      oss.subscribe(r => {
+        this.coloriAssociati = r.coloriAssociati;
+        this.coloriNonAssociati = r.coloriNonAssociati;
+      });
+
 
   }
 
