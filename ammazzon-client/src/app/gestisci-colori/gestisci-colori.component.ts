@@ -13,7 +13,7 @@ import { CriterioRicercaDto } from '../dto/criterio-ricerca-dto';
 @Component({
   selector: 'app-gestisci-colori',
   templateUrl: './gestisci-colori.component.html',
-  styleUrls: ['./gestisci-colori.component.css']
+  styleUrls:  ['../theme.css']
 })
 export class GestisciColoriComponent implements OnInit, AutomabileCrud {
   varianteColore: VarianteColore = new VarianteColore();
