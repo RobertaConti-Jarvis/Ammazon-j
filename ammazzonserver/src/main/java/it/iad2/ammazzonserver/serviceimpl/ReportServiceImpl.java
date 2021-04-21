@@ -8,6 +8,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 
 @Service
 public class ReportServiceImpl implements ReportService {
@@ -19,7 +21,7 @@ public class ReportServiceImpl implements ReportService {
     public List<Ordine> filtraOrdini(String ordine, String tipo, String stato) {
         Sort ordinamento;
         Sort.Direction dir;
-        if (ordine.equals("Crescente")){
+        if (ordine.equals("Crescente")) {
             dir = Sort.Direction.ASC;
         } else {
             dir = Sort.Direction.DESC;
@@ -27,4 +29,10 @@ public class ReportServiceImpl implements ReportService {
         ordinamento = Sort.by(dir, tipo);
         return ordineRepository.findByStato(stato, ordinamento);
     }
+
+    @Override
+    public Page<Ordine> elementiPaginatiReport(int numPage, int elemPage) {
+        return ordineRepository.elementiPaginatiReport(PageRequest.of(numPage, elemPage));
+    }
+
 }
