@@ -105,11 +105,11 @@ public class GeneraDatiTestServiceImpl implements GeneraDatiTestService {
             coloreTagliaRepository.save(c);
         }
         for (int i = 0; i < 20; i++) {
-            VarianteColore vc = new VarianteColore("codice " + i, "descrizione" + i);
+            VarianteColore vc = new VarianteColore("codice colore " + i, "variante colore " + i);
             varianteColoreRepository.save(vc);
         }
         for (int i = 0; i < 20; i++) {
-            VarianteTaglia vt = new VarianteTaglia("codice " + i);
+            VarianteTaglia vt = new VarianteTaglia("codice taglia " + i);
             varianteTagliaRepository.save(vt);
         }
         //associo prodotti a prodottoColore
