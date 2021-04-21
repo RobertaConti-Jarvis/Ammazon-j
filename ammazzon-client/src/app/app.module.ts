@@ -15,6 +15,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AssociaColoriAProdottiComponent } from './associa-colori-a-prodotti/associa-colori-a-prodotti.component';
 import { GestioneUtenteRegistratoComponent } from './gestione-utente-registrato/gestione-utente-registrato.component';
+import { RegistrazionePageComponent } from './registrazione-page/registrazione-page.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { GestioneUtenteRegistratoComponent } from './gestione-utente-registrato/
     FooterComponent,
     AssociaColoriAProdottiComponent,
     GestioneUtenteRegistratoComponent,
+    RegistrazionePageComponent,
+    LoginPageComponent,
     
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
