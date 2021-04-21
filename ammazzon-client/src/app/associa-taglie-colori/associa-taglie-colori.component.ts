@@ -82,7 +82,7 @@ export class AssociaTaglieColoriComponent implements OnInit {
   associa(t: VarianteTaglia) {
     let dto: ColoreTagliaDto = new ColoreTagliaDto();
     let coloreTaglia: ColoreTaglia = new ColoreTaglia();
-    dto.coloreTaglia = coloreTaglia; 
+    dto.coloreTaglia = coloreTaglia;
     dto.coloreTaglia.varianteTaglia = t;
     dto.coloreTaglia.prodottoColore = this.prodottoColore;
     let oss: Observable<ListaColoreTaglieDto> = this.http.post<ListaColoreTaglieDto>('http://localhost:8080/associa-colore-taglia', dto);
@@ -93,7 +93,13 @@ export class AssociaTaglieColoriComponent implements OnInit {
   }
 
   associaAll() {
-
+    let dto: ProdottoColoreDto = new ProdottoColoreDto();
+    dto.prodottoColore = this.prodottoColore;
+    let oss: Observable<ListaColoreTaglieDto> = this.http.post<ListaColoreTaglieDto>('http://localhost:8080/associa-tutti-colore-taglia', dto);
+    oss.subscribe(p => {
+      this.listaColoreTagliaAss = p.listaColoreTaglie;
+      this.selezionaColoreDis(this.prodottoColore);
+    })
   }
 
 }
