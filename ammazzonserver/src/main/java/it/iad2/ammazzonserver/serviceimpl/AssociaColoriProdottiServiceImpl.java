@@ -50,7 +50,15 @@ public class AssociaColoriProdottiServiceImpl implements AssociaColoriProdottiSe
 
     @Override
     public ListeColoriProdottoDto spostaInAssociati(ProdottoColoreDto dto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ProdottoColore prodottoColore = dto.getProdottoColore();
+        prodottoColore =  prodottoColoreRepository.save(prodottoColore);
+       Prodotto prodotto = prodottoColore.getProdotto();
+         List<VarianteColore> listaColoriAssociati = prodottoColoreRepository.selezionaColoriAssociatiProdotto(prodotto.getId());
+
+        List<VarianteColore> listaColoriNonAssociati = prodottoColoreRepository.selezionaColoriNonAssociatiProdotto(prodotto.getId());
+        return new ListeColoriProdottoDto(listaColoriAssociati, listaColoriNonAssociati);
+        
+       
     }
 
 }

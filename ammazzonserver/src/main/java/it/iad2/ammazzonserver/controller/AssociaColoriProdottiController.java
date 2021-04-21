@@ -44,4 +44,7 @@ public class AssociaColoriProdottiController {
     public ListeColoriProdottoDto spostaInAssociati(@RequestBody ProdottoColoreDto dto) {
         return associaColoriProdottiService.spostaInAssociati(dto);
     }
+    
+    
+    
 }
