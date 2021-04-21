@@ -6,4 +6,6 @@ export class UtenteRegistrato extends UtenteAnonimo{
     username: string;
     password: string;
     codiceFiscale: string;
+    tokenRegistrato: string;
+    email: string;
 }

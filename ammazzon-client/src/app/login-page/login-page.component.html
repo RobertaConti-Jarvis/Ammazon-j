@@ -3,11 +3,11 @@
     <hr>
     <div>
         <label>Username</label>
-        <input type="text" /> <!--inserire [(ngModel)] -->
+        <input type="text" [(ngModel)] = "utenteReg.username"/> 
     </div>
     <div>
         <label>Password</label>
-        <input type="password" /> <!--inserire [(ngModel)] -->
+        <input type="password" [(ngModel)] = "utenteReg.password"/> 
     </div>
     <div>
         <button (click)="checkLogin()">Login</button> 
