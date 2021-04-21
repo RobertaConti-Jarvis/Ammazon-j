@@ -30,7 +30,7 @@ public class AssociaColoriProdottiServiceImpl implements AssociaColoriProdottiSe
     public ListeColoriProdottoDto seleziona(Prodotto p) {
         List<VarianteColore> listaColoriAssociati = prodottoColoreRepository.selezionaColoriAssociatiProdotto(p.getId());
 
-        List<VarianteColore> listaColoriNonAssociati = prodottoColoreRepository.selezionaColoriAssociatiProdotto(p.getId());
+        List<VarianteColore> listaColoriNonAssociati = prodottoColoreRepository.selezionaColoriNonAssociatiProdotto(p.getId());
         return new ListeColoriProdottoDto(listaColoriAssociati, listaColoriNonAssociati);
     }
 
@@ -46,6 +46,11 @@ public class AssociaColoriProdottiServiceImpl implements AssociaColoriProdottiSe
 
         List<VarianteColore> listaColoriNonAssociati = prodottoColoreRepository.selezionaColoriAssociatiProdotto(prodotto.getId());
         return new ListeColoriProdottoDto(listaColoriAssociati, listaColoriNonAssociati);
+    }
+
+    @Override
+    public ListeColoriProdottoDto spostaInAssociati(ProdottoColoreDto dto) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

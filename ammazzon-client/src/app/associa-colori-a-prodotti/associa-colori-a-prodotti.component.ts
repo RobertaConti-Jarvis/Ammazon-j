@@ -88,7 +88,7 @@ export class AssociaColoriAProdottiComponent implements OnInit {
     let dto: ProdottoColoreDto = new ProdottoColoreDto();
     dto.prodottoColore = this.prodottoColore;
     let oss: Observable<ListeColoriProdottoDto> = this.http.post<ListeColoriProdottoDto>(
-      "http://localhost:8080/sposta-in-disponibili",dto);
+      "http://localhost:8080/sposta-in-associati",dto);
       oss.subscribe(r => {
         this.coloriAssociati = r.coloriAssociati;
         this.coloriNonAssociati = r.coloriNonAssociati;

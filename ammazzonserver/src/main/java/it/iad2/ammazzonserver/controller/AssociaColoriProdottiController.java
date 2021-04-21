@@ -38,4 +38,10 @@ public class AssociaColoriProdottiController {
     public ListeColoriProdottoDto spostaInDisponibili(@RequestBody ProdottoColoreDto dto) {
         return associaColoriProdottiService.spostaInDisponibili(dto);
     }
+    
+    @RequestMapping("/sposta-in-associati")
+    @ResponseBody
+    public ListeColoriProdottoDto spostaInAssociati(@RequestBody ProdottoColoreDto dto) {
+        return associaColoriProdottiService.spostaInAssociati(dto);
+    }
 }
