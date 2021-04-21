@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UtenteRegistrato } from '../entità/utente-registrato';
 
 @Component({
   selector: 'app-registrazione-page',
@@ -7,12 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistrazionePageComponent implements OnInit {
 
+  utenteReg = new UtenteRegistrato();
+  esitoRegistrazione : boolean;
+  errorMsg : string = "";
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
   signIn(){
-    
+
   }
 }
