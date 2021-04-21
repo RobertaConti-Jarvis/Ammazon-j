@@ -1,15 +1,23 @@
-<div>
-    <h2> Login </h2>
-    <hr>
+<app-header></app-header>
+
+<body>
     <div>
-        <label>Username</label>
-        <input type="text" [(ngModel)] = "utenteReg.username"/> 
+        <h2> Login </h2>
+        <hr>
+        <div>
+            <label>Username</label>
+            <input type="text" [(ngModel)]="utenteReg.username" />
+        </div>
+        <div>
+            <label>Password</label>
+            <input type="password" [(ngModel)]="utenteReg.password" />
+        </div>
+        <div>
+            <button (click)="checkLogin()">Login</button>
+        </div>
+        <br>
+        <br>
+        <label>{{errorMsg}}</label>
     </div>
-    <div>
-        <label>Password</label>
-        <input type="password" [(ngModel)] = "utenteReg.password"/> 
-    </div>
-    <div>
-        <button (click)="checkLogin()">Login</button> 
-    </div>
-</div>
+</body>
+<app-footer></app-footer>

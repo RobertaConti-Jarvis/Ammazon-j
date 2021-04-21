@@ -25,12 +25,18 @@ export class LoginPageComponent implements OnInit {
   checkLogin(){
     let dto: UtenteRegistratoDto = new UtenteRegistratoDto();
     dto.utenteRegistrato = this.utenteReg;
-    let oss: Observable<EsitoLoginDto> = this.http.post<EsitoLoginDto>(
+    let oss: Observable<EsitoLoginDto> = this.http.post<EsitoLoginDto>( 
       "http://localhost:8080/check-login",dto
     );
-    oss.subscribe(v => (v.esitoLogin) ? 
-      this.router.navigateByUrl("/home-page") :
-      this.errorMsg = "Corrispondenza credenziali non trovata"
-    );
+    oss.subscribe(v => {
+      if (v.esitoLogin){
+        this.utenteReg = v.utenteReg;
+        this.router.navigateByUrl("/home-page");
+        this.errorMsg = "";
+      }
+      else {
+        this.errorMsg = "Corrispondenza credenziali non trovata";
+      }
+    });
   }
 }
