@@ -73,8 +73,7 @@ public class AssociaTaglieColoriProdController {
     @RequestMapping("/disassocia-tutti-colore-taglia")
     @ResponseBody
     public ListaColoreTaglieDto disassociaTuttiColoreTaglia(@RequestBody ProdottoColoreDto dto) {
-        //TODO
-        return null;
+        return associaTaglieCPService.disassociaTuttiColoriTaglie(dto.getProdottoColore());
     }
 
 }

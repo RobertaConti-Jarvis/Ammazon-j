@@ -112,7 +112,15 @@ public class AssociaTaglieColoriProdServiceImpl implements AssociaTaglieColoriPr
 
     @Override
     public ListaColoreTaglieDto disassociaTuttiColoriTaglie(ProdottoColore prodColore) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        prodColore = prodottoColoreRepository.findById(prodColore.getId()).get();
+        List<ColoreTaglia> ct = prodColore.getListaColoreTaglia();
+        ct.forEach(c -> {
+            List<QtaOrdineVariante> qov = c.getListaQtaOrdineVariante();
+            qtaOrdineVarianteRepository.deleteInBatch(qov);
+            coloreTagliaRepository.delete(c);
+                    });
+        prodColore.setListaColoreTaglia(null);
+        prodottoColoreRepository.save(prodColore);
+        return mostraTaglieAssociateAProdottoColore(prodColore);
     }
-
 }

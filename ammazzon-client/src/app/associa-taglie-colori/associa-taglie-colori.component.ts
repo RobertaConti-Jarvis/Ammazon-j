@@ -76,7 +76,13 @@ export class AssociaTaglieColoriComponent implements OnInit {
   }
 
   rimuoviAll() {
-
+    let dto: ProdottoColoreDto = new ProdottoColoreDto();
+    dto.prodottoColore = this.prodottoColore;
+    let oss: Observable<ListaColoreTaglieDto> = this.http.post<ListaColoreTaglieDto>('http://localhost:8080/disassocia-tutti-colore-taglia', dto);
+    oss.subscribe(r => {
+      this.listaColoreTagliaAss = r.listaColoreTaglie;
+      this.selezionaColoreDis(this.prodottoColore);
+    })
   }
 
   associa(t: VarianteTaglia) {

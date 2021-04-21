@@ -1,4 +1,5 @@
 <app-header></app-header>
+<body>
 <input type="text" placeholder="Cerca prodotto" [(ngModel)]="criterio">
 <button (click)="cerca()" class="button">Cerca</button>
 <div>
@@ -46,7 +47,7 @@
         </tr>
     </table>
     <button (click)="rimuoviAll()" class="buttonSel">>></button>
-    <button (click)="associaAll()" class="buttonSel">associa tutti</button>
+    <button (click)="associaAll()" class="buttonSel"><<</button>
     <table>
           <tr>
             <th>Taglie Disponibili</th>
@@ -55,9 +56,10 @@
             <td>{{t.id}}</td>
             <td>{{t.codice}}</td>
             <td>
-              <button (click)="associa(t)" class="buttonSel">associa</button>
+              <button (click)="associa(t)" class="buttonSel"><</button>
             </td>
           </tr>
       </table>
 </div>
+</body>
 <app-footer></app-footer>
