@@ -7,6 +7,7 @@ import it.iad2.ammazzonserver.dto.ListaVarianteTaglieDto;
 import it.iad2.ammazzonserver.model.ColoreTaglia;
 import it.iad2.ammazzonserver.model.Prodotto;
 import it.iad2.ammazzonserver.model.ProdottoColore;
+import it.iad2.ammazzonserver.model.VarianteTaglia;
 
 public interface AssociaTaglieColoriProdService {
     /**
@@ -59,13 +60,13 @@ public interface AssociaTaglieColoriProdService {
     /**
      * Associa la taglia selezionata al ProdottoColore
      * @param taglia di tipo
-     * @see Taglia
+     * @see VarianteTaglia
      * @param prodColore di tipo
      * @see ProdottoColore
      * @return ListaTaglieDto classe che contiene una lista di
      * @see ColoreTaglia
      */
-    ListaColoreTaglieDto associaColoreTaglia(ColoreTaglia taglia, ProdottoColore prodColore);
+    ListaColoreTaglieDto associaColoreTaglia(VarianteTaglia taglia, ProdottoColore prodColore);
     
     /**
      * Associa tutte le taglie al ProdottoColore

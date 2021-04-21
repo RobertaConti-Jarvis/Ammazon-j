@@ -60,9 +60,8 @@ public class AssociaTaglieColoriProdController {
     
     @RequestMapping("/associa-colore-taglia")
     @ResponseBody
-    public ListaColoreTaglieDto associaColoreTaglia() {
-        //TODO: implementare col dto corretto (dopo associazione entità
-        return null;
+    public ListaColoreTaglieDto associaColoreTaglia(@RequestBody ColoreTagliaDto dto) {
+        return associaTaglieCPService.associaColoreTaglia(dto.getColoreTaglia().getVarianteTaglia(), dto.getColoreTaglia().getProdottoColore());
     }
     
     @RequestMapping("/associa-tutti-colore-taglia")
