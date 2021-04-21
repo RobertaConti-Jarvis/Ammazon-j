@@ -26,7 +26,7 @@ public class AssociaColoriProdottiController {
         return associaColoriProdottiService.cercaProdotto(dto.getCriterio());
     }
 
-    @RequestMapping("/selezione-prodotto-colore")
+    @RequestMapping("/seleziona-prodotto-colore")
     @ResponseBody
     public ListeColoriProdottoDto seleziona(@RequestBody ProdottoDto dto) {
         return associaColoriProdottiService.seleziona(dto.getProdotto());

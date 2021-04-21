@@ -41,6 +41,7 @@ export class AssociaColoriAProdottiComponent implements OnInit {
 
 
   seleziona(p: Prodotto) {
+    this.prodotto = p;
     let dto: ProdottoDto = new ProdottoDto();
     dto.prodotto = this.prodotto;
     let oss: Observable<ListeColoriProdottoDto> = this.http.post<ListeColoriProdottoDto>(
