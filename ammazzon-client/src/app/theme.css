@@ -40,6 +40,14 @@ h2 {
     text-align: top;
 }
 
+p {
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #333;
+}
+.BGffffff{
+    background:#ffffff;
+}
 .toolbar {
     font-family: Arial, Helvetica, sans-serif;
     columns: #ffffff;
@@ -49,6 +57,23 @@ h2 {
     padding: 20px 20px 20px 20px;
 }
 
+.centro {
+    text-align: center;
+}
+
+.floatsinistra {
+    float: left;
+}
+
+.floatdestra2 {
+    float: right;
+    width: 60%;
+}
+
+.floatdestra {
+    float: right;
+}
+
 .margine {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -56,10 +81,27 @@ h2 {
     margin-right: 20px;
 }
 
+.margine2 {
+    vertical-align: 50%;
+    padding: 5px 10px 5px 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.marginedestro {
+    margin-right: 30px;
+}
+
+.alldestra {
+    text-align: right;
+}
+
 /* LINK HOMEPAGE */
 
 .link {
-    font-size: 21px;
+    font-size: 18px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: lighter;
     color: rgb(9, 18, 46);
@@ -68,13 +110,46 @@ h2 {
 
 .link:hover {
     color: rgb(255, 255, 255);
+    border: 1px solid #ffffff;
+    border-radius: 4px;
 }
 
 .link:active {
     color: rgb(107, 66, 255);
 }
 
+.link2 {
+    font-size: 21px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: lighter;
+    color: rgb(255, 255, 255);
+    text-decoration: solid;
+}
+
+.link2:hover {
+    box-shadow: 0px 0px 30px 5px rgba(255, 255, 255, 0.486);
+    border-radius: 4px;
+}
+
+.link2:active {
+    color: rgb(107, 66, 255);
+}
+
 /* CAMPI INPUT */
+
+.inputSearch2 {
+    width: 60%;
+    height: 45px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-image: url('../assets/searchicon.png');
+    background-size: 43px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    text-align: right;
+}
 
 .inputSearch {
     width: auto;
@@ -111,7 +186,7 @@ input {
     border: 2px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
-    text-align: right;
+    text-align: left;
 }
 
 /* BOTTONI */
@@ -140,8 +215,9 @@ Button {
 }
 
 Button:hover {
-    background: linear-gradient(to bottom, #378de5 5%, #79bbff 100%);
-    background-color: #378de5;
+    border-color: #ffffff;
+    /*background: linear-gradient(to bottom, #378de5 5%, #79bbff 100%);*/
+    /*background-color: #378de5;*/
 }
 
 Button:active {
@@ -149,7 +225,28 @@ Button:active {
     top: 1px;
 }
 
-/* BOTTONI */
+.buttoncerca {
+    width: 100px;
+    height: 50px;
+}
+
+.buttoncart {
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url('../assets/cart.png');
+}
+
+.buttonlogin {
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url('../assets/login.png');
+}
+
+/* SCROLL */
 
 .scrolldown {
     overflow-y: scroll;
@@ -219,27 +316,9 @@ tr:nth-child(even) {
     height: 45px;
 }
 
-/* .tab-1::after{
-    width: 65%;
-    float: left;
-    padding: 15px;
-    border: 1px solid blue;
-} */
-
-/* .tab-2::after {
-    width: 35%;
-} */
-
-/* #tabDash {
-    position: absolute;
-    padding-bottom: 240px;
-    width: 65%;
-} */
-
 /* TOTALE DASH */
 
 .tab-2 {
-    /* position: absolute; */
     float: right;
     font-size: 35px;
     width: 30%;
@@ -376,28 +455,40 @@ p.titoliHome {
     padding: 20px;
 }
 
-.float {
-    float:right
-}
-
 /* IMMAGINI SELF SLIDE */
 
 .fling-minislide {
-    
-    width:100%; 
-    height:450px; 
-    overflow:hidden; 
-    position:relative; 
-    
+    width: 100%;
+    height: 450px;
+    overflow: hidden;
+    position: relative;
 }
-.fling-minislide img{ 
-    position:absolute; 
-    animation:fling-minislide 15s infinite; 
-    opacity:0; 
-    width: 100%; 
-    height: auto;}
 
-@keyframes fling-minislide {25%{opacity:1;} 40%{opacity:0;}}
-.fling-minislide img:nth-child(1){animation-delay:0s;}
-.fling-minislide img:nth-child(2){animation-delay:5s;}
-.fling-minislide img:nth-child(3){animation-delay:10s;}
+.fling-minislide img {
+    position: absolute;
+    animation: fling-minislide 15s infinite;
+    opacity: 0;
+    width: 100%;
+    height: auto;
+}
+
+@keyframes fling-minislide {
+    25% {
+        opacity: 1;
+    }
+    40% {
+        opacity: 0;
+    }
+}
+
+.fling-minislide img:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.fling-minislide img:nth-child(2) {
+    animation-delay: 5s;
+}
+
+.fling-minislide img:nth-child(3) {
+    animation-delay: 10s;
+}
