@@ -18,7 +18,7 @@ export class RegistrazionePageComponent implements OnInit {
   errorUsername : string = "";
   errorPassword : string = "";
   errorEmail : string = "";
-  ableButtonR : boolean = false;
+  disableButtonR : boolean = true; //modificare css per button
 
   constructor(private http: HttpClient) { }
 
@@ -33,14 +33,50 @@ export class RegistrazionePageComponent implements OnInit {
     );
     oss.subscribe( c =>{
       if (c.esito){
-        this.ableButtonR = true;
+        this.disableButtonR = false;
       }
       else{
-        this.ableButtonR = false;
+        this.disableButtonR = true;
         this.errorUsername = "Username già utilizzato!";
       }
     });
   }
+
+  checkPassword(){
+    var searchFind : boolean;
+    var regExpPsw = new RegExp("^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])([A-Za-z0-9]{8,})$");
+    searchFind = regExpPsw.test(this.utenteReg.password);
+    console.log("searcFind Password: " , searchFind);
+    console.log("password: ", this.utenteReg.password);
+    if (searchFind){
+      this.disableButtonR = false;
+      this.errorPassword = "";
+    }
+    else{
+      this.disableButtonR = true;
+      this.errorPassword = "Password non valida!"
+    }
+  }
+
+  checkEmail(){
+    if (!this.utenteReg.email){
+      this.utenteReg.email = "";
+    }
+    var searchFind : boolean;
+    var regExpEmail = new RegExp("^\\w+@\\w+\\.\\w{2}$");
+    searchFind = regExpEmail.test(this.utenteReg.email);
+    console.log("searcFind Email: " , searchFind);
+    console.log("email: ", this.utenteReg.email);
+    if(searchFind){
+      this.disableButtonR = false;
+      this.errorEmail = "";
+    }
+    else{
+      this.disableButtonR = true;
+      this.errorEmail = "Email non valida!"
+    }
+  }
+
 
   signIn(){
 

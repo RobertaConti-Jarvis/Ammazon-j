@@ -16,10 +16,38 @@ export class LoginPageComponent implements OnInit {
   utenteReg = new UtenteRegistrato();
   esitoLogin : boolean;
   errorMsg : string = "";
+  disableButtonL : boolean;
+  errorPassword : string;
+  errorUsername : string;
 
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  checkUsername(){
+    if(!this.utenteReg.username){
+      this.errorUsername = "inserisci un Username";
+    }
+    else{
+      this.errorUsername = "";
+    }
+  }
+
+  checkPassword(){
+    var searchFind : boolean;
+    var regExpPsw = new RegExp("^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])([A-Za-z0-9]{8,})$");
+    searchFind = regExpPsw.test(this.utenteReg.password);
+    console.log("searcFind Password: " , searchFind);
+    console.log("password: ", this.utenteReg.password);
+    if (searchFind){
+      this.disableButtonL = false;
+      this.errorPassword = "";
+    }
+    else{
+      this.disableButtonL = true;
+      this.errorPassword = "Password non valida!"
+    }
   }
 
   checkLogin(){

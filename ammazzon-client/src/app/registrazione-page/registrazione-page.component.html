@@ -10,17 +10,17 @@
         </div>
         <div>
             <label>Password</label>
-            <input type="password" [(ngModel)]="utenteReg.password" />
+            <input type="password" [(ngModel)]="utenteReg.password" (blur)="checkPassword()" />
             <label>{{errorPassword}}</label>
         </div>
         <div>
             <label>Email</label>
-            <input type="text" [(ngModel)]="utenteReg.email" />
+            <input type="text" [(ngModel)]="utenteReg.email" (blur) = "checkEmail()"/>
             <label>{{errorEmail}}</label>
         </div>
 
         <div>
-            <button (click)="signIn()">Registrazione</button>
+            <button (click)="signIn()" [disabled]="disableButtonR">Registrazione</button>
         </div>
     </div>
 </body>
