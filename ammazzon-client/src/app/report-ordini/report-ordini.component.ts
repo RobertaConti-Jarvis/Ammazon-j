@@ -8,7 +8,7 @@ import {Ordine} from '../entità/ordine';
 @Component({
   selector: 'app-report-ordini',
   templateUrl: './report-ordini.component.html',
-  styleUrls: ['./report-ordini.component.css']
+  styleUrls: ['../theme.css']
 })
 export class ReportOrdiniComponent implements OnInit {
   stato: string;

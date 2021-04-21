@@ -27,6 +27,8 @@ import it.iad2.ammazzonserver.service.GeneraDatiTestService;
 import java.time.LocalDate;
 import java.util.List;
 import javax.transaction.Transactional;
+
+import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -213,7 +215,18 @@ public class GeneraDatiTestServiceImpl implements GeneraDatiTestService {
             coloreTaglia.setVarianteTaglia(listaVarianteTaglia.get(i++));
             coloreTagliaRepository.save(coloreTaglia);
         }
-
+        List<Ordine> ordiniPagati = ordineRepository.findAll().subList(0,16);
+        List<Ordine> ordiniNonPagati = ordineRepository.findAll().subList(17,31);
+        List<Ordine> ordiniSospesi = ordineRepository.findAll().subList(32,41);
+        ordiniPagati.forEach(o -> {
+            o.setStato("pagato");
+        });
+        ordiniNonPagati.forEach(n -> {
+            n.setStato("non pagato");
+        });
+        ordiniSospesi.forEach(s -> {
+            s.setStato("sospeso");
+        });
     }
 
     //disassocio tutti gli utenti con gli ordini
