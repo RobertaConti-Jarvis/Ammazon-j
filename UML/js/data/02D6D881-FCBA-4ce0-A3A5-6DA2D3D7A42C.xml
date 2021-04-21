@@ -1,7 +1,7 @@
-tocTab[tocTab.length] = new Array("0.5.3:1", "", "Registrazione", "EARoot/EA5/EA3/EA229.htm", "188.png", "270", "0", "", "Custom diagram0","{6DEACCB0-77E5-451f-B1F3-B398BF1508B4}");
-tocTab[tocTab.length] = new Array("0.5.3:2", "", "«WireframeWebsite» Webpage1", "EARoot/EA5/EA3/EA235.htm", "11.png", "E2446", "0", "", "Screen0","{C3707DB7-F4A3-4067-96DE-0506BB3ED186}");
-tocTab[tocTab.length] = new Array("0.5.3:3", "", "«WireframeTextField» email", "EARoot/EA5/EA3/EA236.htm", "16.png", "E2441", "E2446", "", "GUIElement0","{75845C73-3CE9-4727-B8C1-B3F66F2B2C77}");
-tocTab[tocTab.length] = new Array("0.5.3:4", "", "«WireframeTextField» password", "EARoot/EA5/EA3/EA237.htm", "16.png", "E2449", "E2446", "", "GUIElement0","{61130756-7A4C-45e0-88B5-74B9F38E071F}");
-tocTab[tocTab.length] = new Array("0.5.3:5", "", "«WireframeButton» Registrazione", "EARoot/EA5/EA3/EA238.htm", "16.png", "E2442", "E2446", "", "GUIElement0","{381DDDDC-DD20-493f-92F6-DB9A5C0F9B40}");
-tocTab[tocTab.length] = new Array("0.5.3:6", "", "«WireframeLabel» Registrazione", "EARoot/EA5/EA3/EA239.htm", "16.png", "E2447", "E2446", "", "GUIElement0","{53672D1C-043B-4020-A89E-1C7C40EC8FDB}");
-tocTab[tocTab.length] = new Array("0.5.3:7", "", "«WireframeTextField» username", "EARoot/EA5/EA3/EA240.htm", "16.png", "E2448", "E2446", "", "GUIElement0","{2F608FFF-2FC4-4b41-A29F-E35DFDD8EF7D}");
+tocTab[tocTab.length] = new Array("0.3:1", "", "Registrazione", "EARoot/EA3/EA93.htm", "188.png", "270", "0", "", "Custom diagram0","{6DEACCB0-77E5-451f-B1F3-B398BF1508B4}");
+tocTab[tocTab.length] = new Array("0.3:2", "", "«WireframeWebsite» Webpage1", "EARoot/EA3/EA100.htm", "11.png", "E2446", "0", "", "Screen0","{C3707DB7-F4A3-4067-96DE-0506BB3ED186}");
+tocTab[tocTab.length] = new Array("0.3:3", "", "«WireframeTextField» email", "EARoot/EA3/EA101.htm", "16.png", "E2441", "E2446", "", "GUIElement0","{75845C73-3CE9-4727-B8C1-B3F66F2B2C77}");
+tocTab[tocTab.length] = new Array("0.3:4", "", "«WireframeTextField» password", "EARoot/EA3/EA102.htm", "16.png", "E2449", "E2446", "", "GUIElement0","{61130756-7A4C-45e0-88B5-74B9F38E071F}");
+tocTab[tocTab.length] = new Array("0.3:5", "", "«WireframeButton» Registrazione", "EARoot/EA3/EA103.htm", "16.png", "E2442", "E2446", "", "GUIElement0","{381DDDDC-DD20-493f-92F6-DB9A5C0F9B40}");
+tocTab[tocTab.length] = new Array("0.3:6", "", "«WireframeLabel» Registrazione", "EARoot/EA3/EA104.htm", "16.png", "E2447", "E2446", "", "GUIElement0","{53672D1C-043B-4020-A89E-1C7C40EC8FDB}");
+tocTab[tocTab.length] = new Array("0.3:7", "", "«WireframeTextField» username", "EARoot/EA3/EA105.htm", "16.png", "E2448", "E2446", "", "GUIElement0","{2F608FFF-2FC4-4b41-A29F-E35DFDD8EF7D}");

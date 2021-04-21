@@ -1,4 +1,4 @@
-tocTab[tocTab.length] = new Array("0.5.1:1", "", "UI Casi d&#39;uso accessori", "EARoot/EA5/EA1/EA141.htm", "188.png", "249", "0", "", "Custom diagram0","{00ED7590-82C7-4543-83CE-349007F7763C}");
-tocTab[tocTab.length] = new Array("0.5.1.1", "1", "Associa Colori a Prodotti", "EARoot/EA5/EA1/EA1/EA149.htm", "4.png", "", "", "{850184F0-AF85-46db-9CBB-9F4A281EA2C4}", "Package");
-tocTab[tocTab.length] = new Array("0.5.1.2", "1", "Associa Taglie a Prodotti - Colori", "EARoot/EA5/EA1/EA2/EA173.htm", "4.png", "", "", "{7A508858-D9E0-4b96-95B1-20D88FFC044D}", "Package");
-tocTab[tocTab.length] = new Array("0.5.1.3", "1", "CRUD Generica", "EARoot/EA5/EA1/EA3/EA201.htm", "4.png", "", "", "{7CD67030-6BA3-4679-8885-6EE0284377FE}", "Package");
+tocTab[tocTab.length] = new Array("0.1:1", "", "UI Casi d&#39;uso accessori", "EARoot/EA1/EA5.htm", "188.png", "249", "0", "", "Custom diagram0","{00ED7590-82C7-4543-83CE-349007F7763C}");
+tocTab[tocTab.length] = new Array("0.1.1", "1", "Associa Colori a Prodotti", "EARoot/EA1/EA1/EA13.htm", "4.png", "", "", "{850184F0-AF85-46db-9CBB-9F4A281EA2C4}", "Package");
+tocTab[tocTab.length] = new Array("0.1.2", "1", "Associa Taglie a Prodotti - Colori", "EARoot/EA1/EA2/EA37.htm", "4.png", "", "", "{7A508858-D9E0-4b96-95B1-20D88FFC044D}", "Package");
+tocTab[tocTab.length] = new Array("0.1.3", "1", "CRUD Generica", "EARoot/EA1/EA3/EA65.htm", "4.png", "", "", "{7CD67030-6BA3-4679-8885-6EE0284377FE}", "Package");
