@@ -12,5 +12,7 @@ public interface AssociaColoriProdottiService {
     ListeColoriProdottoDto seleziona(Prodotto p);
     
     ListeColoriProdottoDto spostaInDisponibili(ProdottoColoreDto dto);
+    
+    ListeColoriProdottoDto spostaInAssociati (ProdottoColoreDto dto);
 
 }
