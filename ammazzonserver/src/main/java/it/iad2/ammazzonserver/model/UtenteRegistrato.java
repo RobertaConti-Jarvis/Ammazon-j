@@ -30,6 +30,9 @@ public class UtenteRegistrato extends UtenteAnonimo implements Serializable{
     @Column
     private String tokenRegistrato;
 
+    @Column
+    private String email;
+
     // relazione OneToMany con Ordini
     @JsonIgnore
     @OneToMany(mappedBy = "utenteRegistrato")
@@ -38,15 +41,26 @@ public class UtenteRegistrato extends UtenteAnonimo implements Serializable{
     public UtenteRegistrato() {
     }
 
-    public UtenteRegistrato(String nome, String cognome, String username, String password, String codiceFiscale, String tokenRegistrato) {
+    public UtenteRegistrato(String nome, String cognome, String username, String password, String codiceFiscale, String tokenRegistrato, String email, String tokenAnonimo) {
+        super(tokenAnonimo);
         this.nome = nome;
         this.cognome = cognome;
         this.username = username;
         this.password = password;
         this.codiceFiscale = codiceFiscale;
         this.tokenRegistrato = tokenRegistrato;
+        this.email = email;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+     
+        
     public List<Ordine> getListaOrdine() {
         if (listaOrdine == null) {
             listaOrdine = new ArrayList<>();
@@ -111,10 +125,9 @@ public class UtenteRegistrato extends UtenteAnonimo implements Serializable{
 
     @Override
     public String toString() {
-        return "UtenteRegistrato{" + "nome=" + nome + ", cognome=" + cognome 
-                + ", username=" + username + ", password=" + password 
-                + ", codiceFiscale=" + codiceFiscale + ", tokenRegistrato=" 
-                + tokenRegistrato + ", listaOrdine=" + listaOrdine == null ? null: listaOrdine.size() + "}";
+        return "UtenteRegistrato{" + "nome=" + nome + ", cognome=" + cognome + ", username=" + username + ", password=" + password + ", codiceFiscale=" + codiceFiscale + ", tokenRegistrato=" + tokenRegistrato + ", email=" + email + ", listaOrdine=" + listaOrdine + '}';
     }
+
+    
 
 }

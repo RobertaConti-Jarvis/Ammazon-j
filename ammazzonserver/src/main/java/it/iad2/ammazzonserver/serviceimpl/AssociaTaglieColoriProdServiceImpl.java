@@ -8,6 +8,8 @@ import it.iad2.ammazzonserver.model.ColoreTaglia;
 import it.iad2.ammazzonserver.model.Prodotto;
 import it.iad2.ammazzonserver.model.ProdottoColore;
 import it.iad2.ammazzonserver.model.QtaOrdineVariante;
+import it.iad2.ammazzonserver.model.VarianteColore;
+import it.iad2.ammazzonserver.model.VarianteTaglia;
 import it.iad2.ammazzonserver.repository.ColoreTagliaRepository;
 import it.iad2.ammazzonserver.repository.ProdottoColoreRepository;
 import it.iad2.ammazzonserver.repository.ProdottoRepository;
@@ -77,8 +79,15 @@ public class AssociaTaglieColoriProdServiceImpl implements AssociaTaglieColoriPr
     }
     
     @Override
-    public ListaColoreTaglieDto associaColoreTaglia(ColoreTaglia taglia, ProdottoColore prodColore) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public ListaColoreTaglieDto associaColoreTaglia(VarianteTaglia taglia, ProdottoColore prodColore) {
+        taglia = varianteTagliaRepository.findById(taglia.getId()).get();
+        ColoreTaglia ct = new ColoreTaglia();
+        ct.setVarianteTaglia(taglia);
+        ct.setProdottoColore(prodColore);
+        ct = coloreTagliaRepository.save(ct);
+        prodColore.getListaColoreTaglia().add(ct);
+        prodottoColoreRepository.save(prodColore);
+        return mostraTaglieAssociateAProdottoColore(prodColore);
     }
     
     @Override
