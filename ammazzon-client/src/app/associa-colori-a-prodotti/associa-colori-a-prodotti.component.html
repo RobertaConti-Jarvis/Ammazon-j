@@ -1,3 +1,4 @@
+<body>
 <app-header></app-header>
 <button (click)="cercaProdotto()">Cerca</button>
 <input type="text" placeholder="Cerca prodotto" [(ngModel)]="criterio">
@@ -27,9 +28,8 @@
             <th>Descrizione del colore: {{prodotto.descrizione}}</th>
         </tr>
         <tr *ngFor="let ca of coloriAssociati">
-            
-            <td>{{ca.varianteColore.codice}}</td>
-            <td>{{ca.varianteColore.descrizione}}</td>
+            <td>{{ca.codice}}</td>
+            <td>{{ca.descrizione}}</td>
             <td><button (click)="spostaInDisponibili(ca)">></button></td>
         </tr>
         <br>
@@ -49,11 +49,12 @@
             <th>Descrizione del colore</th>
         </tr>
         <tr *ngFor="let na of coloriNonAssociati">
-            <td>{{na.varianteColore.codice}}</td>
-            <td>{{na.varianteColore.descrizione}}</td>
+            <td>{{na.codice}}</td>
+            <td>{{na.descrizione}}</td>
             <td><button (click)="spostaInAssociati(na)">></button></td>
         </tr>
         <br>
     </table>
 </div>
 <app-footer></app-footer>
+</body>

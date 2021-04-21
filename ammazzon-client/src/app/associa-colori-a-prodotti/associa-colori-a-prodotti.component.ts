@@ -21,6 +21,7 @@ export class AssociaColoriAProdottiComponent implements OnInit {
   listaProdotti: Prodotto[] = [];
   coloriAssociati: VarianteColore[] = [];
   coloriNonAssociati: VarianteColore[] = [];
+  varianteColore:VarianteColore = new VarianteColore();
 
   constructor(private http: HttpClient) { }
 
