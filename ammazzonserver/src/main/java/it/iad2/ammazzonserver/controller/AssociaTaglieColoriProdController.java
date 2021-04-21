@@ -9,6 +9,8 @@ import it.iad2.ammazzonserver.dto.ListaVarianteTaglieDto;
 import it.iad2.ammazzonserver.dto.ProdottoColoreDto;
 import it.iad2.ammazzonserver.dto.ProdottoDto;
 import it.iad2.ammazzonserver.service.AssociaTaglieColoriProdService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,59 +22,61 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class AssociaTaglieColoriProdController {
     
+    private final Logger logger = LoggerFactory.getLogger(AssociaTaglieColoriProdController.class);
+    
     @Autowired
     AssociaTaglieColoriProdService associaTaglieCPService;
     
     @RequestMapping("/cerca-prodotti-criterio")
     @ResponseBody
-    public ListaProdottiDto mostraProdottiPerCodiceDescrizione(@RequestBody CriterioRicercaDto dto){
+    public ListaProdottiDto mostraProdottiPerCodiceDescrizione(@RequestBody CriterioRicercaDto dto) {
         return associaTaglieCPService.cercaProdottiPerCodiceDescrizione(dto.getCriterio());
     }
     
     @RequestMapping("/mostra-prodotto-colori")
     @ResponseBody
-    public ListaProdottiColoriDto mostraProdottoColori(@RequestBody ProdottoDto dto){
+    public ListaProdottiColoriDto mostraProdottoColori(@RequestBody ProdottoDto dto) {
         return associaTaglieCPService.mostraColoriAssociatiAProdotto(dto.getProdotto());
     }
     
     @RequestMapping("/mostra-coloretaglie-associate")
     @ResponseBody
-    public ListaColoreTaglieDto mostraColoreTaglieAssociate(@RequestBody ProdottoColoreDto dto){
+    public ListaColoreTaglieDto mostraColoreTaglieAssociate(@RequestBody ProdottoColoreDto dto) {
         return associaTaglieCPService.mostraTaglieAssociateAProdottoColore(dto.getProdottoColore());
     }
     
     @RequestMapping("/mostra-coloretaglie-disponibili")
     @ResponseBody
-    public ListaVarianteTaglieDto mostraColoreTaglieDisponibili(@RequestBody ProdottoColoreDto dto){
+    public ListaVarianteTaglieDto mostraColoreTaglieDisponibili(@RequestBody ProdottoColoreDto dto) {
         return associaTaglieCPService.mostraTaglieNonAssociateAProdottoColore(dto.getProdottoColore());
     }
     
     @RequestMapping("/rimuovi-colore-taglia")
     @ResponseBody
-    public ListaColoreTaglieDto rimuoviColoreTaglia(@RequestBody ColoreTagliaDto dto){
-        return associaTaglieCPService.rimuoviColoreTaglia
-        (dto.getColoreTaglia(), dto.getColoreTaglia().getProdottoColore());
+    public ListaColoreTaglieDto rimuoviColoreTaglia(@RequestBody ColoreTagliaDto dto) {
+        logger.debug("Controller rimuoviColoreTaglia");
+        return associaTaglieCPService.rimuoviColoreTaglia(dto.getColoreTaglia(), dto.getColoreTaglia().getProdottoColore());
     }
     
     @RequestMapping("/associa-colore-taglia")
     @ResponseBody
-    public ListaColoreTaglieDto associaColoreTaglia(){
+    public ListaColoreTaglieDto associaColoreTaglia() {
         //TODO: implementare col dto corretto (dopo associazione entità
         return null;
     }
     
     @RequestMapping("/associa-tutti-colore-taglia")
     @ResponseBody
-    public ListaColoreTaglieDto associaTuttiColoreTaglia(@RequestBody ProdottoColoreDto dto){
+    public ListaColoreTaglieDto associaTuttiColoreTaglia(@RequestBody ProdottoColoreDto dto) {
         //TODO
         return null;
     }
     
     @RequestMapping("/disassocia-tutti-colore-taglia")
     @ResponseBody
-    public ListaColoreTaglieDto disassociaTuttiColoreTaglia(@RequestBody ProdottoColoreDto dto){
+    public ListaColoreTaglieDto disassociaTuttiColoreTaglia(@RequestBody ProdottoColoreDto dto) {
         //TODO
         return null;
     }
-
+    
 }

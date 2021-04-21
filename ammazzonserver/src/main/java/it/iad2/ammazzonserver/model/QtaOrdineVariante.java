@@ -25,6 +25,7 @@ public class QtaOrdineVariante implements Serializable {
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
     private Ordine ordine;
+    
     // relazione ManyToOne con ColoreTaglia
     @JsonIgnoreProperties(value = "listaQtaOrdineVariante", allowGetters = true, allowSetters = true)
     @ManyToOne
@@ -73,8 +74,8 @@ public class QtaOrdineVariante implements Serializable {
     @Override
     public String toString() {
         return "QtaOrdineVariante{" + "id=" + id + ", qta=" + qta
-                + ", ordine=" + ordine == null ? null : ordine.getId()
-                + ", coloreTaglia=" + coloreTaglia == null ? null : coloreTaglia.getId() + "}";
+                + ", ordine=" + (ordine == null ? null : ordine.getId())
+                + ", coloreTaglia=" + (coloreTaglia == null ? null : coloreTaglia.getId()) + "}";
     }
 
 }

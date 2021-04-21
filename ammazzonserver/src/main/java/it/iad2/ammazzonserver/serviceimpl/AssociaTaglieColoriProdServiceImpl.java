@@ -15,73 +15,80 @@ import it.iad2.ammazzonserver.repository.QtaOrdineVarianteRepository;
 import it.iad2.ammazzonserver.repository.VarianteTagliaRepository;
 import it.iad2.ammazzonserver.service.AssociaTaglieColoriProdService;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
 public class AssociaTaglieColoriProdServiceImpl implements AssociaTaglieColoriProdService {
-
+    
+    private final Logger logger = LoggerFactory.getLogger(AssociaTaglieColoriProdServiceImpl.class);
+    
     @Autowired
     ProdottoRepository prodottoRepository;
-
+    
     @Autowired
     ColoreTagliaRepository coloreTagliaRepository;
-
+    
     @Autowired
     ProdottoColoreRepository prodottoColoreRepository;
-
+    
     @Autowired
     VarianteTagliaRepository varianteTagliaRepository;
-
+    
     @Autowired
     QtaOrdineVarianteRepository qtaOrdineVarianteRepository;
-
+    
     @Override
     public ListaProdottiDto cercaProdottiPerCodiceDescrizione(String criterio) {
         return new ListaProdottiDto(
                 prodottoRepository.cercaPerCriterioDescrizione(criterio, criterio));
     }
-
+    
     @Override
     public ListaProdottiColoriDto mostraColoriAssociatiAProdotto(Prodotto prodotto) {
         return new ListaProdottiColoriDto(
                 prodottoColoreRepository.trovaListaVarianteColoreProdotto(prodotto.getId()));
     }
-
+    
     @Override
     public ListaColoreTaglieDto mostraTaglieAssociateAProdottoColore(ProdottoColore prodColore) {
         return new ListaColoreTaglieDto(
                 coloreTagliaRepository.trovaListaVarianteColoreProdotto(prodColore.getId()));
     }
-
+    
     @Override
     public ListaVarianteTaglieDto mostraTaglieNonAssociateAProdottoColore(ProdottoColore prodColore) {
         return new ListaVarianteTaglieDto(varianteTagliaRepository.trovaTaglieNonAssociate(prodColore));
     }
-
+    
     @Override
     public ListaColoreTaglieDto rimuoviColoreTaglia(ColoreTaglia taglia, ProdottoColore prodColore) {
+        logger.debug("Siamo in rimuoviColoreTaglia");
         taglia = coloreTagliaRepository.findById(taglia.getId()).get();
         List<QtaOrdineVariante> qov = taglia.getListaQtaOrdineVariante();
-        System.out.println("RIMUOVI COLORE TAGLIA - QtaOrdine: " + qov);
+        logger.debug("Prima della sout");
+//        System.out.println("RIMUOVI COLORE TAGLIA - QtaOrdine: " + qov);
         qtaOrdineVarianteRepository.deleteInBatch(qov);
         coloreTagliaRepository.delete(taglia);
+        logger.debug("Stiamo uscendo da rimuoviColoreTaglia");
         return mostraTaglieAssociateAProdottoColore(prodColore);
     }
-
+    
     @Override
     public ListaColoreTaglieDto associaColoreTaglia(ColoreTaglia taglia, ProdottoColore prodColore) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
     @Override
     public ListaColoreTaglieDto associaTuttiColoriTaglie(ProdottoColore prodColore) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
     @Override
     public ListaColoreTaglieDto disassociaTuttiColoriTaglie(ProdottoColore prodColore) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
 }

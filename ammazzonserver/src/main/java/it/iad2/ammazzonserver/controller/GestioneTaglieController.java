@@ -4,6 +4,8 @@ import it.iad2.ammazzonserver.dto.CriterioRicercaDto;
 import it.iad2.ammazzonserver.dto.ListaVarianteTaglieDto;
 import it.iad2.ammazzonserver.dto.VarianteTagliaDto;
 import it.iad2.ammazzonserver.service.GestioneTaglieService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @CrossOrigin("*")
 public class GestioneTaglieController {
+
+    final Logger logger = LoggerFactory.getLogger(GestioneTaglieController.class);
 
     @Autowired
     GestioneTaglieService gestioneTaglieService;
@@ -43,6 +47,7 @@ public class GestioneTaglieController {
     @RequestMapping("/rimuovi-taglie")
     @ResponseBody
     ListaVarianteTaglieDto rimuovi(@RequestBody VarianteTagliaDto dto) {
+        logger.debug("Entrati in rimuovi controller");
         return new ListaVarianteTaglieDto(gestioneTaglieService.rimuovi(dto.getTaglia()));
     }
 
