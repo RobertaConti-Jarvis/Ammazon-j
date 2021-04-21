@@ -3,5 +3,5 @@ tocTab[tocTab.length] = new Array("0.2", "1", "Cicli di Vita", "EARoot/EA2/EA68.
 tocTab[tocTab.length] = new Array("0.3", "1", "Classi", "EARoot/EA3/EA109.htm", "31.png", "", "", "{47E8C022-C9FC-41c2-B80D-E8B52C22EFC1}", "Package");
 tocTab[tocTab.length] = new Array("0.4", "1", "Comunicazione", "EARoot/EA4/EA124.htm", "31.png", "", "", "{AA298A26-9AD2-4efc-B420-F6C047A56DB4}", "Package");
 tocTab[tocTab.length] = new Array("0.5", "1", "Interfacce utente", "EARoot/EA5/EA137.htm", "31.png", "", "", "{87A73C17-E3A3-4e31-8959-29DEE41937BB}", "Package");
-tocTab[tocTab.length] = new Array("0.6", "1", "Sequenza", "EARoot/EA6/EA241.htm", "31.png", "", "", "{2D69EBD5-92AD-4374-9B9A-901DF7805CD1}", "Package");
-tocTab[tocTab.length] = new Array("0.7", "", "Stati", "EARoot/EA7/EA248.htm", "31.png", "", "", "{291A458D-273E-475f-982F-6205948E922F}", "Package");
+tocTab[tocTab.length] = new Array("0.6", "1", "Sequenza", "EARoot/EA6/EA242.htm", "31.png", "", "", "{2D69EBD5-92AD-4374-9B9A-901DF7805CD1}", "Package");
+tocTab[tocTab.length] = new Array("0.7", "", "Stati", "EARoot/EA7/EA249.htm", "31.png", "", "", "{291A458D-273E-475f-982F-6205948E922F}", "Package");
