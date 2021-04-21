@@ -9,6 +9,7 @@ import { GestisciTaglieComponent } from './gestisci-taglie/gestisci-taglie.compo
 import { HomePageComponent } from './home-page/home-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegistrazionePageComponent } from './registrazione-page/registrazione-page.component';
+import {ReportOrdiniComponent} from './report-ordini/report-ordini.component';
 
 const routes: Routes = [
   { path: 'gestisci-taglie', component: GestisciTaglieComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'gestione-utente-registrato', component: GestioneUtenteRegistratoComponent},
   { path: 'registrazione', component: RegistrazionePageComponent},
   { path: 'login', component: LoginPageComponent},
+  { path: 'report-ordini', component: ReportOrdiniComponent},
   { path: '', redirectTo: '/home-page', pathMatch: 'full' }
 ];
 

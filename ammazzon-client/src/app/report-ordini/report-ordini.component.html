@@ -1,0 +1,29 @@
+<app-header></app-header>
+<body>
+<select [(ngModel)]="stato">
+  <option value="non pagato">non pagato</option>
+  <option value="pagato">pagato</option>
+  <option value="sospeso">sospeso</option>
+</select>
+<select [(ngModel)]="tipo">
+  <option value="numero">numero</option>
+  <option value="data">data</option>
+</select>
+<select [(ngModel)]="ordine">
+  <option value="Crescente">Crescente</option>
+  <option value="Decrescente">Decrescente</option>
+</select>
+<button (click)="cerca()">attiva filtri</button>
+<br>
+<table>
+  <tr>
+    <th>Numero ordine</th>
+    <th>Data ordine</th>
+  </tr>
+  <tr *ngFor="let o of listaOrdini">
+    <td>{{o.numero}}</td>
+    <td>{{o.data}}</td>
+  </tr>
+</table>
+</body>
+<app-footer></app-footer>
