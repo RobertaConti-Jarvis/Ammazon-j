@@ -38,6 +38,8 @@ public interface ProdottoColoreRepository extends JpaRepository<ProdottoColore, 
             + " where p.id=:id)")
     List<VarianteColore> selezionaColoriNonAssociatiProdotto(@Param("id") Long id);
     
+    
+    
                 
       
     

@@ -54,10 +54,8 @@ public class AssociaColoriProdottiController {
     @RequestMapping("disassocia-tutti")
     @ResponseBody
     public ListeColoriProdottoDto disassociaTutti(@RequestBody ProdottoDto dto){
-        return associaColoriProdottiService.associaTutti(dto.getProdotto());
+        return associaColoriProdottiService.disassociaTutti(dto.getProdotto());
         
     }
-    
-    
     
 }

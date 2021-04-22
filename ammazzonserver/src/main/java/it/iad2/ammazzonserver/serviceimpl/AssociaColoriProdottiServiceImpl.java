@@ -12,9 +12,9 @@ import it.iad2.ammazzonserver.repository.VarianteColoreRepository;
 import it.iad2.ammazzonserver.service.AssociaColoriProdottiService;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class AssociaColoriProdottiServiceImpl implements AssociaColoriProdottiService {
@@ -28,11 +28,13 @@ public class AssociaColoriProdottiServiceImpl implements AssociaColoriProdottiSe
     VarianteColoreRepository varianteColoreRepository;
 
     @Override
+    @Transactional
     public ListaProdottiDto cercaProdotto(String criterio) {
         return new ListaProdottiDto(prodottoRepository.cercaPerCriterio(criterio, "%" + criterio + "%"));
     }
 
     @Override
+    @Transactional
     public ListeColoriProdottoDto seleziona(Prodotto p) {
 
         List<VarianteColore> listaColoriAssociati = prodottoColoreRepository.selezionaColoriAssociatiProdotto(p.getId());
@@ -49,6 +51,7 @@ public class AssociaColoriProdottiServiceImpl implements AssociaColoriProdottiSe
     }
 
     @Override
+    @Transactional
     public ListeColoriProdottoDto spostaInDisponibili(ProdottoColoreDto dto) {
         ProdottoColore prodottoColore = dto.getProdottoColore();
         Prodotto prodotto = prodottoColore.getProdotto();
@@ -63,6 +66,7 @@ public class AssociaColoriProdottiServiceImpl implements AssociaColoriProdottiSe
     }
 
     @Override
+    @Transactional
     public ListeColoriProdottoDto spostaInAssociati(ProdottoColoreDto dto) {
         ProdottoColore prodottoColore = dto.getProdottoColore();
         prodottoColore = prodottoColoreRepository.save(prodottoColore);
@@ -75,23 +79,32 @@ public class AssociaColoriProdottiServiceImpl implements AssociaColoriProdottiSe
     }
 
     @Override
+    @Transactional
     public ListeColoriProdottoDto associaTutti(Prodotto prodotto) {
         List<VarianteColore> listaColori = varianteColoreRepository.findAll();
         List<VarianteColore> listaColoriAssociati = prodottoColoreRepository.selezionaColoriAssociatiProdotto(prodotto.getId());
         listaColori.removeAll(listaColoriAssociati);
-        for (VarianteColore colore:  listaColori ){
+        for (VarianteColore colore : listaColori) {
             ProdottoColore prodottoColore = new ProdottoColore();
             prodottoColore.setVarianteColore(colore);
             prodottoColore.setProdotto(prodotto);
             prodottoColoreRepository.save(prodottoColore);
         }
         List<VarianteColore> listaColoriNonAssociati = new ArrayList<>();
-        return new ListeColoriProdottoDto (listaColori, listaColoriNonAssociati);
+        return new ListeColoriProdottoDto(listaColori, listaColoriNonAssociati);
     }
 
     @Override
+    @Transactional
     public ListeColoriProdottoDto disassociaTutti(Prodotto prodotto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("prodotto selezionato: " + prodotto);
+        var listaAssociazioni = prodotto.getListaProdottoColore();
+        System.out.println("lista associazioni: " + listaAssociazioni.size());
+        prodottoColoreRepository.deleteAll(listaAssociazioni);
+
+        List<VarianteColore> coloriAssociati = prodottoColoreRepository.selezionaColoriAssociatiProdotto(prodotto.getId());
+        List<VarianteColore> coloriNonAssociati = prodottoColoreRepository.selezionaColoriNonAssociatiProdotto(prodotto.getId());
+        return new ListeColoriProdottoDto(coloriAssociati, coloriNonAssociati);
     }
 
 }
