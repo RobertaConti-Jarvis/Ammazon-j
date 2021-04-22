@@ -59,6 +59,7 @@ p {
 
 .centro {
     text-align: center;
+    width: 100%;
 }
 
 .floatsinistra {
@@ -92,6 +93,10 @@ p {
 
 .marginedestro {
     margin-right: 30px;
+}
+
+.marginesinistro {
+    margin-left: 50px;
 }
 
 .alldestra {
@@ -174,6 +179,45 @@ p {
     padding: 12px 20px 12px 35px;
     text-align: right;
 }
+.inputNumber {
+    height: 40px;
+    width: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    text-align: center;
+}
+select{
+    height: 40px;
+    width: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    text-align: left; 
+}
+/*.selectNumber {
+    height: 40px;
+    width: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    text-align: left;
+}*/
 
 input {
     height: 40px;

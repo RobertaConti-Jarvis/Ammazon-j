@@ -26,8 +26,7 @@
   <br>
   <hr>
   <div *ngIf="searchVisible">
-    <input type="text" class="inputSearch" placeholder="Cerca per descrizione" [(ngModel)]="searchCriterion"
-      class="inputSearch">
+    <input type="text" class="inputSearch" placeholder="Cerca per descrizione" [(ngModel)]="searchCriterion"/>
     <button (click)="cercaPerDescrizione()" class="button">Cerca</button>
   </div>
   <div class="scrolldown">
