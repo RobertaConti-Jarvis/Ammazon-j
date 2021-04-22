@@ -27,4 +27,6 @@ public interface ProdottoRepository extends JpaRepository<Prodotto, Long> {
 
     @Query("select p from Prodotto p")
     Page<Prodotto> trovaTuttiPaginati(Pageable p);
+
+    Page<Prodotto> findByCodiceEqualsOrDescrizioneContains(String codice, String descrizione, Pageable p);
 }

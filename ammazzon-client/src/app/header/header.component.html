@@ -8,8 +8,7 @@
     <a routerLink="/registrazione" class="link2 margine2">Registrati</a>
   </div>
   <div class="floatdestra2">
-    <input type="text" class="inputSearch2" placeholder="Cerca prodotto">
-    <button class="buttoncerca marginedestro">CERCA</button>
+    <app-barra-ricerca (search)="goToResultPage($event)"></app-barra-ricerca>
   </div>
 
 </div>

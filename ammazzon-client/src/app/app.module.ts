@@ -18,6 +18,8 @@ import { GestioneUtenteRegistratoComponent } from './gestione-utente-registrato/
 import { RegistrazionePageComponent } from './registrazione-page/registrazione-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { ReportOrdiniComponent } from './report-ordini/report-ordini.component';
+import { BarraRicercaComponent } from './barra-ricerca/barra-ricerca.component';
+import { RicercaCatalogoComponent } from './ricerca-catalogo/ricerca-catalogo.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { ReportOrdiniComponent } from './report-ordini/report-ordini.component';
     RegistrazionePageComponent,
     LoginPageComponent,
     ReportOrdiniComponent,
+    BarraRicercaComponent,
+    RicercaCatalogoComponent,
     
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
