@@ -5,15 +5,19 @@
  */
 package it.iad2.ammazzonserver.serviceimpl;
 
+import it.iad2.ammazzonserver.model.Ordine;
 import it.iad2.ammazzonserver.model.UtenteRegistrato;
 import it.iad2.ammazzonserver.repository.UtenteRegistratoRepository;
 import it.iad2.ammazzonserver.service.GestisciUtenteRegistratoService;
+
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 /**
- *
  * @author Samuele
  */
 @Service
@@ -43,10 +47,16 @@ public class GestisciUtenteRegistratoServiceImpl implements GestisciUtenteRegist
         return utenteRegistratoRepository.findAll();
     }
 
+
     @Override
     public List<UtenteRegistrato> aggiungiUtenteRegistrato(UtenteRegistrato utente) {
         utenteRegistratoRepository.save(utente);
         return aggiorna();
+    }
+
+    @Override
+    public Page<UtenteRegistrato> elementiPaginatiUtente(int numPage, int elemPage) {
+        return utenteRegistratoRepository.elementiPaginatiUtente(PageRequest.of(numPage, elemPage));
     }
 
 }

@@ -1,0 +1,56 @@
+IMPOSTAZIONE CSS
+
+1. Ogni pagina va impostata nel seguente modo:
+
+	<app-header></app-header>
+	<body>
+	  .......	
+	  ..........
+	  .......
+	</body>
+	<app-footer></app-footer>
+
+
+2. Ogni pagina ha un titolo impostato appena sotto il tag <body> con il tag <h2> come segue:
+
+	<body>
+ 	  <h2>"titolo della pagina"</h2>
+
+3. Prima della barra di ricerca dopo il blocco del button "Nuova", vanno inseriti i tag:
+
+  	<br>
+  	<hr>
+
+4. Nell'input di ricerca va inserita la classe inputSearch:
+
+	<input type="text" class="inputSearch"............/>
+
+5. Prima di ogni tabella va inserito un tag <div> con la classe scrolldown:
+
+	<div class="scrolldown">
+	  <table>
+	    ..............
+	  </table>
+	</div>
+
+6. La tabella va formattata nella maniera seguente:
+
+	<table>
+	  <thead>
+            <tr>
+              <th>Codice</th>
+              <th>Descrizione</th>          *un tag <th> per ogni intestazione di tabella
+              <th>Seleziona</th>
+            </tr>
+      	  </thead>
+	  <tbody>
+	    <tr *ngFor=................>
+	      <td>...........</td>
+	      <td>...........</td>
+ 	      <td>...........</td>
+	    </tr>
+ 	  </tbody>
+	</table>
+
+7. Dopo ogni tabella va inserito un tag <br>.
+8. Sotto ogni tabella in cui si ritenga che il contenuto sia di ampia entità, andrà inserito il componente <app-pagination>.
