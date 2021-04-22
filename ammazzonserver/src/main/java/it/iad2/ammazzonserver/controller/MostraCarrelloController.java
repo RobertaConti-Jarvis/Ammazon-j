@@ -5,6 +5,7 @@
  */
 package it.iad2.ammazzonserver.controller;
 
+import org.springframework.web.bind.annotation.RestController;
 import it.iad2.ammazzonserver.dto.DatiOrdinePageDto;
 import it.iad2.ammazzonserver.dto.PageDto;
 import it.iad2.ammazzonserver.service.MostraCarrelloService;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+
 
 /**
  *
