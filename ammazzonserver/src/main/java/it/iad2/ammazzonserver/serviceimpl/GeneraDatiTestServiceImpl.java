@@ -85,7 +85,7 @@ public class GeneraDatiTestServiceImpl implements GeneraDatiTestService {
 
         }
         for (int i = 0; i < 50; i++) {
-            UtenteRegistrato u = new UtenteRegistrato("tokenRegistrato " + i, "nome " + i, "cognome " + i, "username " + i, "password " + i, "Cod.Fiscale " + i, "tokenRegistrato " + i, "email " + i);
+            UtenteRegistrato u = new UtenteRegistrato("nome " + i, "cognome " + i, "username " + i, "password " + i, "Cod.Fiscale " + i, "tokenRegsistrato " + i, "email " + i, "tockenAnonimo  " + i);
             utenteRegistratoRepository.save(u);
         }
         for (int i = 0; i < 41; i++) {
