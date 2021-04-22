@@ -26,4 +26,8 @@ public interface UtenteRegistratoRepository extends JpaRepository<UtenteRegistra
 
     @Query("select u from UtenteRegistrato u where u.tokenRegistrato = :token")
     UtenteRegistrato cercaUtenteRegistratoPerToken(@Param("token") String token);
+    
+    @Query("select u from UtenteRegistrato u "
+            + "where u.email = :email")
+    UtenteRegistrato findEmail(@Param("email") String email);
 }

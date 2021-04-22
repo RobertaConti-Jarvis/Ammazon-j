@@ -11,4 +11,8 @@ public interface UtenteAnonimoRepository extends JpaRepository<UtenteAnonimo, Lo
 
     @Query("select u from UtenteAnonimo u where u.tokenAnonimo = :token")
     UtenteAnonimo cercaUtenteAnonimoPerToken(@Param("token") String token);
+    
+    @Query("select u from UtenteRegistrato u "
+            + "where u.id = :id")
+    UtenteAnonimo findId(@Param("id") Long id);
 }

@@ -7,6 +7,7 @@ import { EsitoUtenteDto } from '../dto/esito-utente-dto';
 import { UsernameDto } from '../dto/username-dto';
 import { UtenteRegistratoDto } from '../dto/utente-registrato-dto';
 import { UtenteRegistrato } from '../entità/utente-registrato';
+import { TokenService } from '../token.service';
 
 @Component({
   selector: 'app-registrazione-page',
@@ -25,7 +26,7 @@ export class RegistrazionePageComponent implements OnInit {
   passwordOk : boolean = false;
   emailOk : boolean = false;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router , public tokenService: TokenService) { }
 
   ngOnInit(): void {
   }
@@ -95,12 +96,14 @@ export class RegistrazionePageComponent implements OnInit {
   signIn(){
     let dto: UtenteRegistratoDto = new UtenteRegistratoDto();
     dto.utenteRegistrato = this.utenteReg;
+    dto.sessionToken = this.tokenService.token;
     let oss: Observable<EsitoUtenteDto> = this.http.post<EsitoUtenteDto>( 
       "http://localhost:8080/registrazione",dto
     );
     oss.subscribe(r => {
       this.utenteReg = r.utenteReg;
       if (r.esito){
+        this.tokenService.token = r.sessionToken;
         this.router.navigateByUrl("/login");
         this.errorMsg = "";
       }
