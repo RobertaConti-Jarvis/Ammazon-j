@@ -1,0 +1,5 @@
+tocTab[tocTab.length] = new Array("0.6.2:1", "", "Sessione", "EARoot/EA6/EA2/EA252.htm", "188.png", "276", "0", "", "Custom diagram0","{F5935A2A-9E34-4632-BA85-95B233C6C8F5}");
+tocTab[tocTab.length] = new Array("0.6.2.1", "1", "Generazione token", "EARoot/EA6/EA2/EA1/EA261.htm", "4.png", "", "", "{F10E0EBB-6813-4819-81F3-2F654FE30B19}", "Package");
+tocTab[tocTab.length] = new Array("0.6.2.2", "1", "Generica richiesta", "EARoot/EA6/EA2/EA2/EA270.htm", "4.png", "", "", "{07A29EE8-AC6A-44dd-9A6E-8D1590133D9C}", "Package");
+tocTab[tocTab.length] = new Array("0.6.2.3", "1", "Login", "EARoot/EA6/EA2/EA3/EA275.htm", "4.png", "", "", "{BB023378-A44E-4240-A268-532DA564F6E0}", "Package");
+tocTab[tocTab.length] = new Array("0.6.2.4", "1", "Nuovo utente anonimo", "EARoot/EA6/EA2/EA4/EA285.htm", "4.png", "", "", "{483C6513-5836-4a69-B352-51C4507EC1E6}", "Package");
