@@ -2,15 +2,15 @@ package it.iad2.ammazzonserver.dto;
 
 import it.iad2.ammazzonserver.model.Ordine;
 
-public class datiOrdinePageDto {
+public class DatiOrdinePageDto {
     int numPag;
     int elemPag;
     Ordine ordine;
 
-    public datiOrdinePageDto() {
+    public DatiOrdinePageDto() {
     }
 
-    public datiOrdinePageDto(int numPag, int elemPag, Ordine ordine) {
+    public DatiOrdinePageDto(int numPag, int elemPag, Ordine ordine) {
         this.numPag = numPag;
         this.elemPag = elemPag;
         this.ordine = ordine;

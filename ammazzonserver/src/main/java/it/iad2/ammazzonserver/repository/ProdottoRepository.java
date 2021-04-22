@@ -29,4 +29,12 @@ public interface ProdottoRepository extends JpaRepository<Prodotto, Long> {
     Page<Prodotto> trovaTuttiPaginati(Pageable p);
 
     Page<Prodotto> findByCodiceEqualsOrDescrizioneContains(String codice, String descrizione, Pageable p);
+    
+    @Query("select p from Ordine o" +
+            " left join o.listaQtaOrdineVariante l" +
+            " left join l.coloreTaglia ct" +
+            " left join ct.prodottoColore pc" +
+            " left join pc.prodotto p" +
+            " where o.id =:idOrdine")
+    Page<Prodotto> trovaProdottiOrdine(@Param("idOrdine") Long id, Pageable p);
 }
