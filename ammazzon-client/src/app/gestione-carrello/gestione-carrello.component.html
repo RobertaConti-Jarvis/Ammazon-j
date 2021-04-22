@@ -1,1 +1,20 @@
-<p>gestione-carrello works!</p>
+<app-header></app-header>
+<body>
+    <table>
+        <tr>
+            <th>Codice</th>
+            <th>Descrizione</th>
+            <th>Prezzo</th>
+        </tr>
+        <tr *ngFor="let p of listaProdotti">
+            <td>{{p.codice}}</td>
+            <td>{{p.descrizione}}</td>
+            <td>{{p.prezzo}}</td>
+        </tr>
+    </table>
+    <app-pagination (next)="goToNext($event)" (prev)="goToPrevious($event)" (first)="goToFirst($event)"
+        (last)="goToLast($event)" (numPaginaO)="caricaOrdineProdottiPaginati($event)" (pagSize)="setElemPag($event)"
+        [numPaginaV]=numPaginaV [totalPages]=totalPages [elemPag]=elemPag>
+    </app-pagination>
+</body>
+<app-footer></app-footer>
