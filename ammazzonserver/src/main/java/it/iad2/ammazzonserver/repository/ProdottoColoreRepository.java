@@ -28,14 +28,20 @@ public interface ProdottoColoreRepository extends JpaRepository<ProdottoColore, 
             + " join pc.prodotto p"
             + " join pc. varianteColore vc"
             + " where p.id = :id1 and vc.id =:id2")
-    ProdottoColore seleziona(@Param("id1") Long id, @Param("id2") Long id1);
+    ProdottoColore disassociaProdottoColore(@Param("id1") Long id, @Param("id2") Long id1);
 
-    @Query("select vc from VarianteColore vc"
-            + " join vc.listaProdottoColore pc"
-            + " join pc.prodotto p"
-            + " where p.id!=:id")
+    @Query("select vc from VarianteColore vc "
+            + "where vc not in "
+            + " (select vc from Prodotto p"
+            + " join p.listaProdottoColore pc"
+            + " join pc.varianteColore vc"
+            + " where p.id=:id)")
     List<VarianteColore> selezionaColoriNonAssociatiProdotto(@Param("id") Long id);
     
+                
+      
+    
+           
     
        
    

@@ -4,6 +4,7 @@ import it.iad2.ammazzonserver.dto.ListaProdottiDto;
 import it.iad2.ammazzonserver.dto.ListaColoreTaglieDto;
 import it.iad2.ammazzonserver.dto.ListaProdottiColoriDto;
 import it.iad2.ammazzonserver.dto.ListaVarianteTaglieDto;
+import it.iad2.ammazzonserver.dto.PageDto;
 import it.iad2.ammazzonserver.model.ColoreTaglia;
 import it.iad2.ammazzonserver.model.Prodotto;
 import it.iad2.ammazzonserver.model.ProdottoColore;
@@ -17,7 +18,7 @@ public interface AssociaTaglieColoriProdService {
      * @return ListaProdottiDto classe che contiene una lista di
      * @see Prodotto
      */
-    ListaProdottiDto cercaProdottiPerCodiceDescrizione(String criterio);
+    PageDto cercaProdottiPerCodiceDescrizione(String criterio, int numPage, int elemPage);
     
     /**
      * Mostra una lista di colori associati al prodotto selezionato

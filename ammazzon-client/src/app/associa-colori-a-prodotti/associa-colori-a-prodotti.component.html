@@ -1,60 +1,64 @@
-<body>
 <app-header></app-header>
-<button (click)="cercaProdotto()">Cerca</button>
-<input type="text" placeholder="Cerca prodotto" [(ngModel)]="criterio">
-<div>
-    <table>
-        <tr>
-            <th>Codice</th>
-            <th>Descrizione</th>
-            <th>Prezzo</th>
-        </tr>
-        <tr *ngFor="let p of listaProdotti">
-            <td>{{p.codice}}</td>
-            <td>{{p.descrizione}}</td>
-            <td>{{p.prezzo}}</td>
-            <td><button (click)="seleziona(p)">Seleziona</button></td>
-        </tr>
-        <br>
-    </table>
-    <h2>Prodotto selezionato: {{prodotto.descrizione}}  </h2>
-</div>
-<h2>Colori già associati </h2>
-<div>
-    <table>
-        <tr>
-            
-            <th>Codice del colore: {{prodotto.codice}}</th>
-            <th>Descrizione del colore: {{prodotto.descrizione}}</th>
-        </tr>
-        <tr *ngFor="let ca of coloriAssociati">
-            <td>{{ca.codice}}</td>
-            <td>{{ca.descrizione}}</td>
-            <td><button (click)="spostaInDisponibili(ca)">></button></td>
-        </tr>
-        <br>
-    </table>
-</div>
-<br>
-<button (click)="associaTuttiColori()">Associa tutti i colori</button>
-<br>
-<button (click)="disassociaTuttiColori()">Disassocia tutti i colori</button>
-<br>
-<h2>Colori non associati</h2>
-<div>
-    <table>
-        <tr>
 
-            <th>Codice del colore</th>
-            <th>Descrizione del colore</th>
-        </tr>
-        <tr *ngFor="let na of coloriNonAssociati">
-            <td>{{na.codice}}</td>
-            <td>{{na.descrizione}}</td>
-            <td><button (click)="spostaInAssociati(na)">></button></td>
-        </tr>
-        <br>
-    </table>
-</div>
-<app-footer></app-footer>
+<body>
+    <button class="button" (click)="cercaProdotto()">Cerca</button>
+    <input class="input" type="text" placeholder="Cerca prodotto" [(ngModel)]="criterio">
+    <div class="scrolldown">
+        <table>
+            <tr>
+                <th>Codice</th>
+                <th>Descrizione</th>
+                <th>Prezzo</th>
+            </tr>
+            <tr *ngFor="let p of listaProdotti">
+                <td>{{p.codice}}</td>
+                <td>{{p.descrizione}}</td>
+                <td>{{p.prezzo}}</td>
+                <td><button class="button" (click)="seleziona(p)">Seleziona</button></td>
+            </tr>
+            <br>
+        </table>
+    </div>
+    <h2>Prodotto selezionato: {{prodotto.descrizione}} </h2>
+    <h2>Colori già associati </h2>
+    <div class="scrolldown">
+        <table>
+            <tr>
+                <th>Codice del colore: {{prodotto.codice}}</th>
+                <th>Descrizione del colore: {{prodotto.descrizione}}</th>
+            </tr>
+            <tr *ngFor="let ca of coloriAssociati">
+                <td>{{ca.codice}}</td>
+                <td>{{ca.descrizione}}</td>
+                <td><button class="button" (click)="spostaInDisponibili(ca)">></button></td>
+            </tr>
+            <br>
+        </table>
+    </div>
+    <br>
+    <button class="button" (click)="associaTuttiColori()">Associa tutti i colori</button>
+    <br>
+    <button class="button" (click)="disassociaTuttiColori()">Disassocia tutti i colori</button>
+    <br>
+    <h2>Colori non associati</h2>
+    <div>
+        <table>
+            <tr>
+                <th>Codice del colore</th>
+                <th>Descrizione del colore</th>
+            </tr>
+            <tr *ngFor="let na of coloriNonAssociati">
+                <td>{{na.codice}}</td>
+                <td>{{na.descrizione}}</td>
+                <td><button class="button" (click)="spostaInAssociati(na)">></button></td>
+            </tr>
+            <br>
+        </table>
+    </div>
+    <!--<app-pagination (next)="goToNext($event)" (prev)="goToPrevious($event)" (first)="goToFirst($event)"
+        (last)="goToLast($event)" (numPaginaO)="caricaProdottiPaginati($event)" (pagSize)="setElemPag($event)"
+        [numPaginaV]=numPaginaV [totalPages]=totalPages [elemPag]=elemPag>
+    </app-pagination>-->
 </body>
+
+<app-footer></app-footer>

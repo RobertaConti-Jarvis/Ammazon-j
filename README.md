@@ -10,3 +10,5 @@ Gruppo 4: Montero https://meet.google.com/vbc-cgvd-nix + https://meet.google.com
 
 
 Responsabile Controllo di Configurazione: Marro
+
+Linee guida lato Client CSS. "impostazione CSS.txt"
