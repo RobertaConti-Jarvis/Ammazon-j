@@ -68,12 +68,13 @@ public class AssociaColoriProdottiServiceImpl implements AssociaColoriProdottiSe
         ProdottoColore prodottoColore = dto.getProdottoColore();
         Prodotto prodotto = prodottoColore.getProdotto();
         VarianteColore varianteColore = prodottoColore.getVarianteColore();
-        prodottoColore = prodottoColoreRepository.seleziona(prodotto.getId(), varianteColore.getId());
+        prodottoColore = prodottoColoreRepository.disassociaProdottoColore(prodotto.getId(), varianteColore.getId());
         prodottoColoreRepository.deleteById(prodottoColore.getId());
+        
 
         List<VarianteColore> listaColoriAssociati = prodottoColoreRepository.selezionaColoriAssociatiProdotto(prodotto.getId());
 
-        List<VarianteColore> listaColoriNonAssociati = prodottoColoreRepository.selezionaColoriAssociatiProdotto(prodotto.getId());
+        List<VarianteColore> listaColoriNonAssociati = prodottoColoreRepository.selezionaColoriNonAssociatiProdotto(prodotto.getId());
         return new ListeColoriProdottoDto(listaColoriAssociati, listaColoriNonAssociati);
     }
 
