@@ -3,17 +3,17 @@ IMPOSTAZIONE CSS
 1. Ogni pagina va impostata nel seguente modo:
 
 	<app-header></app-header>
-	<body>
+	<div class="body">
 	  .......	
 	  ..........
 	  .......
-	</body>
+	</div>
 	<app-footer></app-footer>
 
 
-2. Ogni pagina ha un titolo impostato appena sotto il tag <body> con il tag <h2> come segue:
+2. Ogni pagina ha un titolo impostato appena sotto il tag <div class="body"> con il tag <h2> come segue:
 
-	<body>
+	<div class="body">
  	  <h2>"titolo della pagina"</h2>
 
 3. Prima della barra di ricerca dopo il blocco del button "Nuova", vanno inseriti i tag:
