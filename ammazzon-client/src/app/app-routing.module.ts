@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AnagraficaProdottoComponent } from './anagrafica-prodotto/anagrafica-prodotto.component';
 import { AssociaColoriAProdottiComponent } from './associa-colori-a-prodotti/associa-colori-a-prodotti.component';
 import { AssociaTaglieColoriComponent } from './associa-taglie-colori/associa-taglie-colori.component';
+import { GestioneCarrelloComponent } from './gestione-carrello/gestione-carrello.component';
 import { GestioneUtenteRegistratoComponent } from './gestione-utente-registrato/gestione-utente-registrato.component';
 import { GestisciColoriComponent } from './gestisci-colori/gestisci-colori.component';
 import { GestisciTaglieComponent } from './gestisci-taglie/gestisci-taglie.component';
@@ -24,7 +25,9 @@ const routes: Routes = [
   { path: 'login', component: LoginPageComponent},
   { path: 'report-ordini', component: ReportOrdiniComponent},
   { path: 'ricerca-catalogo', component: RicercaCatalogoComponent},
+  { path: 'gestione-carrello', component: GestioneCarrelloComponent},
   { path: '', redirectTo: '/home-page', pathMatch: 'full' }
+  
 ];
 
 @NgModule({

@@ -1,6 +1,6 @@
 import { UtenteRegistrato } from "../entità/utente-registrato";
 
-export class EsitoLoginDto{
-    esitoLogin : boolean;
+export class EsitoUtenteDto{
+    esito : boolean;
     utenteReg : UtenteRegistrato;
 }

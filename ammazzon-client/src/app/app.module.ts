@@ -20,6 +20,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { ReportOrdiniComponent } from './report-ordini/report-ordini.component';
 import { BarraRicercaComponent } from './barra-ricerca/barra-ricerca.component';
 import { RicercaCatalogoComponent } from './ricerca-catalogo/ricerca-catalogo.component';
+import { GestioneCarrelloComponent } from './gestione-carrello/gestione-carrello.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { RicercaCatalogoComponent } from './ricerca-catalogo/ricerca-catalogo.co
     ReportOrdiniComponent,
     BarraRicercaComponent,
     RicercaCatalogoComponent,
+    GestioneCarrelloComponent,
     
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
