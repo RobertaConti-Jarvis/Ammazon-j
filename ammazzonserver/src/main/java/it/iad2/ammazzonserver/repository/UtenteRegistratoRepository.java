@@ -1,5 +1,6 @@
 package it.iad2.ammazzonserver.repository;
 
+import it.iad2.ammazzonserver.model.UtenteAnonimo;
 import it.iad2.ammazzonserver.model.UtenteRegistrato;
 
 import java.util.List;
@@ -18,8 +19,11 @@ public interface UtenteRegistratoRepository extends JpaRepository<UtenteRegistra
 
     @Query("select u from UtenteRegistrato u")
     Page<UtenteRegistrato> elementiPaginatiUtente(Pageable p);
-    
+
     @Query("select u from UtenteRegistrato u "
             + "where u.username = :username")
     UtenteRegistrato findUsername(@Param("username") String username);
+
+    @Query("select u from UtenteRegistrato u where u.tokenRegistrato = :token")
+    UtenteRegistrato cercaUtenteRegistratoPerToken(@Param("token") String token);
 }

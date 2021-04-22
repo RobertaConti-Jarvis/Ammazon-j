@@ -2,13 +2,19 @@ package it.iad2.ammazzonserver.dto;
 
 import it.iad2.ammazzonserver.model.ColoreTaglia;
 
-public class ColoreTagliaDto {
+public class ColoreTagliaDto extends BaseRequestDto {
+
     private ColoreTaglia coloreTaglia;
 
     public ColoreTagliaDto() {
     }
 
     public ColoreTagliaDto(ColoreTaglia coloreTaglia) {
+        this.coloreTaglia = coloreTaglia;
+    }
+
+    public ColoreTagliaDto(ColoreTaglia coloreTaglia, String sessionToken) {
+        super(sessionToken);
         this.coloreTaglia = coloreTaglia;
     }
 
@@ -19,5 +25,5 @@ public class ColoreTagliaDto {
     public void setColoreTaglia(ColoreTaglia coloreTaglia) {
         this.coloreTaglia = coloreTaglia;
     }
-    
+
 }

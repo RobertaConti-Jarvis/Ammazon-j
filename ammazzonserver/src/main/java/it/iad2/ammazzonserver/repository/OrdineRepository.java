@@ -17,4 +17,7 @@ public interface OrdineRepository extends JpaRepository<Ordine, Long> {
 
     @Query("select o from Ordine o")
     Page<Ordine> elementiPaginatiReport(Pageable o);
+    
+    @Query("select max (numero) from Ordine")
+    Integer findMaxNumeroOrdine();
 }
