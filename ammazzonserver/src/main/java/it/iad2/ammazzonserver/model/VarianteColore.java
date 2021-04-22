@@ -1,6 +1,7 @@
 package it.iad2.ammazzonserver.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
@@ -11,7 +12,7 @@ import javax.persistence.OneToMany;
 import java.io.Serializable;
 
 @Entity
-public class VarianteColore implements Serializable{
+public class VarianteColore implements Serializable {
 
     @Id
     @GeneratedValue
@@ -26,6 +27,7 @@ public class VarianteColore implements Serializable{
     // relazione OneToMany ProdottoColore
     @JsonIgnore
     @OneToMany(mappedBy = "varianteColore")
+    @JsonIgnoreProperties(value = "varianteColore", allowGetters = true, allowSetters = true)
     private List<ProdottoColore> listaProdottoColore;
 
     public VarianteColore() {

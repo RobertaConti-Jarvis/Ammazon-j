@@ -12,12 +12,16 @@ import it.iad2.ammazzonserver.repository.VarianteColoreRepository;
 import it.iad2.ammazzonserver.service.AssociaColoriProdottiService;
 import java.util.ArrayList;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class AssociaColoriProdottiServiceImpl implements AssociaColoriProdottiService {
+
+    private static final Logger logger = LoggerFactory.getLogger(AssociaColoriProdottiServiceImpl.class);
 
     @Autowired
     ProdottoRepository prodottoRepository;
@@ -60,7 +64,6 @@ public class AssociaColoriProdottiServiceImpl implements AssociaColoriProdottiSe
         prodottoColoreRepository.deleteById(prodottoColore.getId());
 
         List<VarianteColore> listaColoriAssociati = prodottoColoreRepository.selezionaColoriAssociatiProdotto(prodotto.getId());
-
         List<VarianteColore> listaColoriNonAssociati = prodottoColoreRepository.selezionaColoriNonAssociatiProdotto(prodotto.getId());
         return new ListeColoriProdottoDto(listaColoriAssociati, listaColoriNonAssociati);
     }
@@ -68,11 +71,32 @@ public class AssociaColoriProdottiServiceImpl implements AssociaColoriProdottiSe
     @Override
     @Transactional
     public ListeColoriProdottoDto spostaInAssociati(ProdottoColoreDto dto) {
-        ProdottoColore prodottoColore = dto.getProdottoColore();
+        logger.debug("Siamo in spostaInAssociati " + dto);
+        var prodottoColore = new ProdottoColore();
         prodottoColore = prodottoColoreRepository.save(prodottoColore);
-        Prodotto prodotto = prodottoColore.getProdotto();
-        List<VarianteColore> listaColoriAssociati = prodottoColoreRepository.selezionaColoriAssociatiProdotto(prodotto.getId());
 
+        // recupero aggiornato da DB
+        var prodotto = dto.getProdottoColore().getProdotto();
+        prodotto = prodottoRepository.findById(prodotto.getId()).get();
+        logger.debug("Prodotto recuperato " + prodotto.getId());
+
+        // recupero aggiornato da DB
+        var colore = dto.getProdottoColore().getVarianteColore();
+        colore = varianteColoreRepository.findById(colore.getId()).get();
+        logger.debug("Colore recuperato " + colore.getId());
+
+        // associo
+        prodottoColore.setProdotto(prodotto);
+        prodottoColore.setVarianteColore(colore);
+        prodottoColore = prodottoColoreRepository.save(prodottoColore);
+        prodotto.getListaProdottoColore().add(prodottoColore);
+        prodotto = prodottoRepository.save(prodotto);
+        colore.getListaProdottoColore().add(prodottoColore);
+        colore = varianteColoreRepository.save(colore);
+        logger.debug("Associazioni completate");
+
+        // recupero la situazione aggiornata
+        List<VarianteColore> listaColoriAssociati = prodottoColoreRepository.selezionaColoriAssociatiProdotto(prodotto.getId());
         List<VarianteColore> listaColoriNonAssociati = prodottoColoreRepository.selezionaColoriNonAssociatiProdotto(prodotto.getId());
         return new ListeColoriProdottoDto(listaColoriAssociati, listaColoriNonAssociati);
 
@@ -97,11 +121,18 @@ public class AssociaColoriProdottiServiceImpl implements AssociaColoriProdottiSe
     @Override
     @Transactional
     public ListeColoriProdottoDto disassociaTutti(Prodotto prodotto) {
-        System.out.println("prodotto selezionato: " + prodotto);
+       logger.debug("prodotto selezionato: " + prodotto);
+       // recupero aggiornato dl DB
+       prodotto = prodottoRepository.findById(prodotto.getId()).get();
+       
+       // ottengo lista colori associati
         var listaAssociazioni = prodotto.getListaProdottoColore();
-        System.out.println("lista associazioni: " + listaAssociazioni.size());
-        prodottoColoreRepository.deleteAll(listaAssociazioni);
+       logger.debug("lista associazioni: " + listaAssociazioni.size());
+        
+       // rimuovo tutte le associazioni
+       prodottoColoreRepository.deleteAll(listaAssociazioni);
 
+       // aggiorno i dati per il client
         List<VarianteColore> coloriAssociati = prodottoColoreRepository.selezionaColoriAssociatiProdotto(prodotto.getId());
         List<VarianteColore> coloriNonAssociati = prodottoColoreRepository.selezionaColoriNonAssociatiProdotto(prodotto.getId());
         return new ListeColoriProdottoDto(coloriAssociati, coloriNonAssociati);

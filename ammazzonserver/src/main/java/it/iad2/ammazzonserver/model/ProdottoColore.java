@@ -23,11 +23,13 @@ public class ProdottoColore implements Serializable {
     @JsonIgnore
     @OneToMany(mappedBy = "prodottoColore")
     private List<ColoreTaglia> listaColoreTaglia;
+    
     // relazione ManyToOne con Prodotto
     @JsonIgnoreProperties(value = "listaProdottoColore", allowGetters = true , allowSetters = true)
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
     private Prodotto prodotto;
+    
     // relazione ManyToOne con VarianteColore
     @JsonIgnoreProperties(value = "listaProdottoColore", allowGetters = true , allowSetters = true)
     @ManyToOne
