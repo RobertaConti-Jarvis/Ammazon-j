@@ -20,7 +20,7 @@
         </div>
 
         <div>
-            <button (click)="signIn()" [disabled]="disableButtonR">Registrazione</button>
+            <button (click)="signIn()" [disabled]="!(usernameOk && passwordOk && emailOk)">Registrazione</button>
         </div>
     </div>
 </body>

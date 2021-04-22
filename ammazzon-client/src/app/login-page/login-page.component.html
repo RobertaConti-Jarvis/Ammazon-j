@@ -15,7 +15,7 @@
             <label>{{errorPassword}}</label>
         </div>
         <div>
-            <button [disabled]="disableButtonL" (click)="checkLogin()">Login</button>
+            <button [disabled]="!(usernameOk && passwordOk)" (click)="checkLogin()">Login</button>
         </div>
         <br>
         <br>

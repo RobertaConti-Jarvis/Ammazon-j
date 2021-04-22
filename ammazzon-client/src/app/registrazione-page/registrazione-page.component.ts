@@ -1,8 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { EsitoDto } from '../dto/esito-dto';
+import { EsitoUtenteDto } from '../dto/esito-utente-dto';
 import { UsernameDto } from '../dto/username-dto';
+import { UtenteRegistratoDto } from '../dto/utente-registrato-dto';
 import { UtenteRegistrato } from '../entità/utente-registrato';
 
 @Component({
@@ -13,19 +16,22 @@ import { UtenteRegistrato } from '../entità/utente-registrato';
 export class RegistrazionePageComponent implements OnInit {
 
   utenteReg = new UtenteRegistrato();
-  esitoRegistrazione : boolean;
   errorMsg : string = "";
   errorUsername : string = "";
   errorPassword : string = "";
   errorEmail : string = "";
-  disableButtonR : boolean = true; //modificare css per button
+  //variabili bottone registrazione
+  usernameOk : boolean = false;
+  passwordOk : boolean = false;
+  emailOk : boolean = false;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   checkUsername(){ 
+    
     let dto : UsernameDto = new UsernameDto();
     dto.username = this.utenteReg.username;
     let oss: Observable<EsitoDto> = this.http.post<EsitoDto>( 
@@ -33,13 +39,19 @@ export class RegistrazionePageComponent implements OnInit {
     );
     oss.subscribe( c =>{
       if (c.esito){
-        this.disableButtonR = false;
+        this.usernameOk = true;
       }
       else{
-        this.disableButtonR = true;
+        this.usernameOk = false;
         this.errorUsername = "Username già utilizzato!";
       }
     });
+    /*if (this.utenteReg.username){   //test funzionamenti senza utilizzare il server
+      this.usernameOk = true;
+    }
+    else{
+      this.usernameOk = false;
+    }*/
   }
 
   checkPassword(){
@@ -49,11 +61,11 @@ export class RegistrazionePageComponent implements OnInit {
     console.log("searcFind Password: " , searchFind);
     console.log("password: ", this.utenteReg.password);
     if (searchFind){
-      this.disableButtonR = false;
+      this.passwordOk = true;
       this.errorPassword = "";
     }
     else{
-      this.disableButtonR = true;
+      this.passwordOk = false;
       this.errorPassword = "Password non valida!"
     }
   }
@@ -68,17 +80,31 @@ export class RegistrazionePageComponent implements OnInit {
     console.log("searcFind Email: " , searchFind);
     console.log("email: ", this.utenteReg.email);
     if(searchFind){
-      this.disableButtonR = false;
+      this.emailOk = true;
       this.errorEmail = "";
     }
     else{
-      this.disableButtonR = true;
+      this.emailOk = false;
       this.errorEmail = "Email non valida!"
     }
   }
 
 
   signIn(){
-
+    let dto: UtenteRegistratoDto = new UtenteRegistratoDto();
+    dto.utenteRegistrato = this.utenteReg;
+    let oss: Observable<EsitoUtenteDto> = this.http.post<EsitoUtenteDto>( 
+      "http://localhost:8080/registrazione",dto
+    );
+    oss.subscribe(r => {
+      this.utenteReg = r.utenteReg;
+      if (r.esito){
+        this.router.navigateByUrl("/login");
+        this.errorMsg = "";
+      }
+      else{
+        this.errorMsg = "Email già utilizzata!";
+      }
+    });
   }
 }
