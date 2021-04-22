@@ -11,6 +11,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface QtaOrdineVarianteRepository extends JpaRepository<QtaOrdineVariante, Long> {
 
-    @Query("select q from QtaOrdineVariante where q.coloreTaglia = :coloreTaglia AND q.ordine= :ordine")
-    QtaOrdineVariante cercaQtaOrdine(@Param("coloreTaglia") ColoreTaglia coloreTaglia, @Param("ordine") Ordine ordine);
+//    @Query("select q from QtaOrdineVariante where q.coloreTaglia = :coloreTaglia AND q.ordine= :ordine")
+//    QtaOrdineVariante cercaQtaOrdine(@Param("coloreTaglia") ColoreTaglia coloreTaglia, @Param("ordine") Ordine ordine);
 }
