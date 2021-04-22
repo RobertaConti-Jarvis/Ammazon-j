@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { EsitoLoginDto } from '../dto/esito-login-dto';
+import { EsitoUtenteDto } from '../dto/esito-utente-dto';
 import { UtenteRegistratoDto } from '../dto/utente-registrato-dto';
 import { UtenteRegistrato } from '../entità/utente-registrato';
 
@@ -14,11 +14,13 @@ import { UtenteRegistrato } from '../entità/utente-registrato';
 export class LoginPageComponent implements OnInit {
 
   utenteReg = new UtenteRegistrato();
-  esitoLogin : boolean;
   errorMsg : string = "";
-  disableButtonL : boolean;
+  disableButtonL : boolean = true;
   errorPassword : string;
   errorUsername : string;
+  //variabili bottone login
+  usernameOk : boolean = false;
+  passwordOk : boolean = false;
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -28,9 +30,11 @@ export class LoginPageComponent implements OnInit {
   checkUsername(){
     if(!this.utenteReg.username){
       this.errorUsername = "inserisci un Username";
+      this.usernameOk = false;
     }
     else{
       this.errorUsername = "";
+      this.usernameOk = true;
     }
   }
 
@@ -41,11 +45,11 @@ export class LoginPageComponent implements OnInit {
     console.log("searcFind Password: " , searchFind);
     console.log("password: ", this.utenteReg.password);
     if (searchFind){
-      this.disableButtonL = false;
+      this.passwordOk = true;
       this.errorPassword = "";
     }
     else{
-      this.disableButtonL = true;
+      this.passwordOk = false;
       this.errorPassword = "Password non valida!"
     }
   }
@@ -53,11 +57,11 @@ export class LoginPageComponent implements OnInit {
   checkLogin(){
     let dto: UtenteRegistratoDto = new UtenteRegistratoDto();
     dto.utenteRegistrato = this.utenteReg;
-    let oss: Observable<EsitoLoginDto> = this.http.post<EsitoLoginDto>( 
+    let oss: Observable<EsitoUtenteDto> = this.http.post<EsitoUtenteDto>( 
       "http://localhost:8080/check-login",dto
     );
     oss.subscribe(v => {
-      if (v.esitoLogin){
+      if (v.esito){
         this.utenteReg = v.utenteReg;
         this.router.navigateByUrl("/home-page");
         this.errorMsg = "";
