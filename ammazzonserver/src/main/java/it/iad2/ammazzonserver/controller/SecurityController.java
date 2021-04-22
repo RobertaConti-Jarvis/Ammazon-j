@@ -18,15 +18,16 @@ public class SecurityController {
     @Autowired
     SecurityService securityService;
     
-    @RequestMapping("/check-login")
-    @ResponseBody
-    EsitoUtenteDto checkLogin(@RequestBody UtenteRegistratoDto dto) {
-        return securityService.checkLogin(dto.getUtenteRegistrato());
-    }
     @RequestMapping("/check-username")
     @ResponseBody
     EsitoDto checkusername(@RequestBody UsernameDto dto) {
         return new EsitoDto(securityService.checkUsername(dto.getUsername()));
+    }
+    
+    @RequestMapping("/check-login")
+    @ResponseBody
+    EsitoUtenteDto checkLogin(@RequestBody UtenteRegistratoDto dto) {
+        return securityService.checkLogin(dto.getUtenteRegistrato());
     }
     
     @RequestMapping("/registrazione")

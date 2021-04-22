@@ -1,25 +1,36 @@
 <app-header></app-header>
 
-<body>
+<div class="body">
     <div>
         <h2> Login </h2>
         <hr>
-        <div>
-            <label>Username</label>
-            <input type="text" [(ngModel)]="utenteReg.username" (blur)= "checkUsername()" />
-            <label>{{errorUsername}}</label>
-        </div>
-        <div>
-            <label>Password</label>
-            <input type="password" [(ngModel)]="utenteReg.password" (blur)="checkPassword()" />
-            <label>{{errorPassword}}</label>
-        </div>
-        <div>
-            <button [disabled]="!(usernameOk && passwordOk)" (click)="checkLogin()">Login</button>
+        <div class="divLogReg">
+            <table class="divLogReg">
+                <tr>
+                    <td><label>Username</label></td>
+                    <td><input type="text" [(ngModel)]="utenteReg.username" (ngModelChange)="checkUsername()" /></td>
+
+                </tr>
+            </table>
+            <div class="spaziofisso">
+                <label>{{errorUsername}}</label>
+            </div>
+            <table class="divLogReg">
+                <tr>
+                    <td><label>Password</label></td>
+                    <td><input type="password" [(ngModel)]="utenteReg.password" (ngModelChange)="checkPassword()"/></td>
+                </tr>
+            </table>
+            <div class="spaziofisso">
+                <label>{{errorPassword}}</label>
+            </div>
+            <div class="margine">
+                <button [disabled]="!(usernameOk && passwordOk)" (click)="checkLogin()">Login</button>
+            </div>
         </div>
         <br>
         <br>
         <label>{{errorMsg}}</label>
     </div>
-</body>
+</div>
 <app-footer></app-footer>

@@ -34,12 +34,14 @@ export class RegistrazionePageComponent implements OnInit {
     
     let dto : UsernameDto = new UsernameDto();
     dto.username = this.utenteReg.username;
+    console.log(this.utenteReg.username);
     let oss: Observable<EsitoDto> = this.http.post<EsitoDto>( 
       "http://localhost:8080/check-username",dto
     );
     oss.subscribe( c =>{
       if (c.esito){
         this.usernameOk = true;
+        this.errorUsername = "";
       }
       else{
         this.usernameOk = false;

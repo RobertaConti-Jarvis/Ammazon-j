@@ -1,0 +1,8 @@
+tocTab[tocTab.length] = new Array("0.6.2.3:1", "", "Login", "EARoot/EA6/EA2/EA3/EA273.htm", "181.png", "280", "0", "", "Activity diagram0","{A18DBC40-FC64-42de-8190-03001C670636}");
+tocTab[tocTab.length] = new Array("0.6.2.3:2", "", "ActivityFinal", "EARoot/EA6/EA2/EA3/EA276.htm", "69.png", "E2521", "0", "", "StateNode0","{4DEE0376-5AAF-4456-B22A-C709FF7C9FF8}");
+tocTab[tocTab.length] = new Array("0.6.2.3:3", "", "ActivityInitial", "EARoot/EA6/EA2/EA3/EA277.htm", "68.png", "E2516", "0", "", "StateNode0","{605732DE-FC21-458c-BA49-59AB427C8602}");
+tocTab[tocTab.length] = new Array("0.6.2.3:4", "", "Genera nuovo token e assegnalo all&#39;utente registrato", "EARoot/EA6/EA2/EA3/EA278.htm", "104.png", "E2518", "0", "", "Action0","{D13DEEBA-D5FE-4a4f-A03F-377159BEC552}");
+tocTab[tocTab.length] = new Array("0.6.2.3:5", "", "Imposta a null il token anonimo dell&#39;utente anonimo", "EARoot/EA6/EA2/EA3/EA279.htm", "104.png", "E2520", "0", "", "Action0","{CD2DC683-6F03-4355-AB35-71843764B1EF}");
+tocTab[tocTab.length] = new Array("0.6.2.3:6", "", "Login", "EARoot/EA6/EA2/EA3/EA280.htm", "104.png", "E2517", "0", "", "Action0","{7FBDBB75-9323-4582-9F5D-979F13EA03EC}");
+tocTab[tocTab.length] = new Array("0.6.2.3:7", "", "Ritorna il token registrato al client", "EARoot/EA6/EA2/EA3/EA281.htm", "104.png", "E2522", "0", "", "Action0","{3DCAFB12-C898-494a-A0F2-094876141BAC}");
+tocTab[tocTab.length] = new Array("0.6.2.3:8", "", "Trasferisci dati da anonimo a registrato", "EARoot/EA6/EA2/EA3/EA282.htm", "104.png", "E2519", "0", "", "Action0","{FE807912-9643-4c07-A325-2D2583D5A73D}");

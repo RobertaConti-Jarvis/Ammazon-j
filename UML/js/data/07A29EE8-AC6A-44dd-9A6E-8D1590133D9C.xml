@@ -1,0 +1,3 @@
+tocTab[tocTab.length] = new Array("0.6.2.2:1", "", "Generic request", "EARoot/EA6/EA2/EA2/EA268.htm", "185.png", "277", "0", "", "Sequence diagram0","{1F975D12-6B1F-45fc-B863-FE30A4E94E9E}");
+tocTab[tocTab.length] = new Array("0.6.2.2:2", "", "Client", "EARoot/EA6/EA2/EA2/EA271.htm", "57.png", "E2501", "0", "", "Sequence0","{62C09604-CEAC-47ad-9F18-7568EDBA8EE5}");
+tocTab[tocTab.length] = new Array("0.6.2.2:3", "", "Server", "EARoot/EA6/EA2/EA2/EA272.htm", "57.png", "E2502", "0", "", "Sequence0","{14CA355E-1D48-4f9f-9395-D8BE5D7DACCA}");

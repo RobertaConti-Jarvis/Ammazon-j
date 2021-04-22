@@ -12,14 +12,20 @@ public class SecurityServiceImpl implements SecurityService{
     
     @Autowired
     UtenteRegistratoRepository utenteRegistratoRepository;
-
+    
     @Override
-    public EsitoUtenteDto checkLogin(UtenteRegistrato utenteRegistrato) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean checkUsername(String username) {
+        UtenteRegistrato u = utenteRegistratoRepository.findUsername(username);
+        if(u != null){
+            return false;
+        }
+        else{
+            return true;
+        }
     }
 
     @Override
-    public boolean checkUsername(String username) {
+    public EsitoUtenteDto checkLogin(UtenteRegistrato utenteRegistrato) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

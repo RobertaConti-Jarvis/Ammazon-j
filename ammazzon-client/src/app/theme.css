@@ -9,7 +9,7 @@
     padding: 30px 30px 30px 30px;
 }
 
-body {
+.body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: rgb(185, 247, 255);
     width: auto;
@@ -23,6 +23,11 @@ body {
     width: auto;
     height: auto;
     padding: 30px 30px 30px 30px;
+}
+
+.divLogReg {
+    width: 450px;
+    text-align: center;
 }
 
 h1 {
@@ -45,9 +50,11 @@ p {
     font-family: Arial, Helvetica, sans-serif;
     color: #333;
 }
-.BGffffff{
-    background:#ffffff;
+
+.BGffffff {
+    background: #ffffff;
 }
+
 .toolbar {
     font-family: Arial, Helvetica, sans-serif;
     columns: #ffffff;
@@ -179,6 +186,7 @@ p {
     padding: 12px 20px 12px 35px;
     text-align: right;
 }
+
 .inputNumber {
     height: 40px;
     width: auto;
@@ -192,7 +200,8 @@ p {
     font-size: 16px;
     text-align: center;
 }
-select{
+
+select {
     height: 40px;
     width: auto;
     margin-top: 5px;
@@ -203,8 +212,9 @@ select{
     border: 2px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
-    text-align: left; 
+    text-align: left;
 }
+
 /*.selectNumber {
     height: 40px;
     width: auto;
@@ -265,6 +275,16 @@ Button:hover {
 }
 
 Button:active {
+    position: relative;
+    top: 1px;
+}
+
+Button:disabled {
+    border-color: none;
+    box-shadow: 3px 4px 0px 0px #2b4c6b;
+    background: linear-gradient(to bottom, #a6d3ff 5%, #385572 100%);
+    background-color: #79bbff;
+    color: #685f5f;
     position: relative;
     top: 1px;
 }
@@ -358,6 +378,13 @@ tr:nth-child(odd) {
 
 tr:nth-child(even) {
     height: 45px;
+}
+
+.td1 {
+    width: 30%;
+}
+.spaziofisso{
+    height: 20px;
 }
 
 /* TOTALE DASH */

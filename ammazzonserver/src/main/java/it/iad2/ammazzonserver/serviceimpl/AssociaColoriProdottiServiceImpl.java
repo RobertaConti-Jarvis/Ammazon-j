@@ -42,25 +42,10 @@ public class AssociaColoriProdottiServiceImpl implements AssociaColoriProdottiSe
         List<VarianteColore> listatuttiColori = varianteColoreRepository.findAll();
 
         List<VarianteColore> listaSelezionati = new ArrayList<>();
-        
-            listaSelezionati = listatuttiColori;
-      
-        return new ListeColoriProdottoDto(listaColoriAssociati, listaColoriNonAssociati);
 
-//        return new ListeColoriProdottoDto(listaColoriAssociati, listaColoriNonAssociati);
-//        List<VarianteColore> listaColoriNonAssociati = varianteColoreRepository.findAll();
-//        List<VarianteColore> listaColoritutti = varianteColoreRepository.findAll();
-//        List<VarianteColore>listaSelezionati = new ArrayList<>();
-//        for(VarianteColore vc: listaColoritutti ){
-//           for(VarianteColore vv: listaSelezionati){
-//               if (vv.getId() != vc.getId()){
-//                   listaSelezionati.add(vv);
-//               }
-//               
-//           }
-//            
-//        }
-        //return new ListeColoriProdottoDto(listaColoriAssociati, listaColoriNonAssociati);
+        listaSelezionati = listatuttiColori;
+
+        return new ListeColoriProdottoDto(listaColoriAssociati, listaColoriNonAssociati);
     }
 
     @Override
@@ -70,7 +55,6 @@ public class AssociaColoriProdottiServiceImpl implements AssociaColoriProdottiSe
         VarianteColore varianteColore = prodottoColore.getVarianteColore();
         prodottoColore = prodottoColoreRepository.disassociaProdottoColore(prodotto.getId(), varianteColore.getId());
         prodottoColoreRepository.deleteById(prodottoColore.getId());
-        
 
         List<VarianteColore> listaColoriAssociati = prodottoColoreRepository.selezionaColoriAssociatiProdotto(prodotto.getId());
 
@@ -92,16 +76,17 @@ public class AssociaColoriProdottiServiceImpl implements AssociaColoriProdottiSe
 
     @Override
     public ListeColoriProdottoDto associaTutti(Prodotto prodotto) {
-        //List<VarianteColore> listaColori = varianteColoreRepository.findAll();
-        //List<VarianteColore> listaColoriAssociati = prodottoColoreRepository.selezionaColoriAssociatiProdotto(prodotto.getId());
-        //listaColori.removeAll(listaColori);
-        //for (listaColori lista)
-        
-        //ProdottoColore pc = new ProdottoColore();
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        
-        
-        
+        List<VarianteColore> listaColori = varianteColoreRepository.findAll();
+        List<VarianteColore> listaColoriAssociati = prodottoColoreRepository.selezionaColoriAssociatiProdotto(prodotto.getId());
+        listaColori.removeAll(listaColoriAssociati);
+        for (VarianteColore colore:  listaColori ){
+            ProdottoColore prodottoColore = new ProdottoColore();
+            prodottoColore.setVarianteColore(colore);
+            prodottoColore.setProdotto(prodotto);
+            prodottoColoreRepository.save(prodottoColore);
+        }
+        List<VarianteColore> listaColoriNonAssociati = new ArrayList<>();
+        return new ListeColoriProdottoDto (listaColori, listaColoriNonAssociati);
     }
 
     @Override

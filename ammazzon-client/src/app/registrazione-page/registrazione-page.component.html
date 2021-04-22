@@ -1,27 +1,42 @@
 <app-header></app-header>
-<body>
+<div class="body">
     <div>
         <h2> Registrazione </h2>
         <hr>
-        <div>
-            <label>Username</label>
-            <input type="text" [(ngModel)]="utenteReg.username" (ngModelChange)="checkUsername()" />
-            <label>{{errorUsername}}</label>
-        </div>
-        <div>
-            <label>Password</label>
-            <input type="password" [(ngModel)]="utenteReg.password" (blur)="checkPassword()" />
-            <label>{{errorPassword}}</label>
-        </div>
-        <div>
-            <label>Email</label>
-            <input type="text" [(ngModel)]="utenteReg.email" (blur) = "checkEmail()"/>
-            <label>{{errorEmail}}</label>
-        </div>
 
-        <div>
-            <button (click)="signIn()" [disabled]="!(usernameOk && passwordOk && emailOk)">Registrazione</button>
+        <div class="divLogReg">
+            <table class="divLogReg">
+                <tr>
+                    <td class="td1"><label>Username</label></td>
+                    <td><input type="text" [(ngModel)]="utenteReg.username" (ngModelChange)="checkUsername()" /></td>
+                </tr>
+            </table>
+            <div class="spaziofisso">
+                <label>{{errorUsername}}</label>
+            </div>
+            <table class="divLogReg">
+                <tr>
+                    <td class="td1"><label>Password</label></td>
+                    <td><input type="password" [(ngModel)]="utenteReg.password" (ngModelChange)="checkPassword()" /></td>
+                </tr>
+            </table>
+            <div class="spaziofisso">
+                <label>{{errorPassword}}</label>
+            </div>
+            <table class="divLogReg">
+                <tr>
+                    <td class="td1"><label> Email </label></td>
+                    <td><input type="text" [(ngModel)]="utenteReg.email" (ngModelChange)="checkEmail()" /></td>
+                </tr>
+            </table>
+            <div class="spaziofisso">
+                <label>{{errorEmail}}</label>
+            </div>
+
+            <div class="margine">
+                <button (click)="signIn()" [disabled]="!(usernameOk && passwordOk && emailOk)">Registrazione</button>
+            </div>
         </div>
     </div>
-</body>
+</div>
 <app-footer></app-footer>

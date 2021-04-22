@@ -1,5 +1,5 @@
 <app-header></app-header>
-<body>
+<div class="body">
 
 
   <h2>Anagrafica Prodotti</h2>
@@ -27,7 +27,7 @@
   <br>
   <hr>
   <div *ngIf="searchVisible">
-    <input type="text" class="inputSearch" placeholder="Cerca per descrizione" [(ngModel)]="searchCriterion"/>
+    <input type="text" class="inputSearch" placeholder="Cerca per descrizione" [(ngModel)]="searchCriterion" />
     <button (click)="cercaPerDescrizione()" class="button">Cerca</button>
   </div>
   <div class="scrolldown">
@@ -54,5 +54,5 @@
     (last)="goToLast($event)" (numPaginaO)="caricaProdottiPaginati($event)" (pagSize)="setElemPag($event)"
     [numPaginaV]=numPaginaV [totalPages]=totalPages [elemPag]=elemPag>
   </app-pagination>
-</body>
+</div>
 <app-footer></app-footer>
