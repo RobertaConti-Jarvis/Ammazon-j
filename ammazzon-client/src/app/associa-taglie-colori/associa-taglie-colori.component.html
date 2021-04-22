@@ -19,6 +19,10 @@
         </tr>
     </table>
 </div>
+<app-pagination (next)="goToNext($event)" (prev)="goToPrevious($event)" (first)="goToFirst($event)"
+(last)="goToLast($event)" (numPaginaO)="caricaListaProdottiPaginati($event)" (pagSize)="setElemPag($event)"
+[numPaginaV]=numPaginaV [totalPages]=totalPages [elemPag]=elemPag>
+</app-pagination>
 <div>
     <table>
         <tr>

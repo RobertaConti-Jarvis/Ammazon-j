@@ -4,6 +4,7 @@ import it.iad2.ammazzonserver.dto.ListaProdottiDto;
 import it.iad2.ammazzonserver.dto.ListaColoreTaglieDto;
 import it.iad2.ammazzonserver.dto.ListaProdottiColoriDto;
 import it.iad2.ammazzonserver.dto.ListaVarianteTaglieDto;
+import it.iad2.ammazzonserver.dto.PageDto;
 import it.iad2.ammazzonserver.model.ColoreTaglia;
 import it.iad2.ammazzonserver.model.Prodotto;
 import it.iad2.ammazzonserver.model.ProdottoColore;
@@ -22,6 +23,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 
 @Service
 public class AssociaTaglieColoriProdServiceImpl implements AssociaTaglieColoriProdService {
@@ -44,9 +46,9 @@ public class AssociaTaglieColoriProdServiceImpl implements AssociaTaglieColoriPr
     QtaOrdineVarianteRepository qtaOrdineVarianteRepository;
 
     @Override
-    public ListaProdottiDto cercaProdottiPerCodiceDescrizione(String criterio) {
-        return new ListaProdottiDto(
-                prodottoRepository.cercaPerCriterioDescrizione(criterio, criterio));
+    public PageDto cercaProdottiPerCodiceDescrizione(String criterio, int numPage, int elemPage) {
+        return new PageDto(
+                prodottoRepository.cercaPerCriterioDescrizione(criterio, criterio, PageRequest.of(numPage, elemPage)));
     }
 
     @Override
