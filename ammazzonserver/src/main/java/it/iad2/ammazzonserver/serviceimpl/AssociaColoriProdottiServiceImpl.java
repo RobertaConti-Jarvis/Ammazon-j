@@ -90,4 +90,23 @@ public class AssociaColoriProdottiServiceImpl implements AssociaColoriProdottiSe
 
     }
 
+    @Override
+    public ListeColoriProdottoDto associaTutti(Prodotto prodotto) {
+        //List<VarianteColore> listaColori = varianteColoreRepository.findAll();
+        //List<VarianteColore> listaColoriAssociati = prodottoColoreRepository.selezionaColoriAssociatiProdotto(prodotto.getId());
+        //listaColori.removeAll(listaColori);
+        //for (listaColori lista)
+        
+        //ProdottoColore pc = new ProdottoColore();
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        
+        
+    }
+
+    @Override
+    public ListeColoriProdottoDto disassociaTutti(Prodotto prodotto) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

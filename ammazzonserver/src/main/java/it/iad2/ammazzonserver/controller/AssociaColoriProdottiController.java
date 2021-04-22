@@ -45,6 +45,19 @@ public class AssociaColoriProdottiController {
         return associaColoriProdottiService.spostaInAssociati(dto);
     }
     
+    @RequestMapping("/associa-tutti")
+    @ResponseBody
+    public ListeColoriProdottoDto associaTutti(@RequestBody ProdottoDto dto){
+        return associaColoriProdottiService.associaTutti(dto.getProdotto());
+    }
+    
+    @RequestMapping("disassocia-tutti")
+    @ResponseBody
+    public ListeColoriProdottoDto disassociaTutti(@RequestBody ProdottoDto dto){
+        return associaColoriProdottiService.associaTutti(dto.getProdotto());
+        
+    }
+    
     
     
 }

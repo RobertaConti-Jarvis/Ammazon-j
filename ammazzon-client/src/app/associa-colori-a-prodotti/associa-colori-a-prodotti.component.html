@@ -5,19 +5,24 @@
     <input class="input" type="text" placeholder="Cerca prodotto" [(ngModel)]="criterio">
     <div class="scrolldown">
         <table>
+            <thead>
             <tr>
                 <th>Codice</th>
                 <th>Descrizione</th>
                 <th>Prezzo</th>
             </tr>
+        </thead>
+        <tbody>
             <tr *ngFor="let p of listaProdotti">
                 <td>{{p.codice}}</td>
                 <td>{{p.descrizione}}</td>
                 <td>{{p.prezzo}}</td>
                 <td><button class="button" (click)="seleziona(p)">Seleziona</button></td>
             </tr>
-            <br>
+        </tbody>
+           
         </table>
+        <br>
     </div>
     <h2>Prodotto selezionato: {{prodotto.descrizione}} </h2>
     <h2>Colori già associati </h2>
