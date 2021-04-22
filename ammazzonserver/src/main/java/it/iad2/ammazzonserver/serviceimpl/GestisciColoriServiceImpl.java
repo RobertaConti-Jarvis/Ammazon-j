@@ -24,7 +24,7 @@ public class GestisciColoriServiceImpl implements GestisciColoriService {
         if (criterio == null) {
             lista = varianteColoreRepository.findAll();
         } else {
-            lista = varianteColoreRepository.findByCodiceContains(criterio);
+            lista = varianteColoreRepository.cercaColore(criterio, "%"+criterio+"%");
         }
         return new ListaVarianteColoreDto(lista);
     }

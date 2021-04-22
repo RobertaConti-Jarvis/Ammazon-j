@@ -19,8 +19,8 @@ public interface ProdottoRepository extends JpaRepository<Prodotto, Long> {
     @Query("select p from Prodotto p where p.codice= :c or p.descrizione like %:d%")
     List<Prodotto> cercaPerCriterioDescrizione(@Param("c") String c, @Param("d") String d);
     
-    @Query("select p from Prodotto p where p.codice= :c or p.descrizione like %:c%")
-    List<Prodotto> cercaPerCriterio(@Param("c") String c);
+//    @Query("select p from Prodotto p where p.codice= :c or p.descrizione like %:c%")
+//    List<Prodotto> cercaPerCriterio(@Param("c") String c);
 
     @Query("select p from Prodotto p where p.descrizione like %:criterio%")
     List<Prodotto> cercaLikeDescrizione(@Param("criterio") String criterio);

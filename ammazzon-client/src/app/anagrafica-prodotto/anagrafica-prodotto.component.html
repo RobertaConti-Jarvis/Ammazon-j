@@ -1,6 +1,6 @@
 <app-header></app-header>
 
-<body>
+
   <h2>Anagrafica Prodotti</h2>
 
   <h4 *ngIf="labelNuovoProdotto">
@@ -50,9 +50,9 @@
       </tbody>
     </table>
   </div>
-  <app-pagination (next)="goToNext($event)" (prev)="goToPrevious($event)" (first)="goToFirst($event)"
+  <!--<app-pagination (next)="goToNext($event)" (prev)="goToPrevious($event)" (first)="goToFirst($event)"
     (last)="goToLast($event)" (numPaginaO)="caricaProdottiPaginati($event)" (pagSize)="setElemPag($event)"
     [numPaginaV]=numPaginaV [totalPages]=totalPages [elemPag]=elemPag>
   </app-pagination>
-</body>
+</body>-->
 <app-footer></app-footer>
