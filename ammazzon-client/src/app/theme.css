@@ -25,6 +25,11 @@
     padding: 30px 30px 30px 30px;
 }
 
+.divLogReg {
+    width: 450px;
+    text-align: center;
+}
+
 h1 {
     font-family: Verdana, Arial, Helvetica, sans-serif;
     font-size: 40px;
@@ -373,6 +378,13 @@ tr:nth-child(odd) {
 
 tr:nth-child(even) {
     height: 45px;
+}
+
+.td1 {
+    width: 30%;
+}
+.spaziofisso{
+    height: 20px;
 }
 
 /* TOTALE DASH */

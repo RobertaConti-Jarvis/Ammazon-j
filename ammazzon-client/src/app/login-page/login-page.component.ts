@@ -55,6 +55,7 @@ export class LoginPageComponent implements OnInit {
   }
 
   checkLogin(){
+    
     let dto: UtenteRegistratoDto = new UtenteRegistratoDto();
     dto.utenteRegistrato = this.utenteReg;
     let oss: Observable<EsitoUtenteDto> = this.http.post<EsitoUtenteDto>( 
