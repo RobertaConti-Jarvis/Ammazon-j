@@ -11,4 +11,4 @@ Gruppo 4: Montero https://meet.google.com/vbc-cgvd-nix + https://meet.google.com
 
 Responsabile Controllo di Configurazione: Marro
 
-Linee guida lato Client CSS. "impostazione CSS.txt"
+Linee guida lato Client CSS. <a href="https://github.com/RobertaConti-Jarvis/Ammazon-j/blob/main/impostazione%20CSS.txt">"impostazione CSS.txt"</a>
