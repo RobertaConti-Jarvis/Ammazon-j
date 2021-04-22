@@ -6,8 +6,10 @@ import it.iad2.ammazzonserver.dto.ListaColoreTaglieDto;
 import it.iad2.ammazzonserver.dto.ListaProdottiColoriDto;
 import it.iad2.ammazzonserver.dto.ListaProdottiDto;
 import it.iad2.ammazzonserver.dto.ListaVarianteTaglieDto;
+import it.iad2.ammazzonserver.dto.PageDto;
 import it.iad2.ammazzonserver.dto.ProdottoColoreDto;
 import it.iad2.ammazzonserver.dto.ProdottoDto;
+import it.iad2.ammazzonserver.dto.RicercaDatiPageDto;
 import it.iad2.ammazzonserver.service.AssociaTaglieColoriProdService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,8 +31,8 @@ public class AssociaTaglieColoriProdController {
 
     @RequestMapping("/cerca-prodotti-criterio")
     @ResponseBody
-    public ListaProdottiDto mostraProdottiPerCodiceDescrizione(@RequestBody CriterioRicercaDto dto) {
-        return associaTaglieCPService.cercaProdottiPerCodiceDescrizione(dto.getCriterio());
+    public PageDto mostraProdottiPerCodiceDescrizione(@RequestBody RicercaDatiPageDto dto) {
+        return associaTaglieCPService.cercaProdottiPerCodiceDescrizione(dto.getCriterio(), dto.getNumPag(), dto.getElemPag());
     }
 
     @RequestMapping("/mostra-prodotto-colori")
