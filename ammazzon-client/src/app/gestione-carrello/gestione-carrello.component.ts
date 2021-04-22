@@ -39,7 +39,7 @@ caricaOrdineProdottiPaginati(numPaginaV: number) { // <--- personalizzare
     dto.numPag = this.numPaginaV - 1;
     dto.elemPag = this.elemPag;
     let oss: Observable<PageDto> = this.http.post<PageDto>
-      ("http://localhost:8080/carica-ordine-prodotti", dto); // <--- personalizzare 
+      ("http://localhost:8080/mostra-carrello", dto); // <--- personalizzare 
     oss.subscribe(v => {
       this.listaProdotti = v.listaElemPag.content; // <--- Personalizzare
       console.log("lista: " + this.listaProdotti);
