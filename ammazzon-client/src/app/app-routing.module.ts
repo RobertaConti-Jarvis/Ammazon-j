@@ -7,11 +7,12 @@ import { GestioneCarrelloComponent } from './gestione-carrello/gestione-carrello
 import { GestioneUtenteRegistratoComponent } from './gestione-utente-registrato/gestione-utente-registrato.component';
 import { GestisciColoriComponent } from './gestisci-colori/gestisci-colori.component';
 import { GestisciTaglieComponent } from './gestisci-taglie/gestisci-taglie.component';
+import { GruppoDueReduxComponent } from './gruppo-due-redux/gruppo-due-redux.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegistrazionePageComponent } from './registrazione-page/registrazione-page.component';
-import {ReportOrdiniComponent} from './report-ordini/report-ordini.component';
-import {RicercaCatalogoComponent} from './ricerca-catalogo/ricerca-catalogo.component';
+import { ReportOrdiniComponent } from './report-ordini/report-ordini.component';
+import { RicercaCatalogoComponent } from './ricerca-catalogo/ricerca-catalogo.component';
 
 const routes: Routes = [
   { path: 'gestisci-taglie', component: GestisciTaglieComponent },
@@ -20,14 +21,16 @@ const routes: Routes = [
   { path: 'home-page', component: HomePageComponent },
   { path: 'gestisci-colori', component: GestisciColoriComponent },
   { path: 'associa-colori-a-prodotti', component: AssociaColoriAProdottiComponent },
-  { path: 'gestione-utente-registrato', component: GestioneUtenteRegistratoComponent},
-  { path: 'registrazione', component: RegistrazionePageComponent},
-  { path: 'login', component: LoginPageComponent},
-  { path: 'report-ordini', component: ReportOrdiniComponent},
-  { path: 'ricerca-catalogo', component: RicercaCatalogoComponent},
-  { path: 'gestione-carrello', component: GestioneCarrelloComponent},
+  { path: 'gestione-utente-registrato', component: GestioneUtenteRegistratoComponent },
+  { path: 'registrazione', component: RegistrazionePageComponent },
+  { path: 'login', component: LoginPageComponent },
+  { path: 'report-ordini', component: ReportOrdiniComponent },
+  { path: 'ricerca-catalogo', component: RicercaCatalogoComponent },
+  { path: 'gestione-carrello', component: GestioneCarrelloComponent },
+  { path: 'redux-due', component: GruppoDueReduxComponent },
   { path: '', redirectTo: '/home-page', pathMatch: 'full' }
-  
+
+
 ];
 
 @NgModule({

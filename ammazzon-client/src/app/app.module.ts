@@ -21,6 +21,7 @@ import { ReportOrdiniComponent } from './report-ordini/report-ordini.component';
 import { BarraRicercaComponent } from './barra-ricerca/barra-ricerca.component';
 import { RicercaCatalogoComponent } from './ricerca-catalogo/ricerca-catalogo.component';
 import { GestioneCarrelloComponent } from './gestione-carrello/gestione-carrello.component';
+import { GruppoDueReduxComponent } from './gruppo-due-redux/gruppo-due-redux.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { GestioneCarrelloComponent } from './gestione-carrello/gestione-carrello
     BarraRicercaComponent,
     RicercaCatalogoComponent,
     GestioneCarrelloComponent,
+    GruppoDueReduxComponent,
     
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
