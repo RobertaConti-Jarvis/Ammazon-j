@@ -4,10 +4,11 @@ import { AutomabileCrud, State } from '../automa-crud/state';
 import { HttpClient } from '@angular/common/http';
 import { VarianteTaglia } from '../entità/variante-taglia';
 import { VarianteTagliaDto } from '../dto/variante-taglia-dto';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { ListaVarianteTagliaDto } from '../dto/lista-variante-taglia-dto';
 import { AddEvent, AnnullaEvent, ConfermaEvent, ModificaEvent, RicercaEvent, RimuoviEvent, SelezionaEvent } from '../automa-crud/eventi';
 import { CriterioRicercaDto } from '../dto/criterio-ricerca-dto';
+import { ReduxService } from '../redux.service';
 
 @Component({
   selector: 'app-gestisci-taglie',
@@ -28,13 +29,23 @@ export class GestisciTaglieComponent implements OnInit, AutomabileCrud {
   confAnnVisible: boolean = false;
   searchVisible: boolean = false;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private reduxService: ReduxService) {
+
+    reduxService.numeroConfirmedTre$.subscribe(
+      n => {console.log("Stringa da redux service: " + this.criterio)}
+    )
+   }
 
   ngOnInit(): void {
     this.aggiorna();
     this.automa = new Automa(this);
   }
 
+  reduxTest(){
+    this.reduxService.leggiNumeroTre(this.criterio);
+  }
+ 
+ 
   aggiungiAction() {
     if (this.taglia.codice != null) {
       let dto: VarianteTagliaDto = new VarianteTagliaDto();
@@ -98,6 +109,7 @@ export class GestisciTaglieComponent implements OnInit, AutomabileCrud {
     let oss: Observable<ListaVarianteTagliaDto> = this.http.post<ListaVarianteTagliaDto>('http://localhost:8080/ricerca-taglie', dto);
     oss.subscribe(r => this.taglie = r.listaVarianteTaglie);
     this.automa.next(new RicercaEvent());
+    this.reduxTest();
   }
 
   seleziona(t: VarianteTaglia) {
