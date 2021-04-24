@@ -22,6 +22,7 @@ import { BarraRicercaComponent } from './barra-ricerca/barra-ricerca.component';
 import { RicercaCatalogoComponent } from './ricerca-catalogo/ricerca-catalogo.component';
 import { GestioneCarrelloComponent } from './gestione-carrello/gestione-carrello.component';
 import { GruppoDueReduxComponent } from './gruppo-due-redux/gruppo-due-redux.component';
+import { SchedaProdottoComponent } from './scheda-prodotto/scheda-prodotto.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { GruppoDueReduxComponent } from './gruppo-due-redux/gruppo-due-redux.com
     RicercaCatalogoComponent,
     GestioneCarrelloComponent,
     GruppoDueReduxComponent,
+    SchedaProdottoComponent,
     
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
