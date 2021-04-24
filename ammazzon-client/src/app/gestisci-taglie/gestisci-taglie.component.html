@@ -1,7 +1,8 @@
 <app-header></app-header>
-    <div>
-        <h1>GESTIONE TAGLIE</h1>
-    </div>
+<div class="body">
+    <h2>GESTIONE TAGLIE</h2>
+    <br>
+    <hr>
     <button (click)="nuova()" *ngIf="buttonNuovaVisible">Nuova</button>
     <div *ngIf="formDivVisible">
         <input type="text" placeholder="codice" [(ngModel)]="taglia.codice" [disabled]="campiNonEditabili"
@@ -13,21 +14,27 @@
         <button (click)="rimuovi()" *ngIf="!confAnnVisible">Rimuovi</button>
     </div>
     <br>
-    <input type="text" placeholder="cerca" [(ngModel)]="criterio" *ngIf="searchVisible">
+    <input type="text" placeholder="cerca" class="inputSearch" [(ngModel)]="criterio" *ngIf="searchVisible">
     <button (click)="cerca()" *ngIf="searchVisible">Cerca</button>
     <br>
-    <div>
+    <div class="scrolldown">
         <table *ngIf="searchVisible">
-            <tr>
-                <th>Codice</th>
-                <th></th>
-            </tr>
-            <tr *ngFor="let t of taglie">
-                <td>{{t.codice}}</td>
-                <td>
-                    <button (click)="seleziona(t)">Seleziona</button>
-                </td>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Codice</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let t of taglie">
+                    <td>{{t.codice}}</td>
+                    <td>
+                        <button (click)="seleziona(t)">Seleziona</button>
+                    </td>
+                </tr>
+            </tbody>
         </table>
+        <br>
     </div>
+</div>
 <app-footer></app-footer>

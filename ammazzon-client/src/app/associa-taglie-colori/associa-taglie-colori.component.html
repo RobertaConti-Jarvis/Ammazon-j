@@ -1,13 +1,18 @@
 <app-header></app-header>
-<input type="text" placeholder="Cerca prodotto" [(ngModel)]="criterio">
-<button (click)="cerca()" class="button">Cerca</button>
-<div>
+<div class="body">
+  <h2>ASSOCIA TAGLIE A PRODOTTI</h2>
+  <input type="text" placeholder="Cerca prodotto" class="inputSearch" [(ngModel)]="criterio">
+  <button (click)="cerca()" class="button">Cerca</button>
+  <div class="scrolldown">
     <table>
+      <thead>
         <tr>
           <th>Codice</th>
           <th>Descrizione</th>
           <th>Prezzo</th>
         </tr>
+      </thead>
+      <tbody>
         <tr *ngFor="let p of listaProdotti">
           <td>{{p.codice}}</td>
           <td>{{p.descrizione}}</td>
@@ -16,17 +21,22 @@
             <button (click)="selezionaProdotto(p)" class="buttonSel">Seleziona</button>
           </td>
         </tr>
+      </tbody>
     </table>
-</div>
-<app-pagination (next)="goToNext($event)" (prev)="goToPrevious($event)" (first)="goToFirst($event)"
-(last)="goToLast($event)" (numPaginaO)="caricaListaProdottiPaginati($event)" (pagSize)="setElemPag($event)"
-[numPaginaV]=numPaginaV [totalPages]=totalPages [elemPag]=elemPag>
-</app-pagination>
-<div>
+    <br>
+  </div>
+  <app-pagination (next)="goToNext($event)" (prev)="goToPrevious($event)" (first)="goToFirst($event)"
+    (last)="goToLast($event)" (numPaginaO)="caricaListaProdottiPaginati($event)" (pagSize)="setElemPag($event)"
+    [numPaginaV]=numPaginaV [totalPages]=totalPages [elemPag]=elemPag>
+  </app-pagination>
+  <div class="scrolldown">
     <table>
+      <thead>
         <tr>
           <th>Colori Associati</th>
         </tr>
+      </thead>
+      <tbody>
         <tr *ngFor="let c of listaProdottiColori">
           <td>{{c.id}}</td>
           <td>{{c.varianteColore.descrizione}}</td>
@@ -34,13 +44,18 @@
             <button (click)="selezionaColore(c)" (click)="selezionaColoreDis(c)" class="buttonSel">Seleziona</button>
           </td>
         </tr>
+      </tbody>
     </table>
-</div>
-<div>
+  </div>
+  <br>
+  <div class="scrolldown">
     <table>
+      <thead>
         <tr>
           <th>Taglie Già Associate</th>
         </tr>
+      </thead>
+      <tbody>
         <tr *ngFor="let t of listaColoreTagliaAss">
           <td>{{t.id}}</td>
           <td>{{t.varianteTaglia.codice}}</td>
@@ -48,20 +63,29 @@
             <button (click)="rimuovi(t)" class="buttonSel">></button>
           </td>
         </tr>
+      </tbody>
     </table>
-    <button (click)="rimuoviAll()" class="buttonSel">>></button>
-    <button (click)="associaAll()" class="buttonSel"><<</button>
-    <table>
-          <tr>
-            <th>Taglie Disponibili</th>
-          </tr>
-          <tr *ngFor="let t of listaVarianteTagliaDis">
-            <td>{{t.id}}</td>
-            <td>{{t.codice}}</td>
-            <td>
-              <button (click)="associa(t)" class="buttonSel"><</button>
-            </td>
-          </tr>
-      </table>
-</div>  
+  </div>
+  <button (click)="rimuoviAll()" class="buttonSel">>></button>
+  <button (click)="associaAll()" class="buttonSel"><<</button>
+  <div class="scrolldown">
+  <table>
+    <thead>
+      <tr>
+        <th>Taglie Disponibili</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let t of listaVarianteTagliaDis">
+        <td>{{t.id}}</td>
+        <td>{{t.codice}}</td>
+        <td>
+          <button (click)="associa(t)" class="buttonSel"><</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+  </div>
+</div>
 <app-footer></app-footer>
