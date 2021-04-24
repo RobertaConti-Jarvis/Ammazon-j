@@ -8,6 +8,7 @@ import { ProdottoDto } from '../dto/prodotto-dto';
 import { ColoreTaglia } from '../entità/colore-taglia';
 import { Prodotto } from '../entità/prodotto';
 import { ProdottoColore } from '../entità/prodotto-colore';
+import { ReduxService } from '../redux.service';
 
 @Component({
   selector: 'app-scheda-prodotto',
@@ -15,20 +16,29 @@ import { ProdottoColore } from '../entità/prodotto-colore';
   styleUrls: ['../theme.css'],
 })
 export class SchedaProdottoComponent implements OnInit {
-  prodotto: Prodotto;
+  prodotto: Prodotto = this.reduxService.prodotto;
   colori: ProdottoColore[] = [];
   taglie: ColoreTaglia [] = [];
   prodottoColore: ProdottoColore;
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient, private reduxService: ReduxService) { 
     //this.selezionaProdotto(this.prodotto)
+    reduxService.elementiCarrello$.subscribe(
+      n => {reduxService.numElementi = n + 1;}
+    );
+
+    this.mostraColoriDisponibili();
   }
 
   ngOnInit(): void {
   }
-
-  aggiungi(){
-    
+  
+  mostraColoriDisponibili() {
+    //da prodotto selezionato dal catalogo mostro i colori disponibili
+    let dto: ProdottoDto = new ProdottoDto();
+    dto.prodotto = this.reduxService.prodotto;
+    let oss: Observable<ListaProdottiColoreDto> = this.http.post<ListaProdottiColoreDto>('http://localhost:8080/mostra-prodotto-colori', dto);
+    oss.subscribe(r => this.colori = r.listaProdottiColore);
   }
 
   selezionaColore(c: ProdottoColore){
@@ -39,15 +49,12 @@ export class SchedaProdottoComponent implements OnInit {
     oss.subscribe(r => this.taglie = r.listaColoreTaglie);
   }
 
-  selezionaTaglia(t: ColoreTaglia){
+  aggiungi(t: ColoreTaglia){
+    //richiamo i metodi del redux per incrementare il numero di elementi carrello
+    this.reduxService.aggiungiElementoCarrello(this.reduxService.numElementi++);
+    this.reduxService.leggiElementiCarrello(this.reduxService.numElementi);
 
-  }
-
-  selezionaProdotto(p: Prodotto) {
-    let dto: ProdottoDto = new ProdottoDto();
-    dto.prodotto = p;
-    let oss: Observable<ListaProdottiColoreDto> = this.http.post<ListaProdottiColoreDto>('http://localhost:8080/mostra-prodotto-colori', dto);
-    oss.subscribe(r => this.colori = r.listaProdottiColore);
+    //aggiungo prodotto selezionato al carrello: ColoreTaglia + token
   }
 
 }

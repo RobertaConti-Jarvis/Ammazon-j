@@ -11,7 +11,7 @@
     <td>{{p.codice}}</td>
     <td>{{p.descrizione}}</td>
     <td>{{p.prezzo}}</td>
-    <td><button routerLink="/scheda-prodotto" class="buttonSel">Seleziona</button></td>
+    <td><button (click) = "selezionaProdotto(p)" class="buttonSel">Seleziona</button></td>
   </tr>
 </table>
 <app-pagination (next)="goToNext($event)" (prev)="goToPrevious($event)" (first)="goToFirst($event)"

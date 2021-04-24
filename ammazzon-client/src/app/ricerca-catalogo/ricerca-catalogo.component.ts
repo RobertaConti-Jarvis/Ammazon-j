@@ -7,6 +7,7 @@ import {CriterioRicercaService} from '../criterio-ricerca.service';
 import {CriterioDatiPageDto} from '../dto/criterio-dati-page-dto';
 import { ColoreTagliaDto } from '../dto/colore-taglia-dto';
 import { Router } from '@angular/router';
+import { ReduxService } from '../redux.service';
 
 @Component({
   selector: 'app-ricerca-catalogo',
@@ -28,7 +29,8 @@ export class RicercaCatalogoComponent implements OnInit {
 
   // -----------------------------
 
-  constructor(private http: HttpClient, private criterioRicercaService: CriterioRicercaService, private router: Router) {
+  constructor(private http: HttpClient, private criterioRicercaService: CriterioRicercaService,
+     private router: Router, private reduxService: ReduxService) {
     this.criterioRicerca = criterioRicercaService.criterioRicerca;
     this.caricaCatalogoPaginati(this.numPaginaV);
   }
@@ -117,5 +119,10 @@ export class RicercaCatalogoComponent implements OnInit {
   goToSchedaProdottoPage(){
     //this.criterioRicercaService.criterioRicerca = criterio;
     //this.router.navigateByUrl('/scheda-prodotto');
+  }
+
+  selezionaProdotto(p: Prodotto){
+    this.reduxService.prodotto = p;
+    this.router.navigateByUrl('/scheda-prodotto');
   }
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { Prodotto } from './entità/prodotto';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,16 @@ export class ReduxService {
   private numeroConfirmedSourceTre = new Subject<string>();
   //Observable number streams
   numeroConfirmedTre$ = this.numeroConfirmedSourceTre.asObservable();
-
+  
+  // Osservabile per numero elementi carrello
+  numElementi: number = 0;
+  private elementiCarrello = new Subject<number>();
+  elementiCarrello$ = this.elementiCarrello.asObservable();
+  private leggiCarrello = new Subject<number>();
+  leggiCarrello$ = this.leggiCarrello.asObservable();
+  //variabile globale Prodotto
+  prodotto: Prodotto = new Prodotto();
+  
   constructor() { }
 
   notificaNumeroDue(i: number) {
@@ -25,5 +35,15 @@ export class ReduxService {
 
   leggiNumeroTre(testo: string) {
     this.numeroConfirmedSourceTre.next(testo);
+  }
+
+  aggiungiElementoCarrello(i: number){
+    this.numElementi = i;
+    this.elementiCarrello.next(this.numElementi);
+  }
+
+  leggiElementiCarrello(i: number){
+    i = this.numElementi;
+    this.leggiCarrello.next(i);
   }
 }

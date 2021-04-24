@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CriterioRicercaService} from '../criterio-ricerca.service';
 import {Router} from '@angular/router';
+import { ReduxService } from '../redux.service';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,16 @@ import {Router} from '@angular/router';
   styleUrls: ['../theme.css'],
 })
 export class HeaderComponent implements OnInit {
-  constructor(private criterioRicercaService: CriterioRicercaService, private router: Router) {}
+  elementiCarrello: number = this.reduxService.numElementi;
+
+  constructor(private criterioRicercaService: CriterioRicercaService,
+     private router: Router,
+     private reduxService: ReduxService) {
+
+      reduxService.leggiCarrello$.subscribe(
+        n => {this.elementiCarrello = n}
+      )
+     }
 
   ngOnInit(): void {}
 
