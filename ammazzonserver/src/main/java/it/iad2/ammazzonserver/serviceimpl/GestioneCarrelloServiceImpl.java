@@ -1,5 +1,6 @@
 package it.iad2.ammazzonserver.serviceimpl;
 
+import it.iad2.ammazzonserver.dto.OrdineDto;
 import it.iad2.ammazzonserver.model.ColoreTaglia;
 import it.iad2.ammazzonserver.model.Ordine;
 import it.iad2.ammazzonserver.model.QtaOrdineVariante;
@@ -13,7 +14,9 @@ import it.iad2.ammazzonserver.service.GestioneCarrelloService;
 import java.time.LocalDate;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class GestioneCarrelloServiceImpl implements GestioneCarrelloService {
 
     @Autowired
@@ -29,25 +32,30 @@ public class GestioneCarrelloServiceImpl implements GestioneCarrelloService {
     QtaOrdineVarianteRepository qtaOrdineVarianteRepository;
 
     @Override
-    public Ordine aggiungiCarrello(ColoreTaglia ct, String token) {
+    public OrdineDto aggiungiCarrello(ColoreTaglia ct, String token) {
         //controllo se il token è null altrimenti lo creo 
         UtenteAnonimo ua;
+        Ordine ordine;
         if (token == null) {
             token = UUID.randomUUID().toString().toUpperCase();
             ua = new UtenteAnonimo(token);
             ua = utenteAnonimoRepository.save(ua);
+            ordine = new Ordine();
         } else {
             //recupero identità utente dal token
             ua = utenteAnonimoRepository.cercaUtenteAnonimoPerToken(token);
-            if (ua == null) {
+            ordine = ordineRepository.findOrdineDaUtenteAnonimo(ua);
+            if(ua != null){
+                token = ua.getTokenAnonimo();
+            }else if (ua == null) {
                 ua = utenteRegistratoRepository.cercaUtenteRegistratoPerToken(token);
+                ordine = ordineRepository.findOrdineDaUtenteRegistrato((UtenteRegistrato)ua);
+                token = ordine.getUtenteRegistrato().getTokenRegistrato();
             }
         }
-        //controllo che l'ordine esista altrimenti crearlo
-        Ordine ordine = new Ordine();
-//        TODO: fare query per ordine
-
         QtaOrdineVariante qta;
+        //controllo che il prodotto non sia già stato aggiunto in QtaOrdineVariante, 
+        //se esiste aggiungo 1 alla quantità, altrimenti creo l'associazione
         if (ordine != null) {
             qta = qtaOrdineVarianteRepository.cercaQtaOrdine(ct, ordine);
             if (qta != null) {
@@ -66,17 +74,12 @@ public class GestioneCarrelloServiceImpl implements GestioneCarrelloService {
             } else {
                 ordine.setUtenteRegistrato((UtenteRegistrato) ua);
             }
-            ordine.getListaQtaOrdineVariante().add(qta);
-            ordine = ordineRepository.save(ordine);
-            qta.setOrdine(ordine);
-            qtaOrdineVarianteRepository.save(qta);
         }
-//        controllo che il prodotto non sia già stato aggiunto in QtaOrdineVariante, 
-          
-//        se esiste aggiungo 1 alla quantità, altrimenti creo l'associazione
-//        salvo la QtaOrdineVariante 
-//        aggiungo QtaOrdineVariante all'ordine e lo salvo 
-        return null;
+        ordine.getListaQtaOrdineVariante().add(qta);
+        ordine = ordineRepository.save(ordine);
+        qta.setOrdine(ordine);
+        qtaOrdineVarianteRepository.save(qta);
+        return new OrdineDto(ordine, token);
     }
 
 }
