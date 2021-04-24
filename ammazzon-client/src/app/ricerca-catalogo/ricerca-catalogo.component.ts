@@ -5,6 +5,8 @@ import {PageDto} from '../dto/page-dto';
 import {HttpClient} from '@angular/common/http';
 import {CriterioRicercaService} from '../criterio-ricerca.service';
 import {CriterioDatiPageDto} from '../dto/criterio-dati-page-dto';
+import { ColoreTagliaDto } from '../dto/colore-taglia-dto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ricerca-catalogo',
@@ -26,7 +28,7 @@ export class RicercaCatalogoComponent implements OnInit {
 
   // -----------------------------
 
-  constructor(private http: HttpClient, private criterioRicercaService: CriterioRicercaService) {
+  constructor(private http: HttpClient, private criterioRicercaService: CriterioRicercaService, private router: Router) {
     this.criterioRicerca = criterioRicercaService.criterioRicerca;
     this.caricaCatalogoPaginati(this.numPaginaV);
   }
@@ -110,5 +112,10 @@ export class RicercaCatalogoComponent implements OnInit {
     this.numPag = 0;
     this.numPaginaV = this.numPag + 1;
     this.caricaCatalogoPaginati(this.numPaginaV); // <--- personalizzare
+  }
+
+  goToSchedaProdottoPage(){
+    //this.criterioRicercaService.criterioRicerca = criterio;
+    //this.router.navigateByUrl('/scheda-prodotto');
   }
 }

@@ -46,7 +46,6 @@ import { SchedaProdottoComponent } from './scheda-prodotto/scheda-prodotto.compo
     GestioneCarrelloComponent,
     GruppoDueReduxComponent,
     SchedaProdottoComponent,
-    
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],

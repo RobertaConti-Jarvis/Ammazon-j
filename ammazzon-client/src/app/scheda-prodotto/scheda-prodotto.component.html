@@ -1,1 +1,26 @@
-<p>scheda-prodotto works!</p>
+<app-header></app-header>
+<body>
+{{prodotto}}
+<table>
+    <tr>
+        <th>Colore</th>
+        <th></th>
+    </tr>
+    <tr *ngFor="let c of colori">
+        <th>{{c.varianteColore.descrizione}}}</th>
+        <td><button (click)="selezionaColore(c)" class="buttonSel">Seleziona</button></td>
+    </tr>
+</table>
+<table>
+    <tr>
+        <th>Taglia</th>
+        <th></th>
+    </tr>
+    <tr *ngFor="let t of taglie">
+        <th>{{t.varianteTaglia.descrizione}}</th>
+        <td><button (click)="selezionaTaglia(t)" class="buttonSel">Seleziona</button></td>
+    </tr>
+</table>
+<button (click)="aggiungi()" class="buttoncart"></button>
+</body>
+<app-footer></app-footer>

@@ -13,6 +13,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { RegistrazionePageComponent } from './registrazione-page/registrazione-page.component';
 import { ReportOrdiniComponent } from './report-ordini/report-ordini.component';
 import { RicercaCatalogoComponent } from './ricerca-catalogo/ricerca-catalogo.component';
+import { SchedaProdottoComponent } from './scheda-prodotto/scheda-prodotto.component';
 
 const routes: Routes = [
   { path: 'gestisci-taglie', component: GestisciTaglieComponent },
@@ -28,8 +29,9 @@ const routes: Routes = [
   { path: 'ricerca-catalogo', component: RicercaCatalogoComponent },
   { path: 'gestione-carrello', component: GestioneCarrelloComponent },
   { path: 'redux-due', component: GruppoDueReduxComponent },
+  { path: 'scheda-prodotto', component: SchedaProdottoComponent },
   { path: '', redirectTo: '/home-page', pathMatch: 'full' }
-
+  
 
 ];
 
