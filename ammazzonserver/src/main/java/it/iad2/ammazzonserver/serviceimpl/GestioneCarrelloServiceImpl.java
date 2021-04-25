@@ -13,11 +13,15 @@ import it.iad2.ammazzonserver.repository.UtenteRegistratoRepository;
 import it.iad2.ammazzonserver.service.GestioneCarrelloService;
 import java.time.LocalDate;
 import java.util.UUID;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class GestioneCarrelloServiceImpl implements GestioneCarrelloService {
+
+    final Logger logger = LoggerFactory.getLogger(GestioneTaglieServiceImpl.class);
 
     @Autowired
     UtenteRegistratoRepository utenteRegistratoRepository;
@@ -38,48 +42,66 @@ public class GestioneCarrelloServiceImpl implements GestioneCarrelloService {
         Ordine ordine;
         if (token == null) {
             token = UUID.randomUUID().toString().toUpperCase();
-            ua = new UtenteAnonimo(token);
-            ua = utenteAnonimoRepository.save(ua);
             ordine = new Ordine();
+            ordine = ordineRepository.save(ordine);
+            ua = new UtenteAnonimo(token);
+            ua.setOrdine(ordine);
+            ua = utenteAnonimoRepository.save(ua);
+            logger.debug("#caso token null");
         } else {
             //recupero identità utente dal token
             ua = utenteAnonimoRepository.cercaUtenteAnonimoPerToken(token);
-            ordine = ordineRepository.findOrdineDaUtenteAnonimo(ua);
-            if(ua != null){
+            if (ua != null) {
+                ordine = ordineRepository.findOrdineDaUtenteAnonimo(ua);
                 token = ua.getTokenAnonimo();
-            }else if (ua == null) {
+                logger.debug("#utente anonimo non null");
+            } else {
                 ua = utenteRegistratoRepository.cercaUtenteRegistratoPerToken(token);
-                ordine = ordineRepository.findOrdineDaUtenteRegistrato((UtenteRegistrato)ua);
+                ordine = ordineRepository.findOrdineDaUtenteRegistrato((UtenteRegistrato) ua);
                 token = ordine.getUtenteRegistrato().getTokenRegistrato();
+                logger.debug("#utente registrato");
+            }
+            if (ordine == null) {
+                ordine = new Ordine();
             }
         }
         QtaOrdineVariante qta;
         //controllo che il prodotto non sia già stato aggiunto in QtaOrdineVariante, 
         //se esiste aggiungo 1 alla quantità, altrimenti creo l'associazione
-        if (ordine != null) {
+        if (ordine.getId() != null) {
             qta = qtaOrdineVarianteRepository.cercaQtaOrdine(ct, ordine);
+            logger.debug("#ordine esistente" + ordine.getId());
             if (qta != null) {
                 qta.setQta(qta.getQta() + 1);
             } else {
-                qta.setQta(1);
+                qta = new QtaOrdineVariante(1);
+                qta = qtaOrdineVarianteRepository.save(qta);
             }
+            logger.debug("#qta = " + qta.getQta());
         } else {
             ordine = new Ordine();
             ordine.setNumero(ordineRepository.findMaxNumeroOrdine() + 1);
             ordine.setData(LocalDate.now());
             qta = new QtaOrdineVariante(1);
             qta.setColoreTaglia(ct);
-            if (ua instanceof UtenteAnonimo) {
-                ordine.setUtenteAnonimo(ua);
-            } else {
-                ordine.setUtenteRegistrato((UtenteRegistrato) ua);
-            }
+            logger.debug("#ordine nuovo");
         }
+        if (ua instanceof UtenteAnonimo) {
+            ordine.setUtenteAnonimo(ua);
+        } else {
+            ordine.setUtenteRegistrato((UtenteRegistrato) ua);
+        }
+        logger.debug("id utente: " + ua.getId());
         ordine.getListaQtaOrdineVariante().add(qta);
         ordine = ordineRepository.save(ordine);
+        logger.debug("#id ordine salvato" + ordine.getId());
         qta.setOrdine(ordine);
         qtaOrdineVarianteRepository.save(qta);
-        return new OrdineDto(ordine, token);
+        int numElementi = ordine.getListaQtaOrdineVariante().size();
+        logger.debug("#num elementi" + numElementi);
+        OrdineDto ordineDto = new OrdineDto(ordine, numElementi, token);
+//      TODO: modifica Giacenza in tabella colore taglia
+        return ordineDto;
     }
 
 }

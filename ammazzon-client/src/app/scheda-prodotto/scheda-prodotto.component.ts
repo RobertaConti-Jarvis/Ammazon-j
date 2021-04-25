@@ -1,14 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ColoreTagliaDto } from '../dto/colore-taglia-dto';
 import { ListaColoreTaglieDto } from '../dto/lista-colore-taglie-dto';
 import { ListaProdottiColoreDto } from '../dto/lista-prodotti-colore-dto';
+import { OrdineDto } from '../dto/ordine-dto';
 import { ProdottoColoreDto } from '../dto/prodotto-colore-dto';
 import { ProdottoDto } from '../dto/prodotto-dto';
 import { ColoreTaglia } from '../entità/colore-taglia';
+import { Ordine } from '../entità/ordine';
 import { Prodotto } from '../entità/prodotto';
 import { ProdottoColore } from '../entità/prodotto-colore';
 import { ReduxService } from '../redux.service';
+import { TokenService } from '../token.service';
 
 @Component({
   selector: 'app-scheda-prodotto',
@@ -18,13 +22,14 @@ import { ReduxService } from '../redux.service';
 export class SchedaProdottoComponent implements OnInit {
   prodotto: Prodotto = this.reduxService.prodotto;
   colori: ProdottoColore[] = [];
-  taglie: ColoreTaglia [] = [];
+  taglie: ColoreTaglia[] = [];
   prodottoColore: ProdottoColore;
+  ordine: Ordine;
 
-  constructor(private http: HttpClient, private reduxService: ReduxService) { 
+  constructor(private http: HttpClient, private reduxService: ReduxService, private tokenService: TokenService) {
     //this.selezionaProdotto(this.prodotto)
     reduxService.elementiCarrello$.subscribe(
-      n => {reduxService.numElementi = n + 1;}
+      n => { reduxService.numElementi = n + 1; }
     );
 
     this.mostraColoriDisponibili();
@@ -32,7 +37,7 @@ export class SchedaProdottoComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  
+
   mostraColoriDisponibili() {
     //da prodotto selezionato dal catalogo mostro i colori disponibili
     let dto: ProdottoDto = new ProdottoDto();
@@ -41,7 +46,7 @@ export class SchedaProdottoComponent implements OnInit {
     oss.subscribe(r => this.colori = r.listaProdottiColore);
   }
 
-  selezionaColore(c: ProdottoColore){
+  selezionaColore(c: ProdottoColore) {
     let dto: ProdottoColoreDto = new ProdottoColoreDto();
     dto.prodottoColore = c;
     this.prodottoColore = c;
@@ -49,12 +54,21 @@ export class SchedaProdottoComponent implements OnInit {
     oss.subscribe(r => this.taglie = r.listaColoreTaglie);
   }
 
-  aggiungi(t: ColoreTaglia){
+  aggiungi(t: ColoreTaglia) {
     //richiamo i metodi del redux per incrementare il numero di elementi carrello
     this.reduxService.aggiungiElementoCarrello(this.reduxService.numElementi++);
-    this.reduxService.leggiElementiCarrello(this.reduxService.numElementi);
-
+  
     //aggiungo prodotto selezionato al carrello: ColoreTaglia + token
+    let dto: ColoreTagliaDto = new ColoreTagliaDto();
+    dto.coloreTaglia = t;
+    dto.sessionToken = this.tokenService.token;
+    let oss: Observable<OrdineDto> = this.http.post<OrdineDto>('http://localhost:8080/aggiungi-carrello', dto);
+    oss.subscribe(t => {
+      this.ordine = t.ordine;
+      this.reduxService.numElementi = t.numElem;
+      this.reduxService.leggiElementiCarrello(this.reduxService.numElementi);
+      this.tokenService.token = t.sessionToken;
+    });
   }
 
 }

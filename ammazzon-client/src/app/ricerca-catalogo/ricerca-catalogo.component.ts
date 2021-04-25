@@ -116,11 +116,6 @@ export class RicercaCatalogoComponent implements OnInit {
     this.caricaCatalogoPaginati(this.numPaginaV); // <--- personalizzare
   }
 
-  goToSchedaProdottoPage(){
-    //this.criterioRicercaService.criterioRicerca = criterio;
-    //this.router.navigateByUrl('/scheda-prodotto');
-  }
-
   selezionaProdotto(p: Prodotto){
     this.reduxService.prodotto = p;
     this.router.navigateByUrl('/scheda-prodotto');

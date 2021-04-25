@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin("*")
 @RestController
 public class GestioneCarrelloController {
-    
+
     @Autowired
     GestioneCarrelloService gestioneCarrelloService;
-    
+
     @RequestMapping("/aggiungi-carrello")
     @ResponseBody
-    public OrdineDto aggiungiCarrello (@RequestBody ColoreTagliaDto dto){
+    public OrdineDto aggiungiCarrello(@RequestBody ColoreTagliaDto dto) {
         return gestioneCarrelloService.aggiungiCarrello(dto.getColoreTaglia(), dto.getSessionToken());
     }
 }
