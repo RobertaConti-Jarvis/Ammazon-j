@@ -1,8 +1,9 @@
 <app-header></app-header>
 
-<body>
+<div class = "body">
+    <h2>Associa colori a prodotto</h2>
     <button class="button" (click)="cercaProdotto()">Cerca</button>
-    <input class="input" type="text" placeholder="Cerca prodotto" [(ngModel)]="criterio">
+    <input class="input" type="text" class="inputSearch" placeholder="Cerca prodotto" [(ngModel)]="criterio" >
     <div class="scrolldown">
         <table>
             <thead>
@@ -28,17 +29,22 @@
     <h2>Colori già associati </h2>
     <div class="scrolldown">
         <table>
+            <thead>
             <tr>
                 <th>Codice del colore: {{prodotto.codice}}</th>
                 <th>Descrizione del colore: {{prodotto.descrizione}}</th>
             </tr>
+        </thead>
+        <tbody>
             <tr *ngFor="let ca of coloriAssociati">
                 <td>{{ca.codice}}</td>
                 <td>{{ca.descrizione}}</td>
                 <td><button class="button" (click)="spostaInDisponibili(ca)">></button></td>
             </tr>
             <br>
+        </tbody>
         </table>
+        <br>
     </div>
     <br>
     <button class="button" (click)="associaTuttiColori()">Associa tutti i colori</button>
@@ -46,24 +52,28 @@
     <button class="button" (click)="disassociaTuttiColori()">Disassocia tutti i colori</button>
     <br>
     <h2>Colori non associati</h2>
-    <div>
+    <div class="scrolldown">
         <table>
+            <thead>
             <tr>
                 <th>Codice del colore</th>
                 <th>Descrizione del colore</th>
             </tr>
+        </thead>
+        <tbody>
             <tr *ngFor="let na of coloriNonAssociati">
                 <td>{{na.codice}}</td>
                 <td>{{na.descrizione}}</td>
                 <td><button class="button" (click)="spostaInAssociati(na)">></button></td>
             </tr>
-            <br>
+        </tbody>
         </table>
     </div>
+    <br>
     <!--<app-pagination (next)="goToNext($event)" (prev)="goToPrevious($event)" (first)="goToFirst($event)"
         (last)="goToLast($event)" (numPaginaO)="caricaProdottiPaginati($event)" (pagSize)="setElemPag($event)"
         [numPaginaV]=numPaginaV [totalPages]=totalPages [elemPag]=elemPag>
     </app-pagination>-->
-</body>
+</div>
 
 <app-footer></app-footer>

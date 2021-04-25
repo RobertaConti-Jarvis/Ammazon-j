@@ -2,7 +2,10 @@
 package it.iad2.ammazzonserver.controller;
 
 import it.iad2.ammazzonserver.dto.CriterioRicercaDto;
+import it.iad2.ammazzonserver.dto.DatiPageDto;
 import it.iad2.ammazzonserver.dto.ListaVarianteColoreDto;
+import it.iad2.ammazzonserver.dto.PageColoriDto;
+import it.iad2.ammazzonserver.dto.PageDto;
 import it.iad2.ammazzonserver.dto.VarianteColoreDto;
 import it.iad2.ammazzonserver.service.GestisciColoriService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,5 +59,9 @@ public class GestisciColoriController {
        return gestisciColoriService.aggiorna();
     }
     
-
+@RequestMapping("/carica-colori-paginati")
+    @ResponseBody
+    public PageColoriDto elementiPaginati(@RequestBody DatiPageDto dto) {
+        return new PageColoriDto(gestisciColoriService.elementiPaginati(dto.getNumPag(), dto.getElemPag()));
+    }
 }

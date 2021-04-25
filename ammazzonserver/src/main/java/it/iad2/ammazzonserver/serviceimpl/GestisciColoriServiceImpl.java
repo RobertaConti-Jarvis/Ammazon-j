@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -51,6 +53,11 @@ public class GestisciColoriServiceImpl implements GestisciColoriService {
     public ListaVarianteColoreDto aggiorna() {
         return new ListaVarianteColoreDto(varianteColoreRepository.findAll());
 
+    }
+
+    @Override
+    public Page<VarianteColore> elementiPaginati(int numPage, int elemPage) {
+        return varianteColoreRepository.trovaTuttiPaginati(PageRequest.of(numPage, elemPage));
     }
 
 }
