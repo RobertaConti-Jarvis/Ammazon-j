@@ -31,14 +31,14 @@ export class RicercaCatalogoComponent implements OnInit {
 
   constructor(private http: HttpClient, private criterioRicercaService: CriterioRicercaService,
     private router: Router, private reduxService: ReduxService) {
-    console.log("siamo nel costruttore ricerca catalogo", this.criterioRicercaService.criterioRicerca);
-    this.criterioRicercaService.criterioRicerca$.subscribe(s => { 
+    console.log("siamo nel costruttore ricerca catalogo");
+    this.criterioRicercaService.criterioRicerca$.subscribe(s => {
+      console.log("stamo nella lambda", s);
       this.criterioRicerca = s;
       this.caricaCatalogoPaginati(this.numPaginaV);
-      console.log("stamo nella lambda",s);
     });
-    if (this.criterioRicerca) { this.criterioRicerca = ""; }
-    this.caricaCatalogoPaginati(this.numPaginaV);
+    // if (!this.criterioRicerca) { this.criterioRicerca = ""; }
+    // this.caricaCatalogoPaginati(this.numPaginaV);
   }
 
   ngOnInit(): void {

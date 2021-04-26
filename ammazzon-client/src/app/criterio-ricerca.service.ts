@@ -5,8 +5,14 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class CriterioRicercaService {
-  criterioRicerca = new Subject<string>();
+  private criterioRicerca = new Subject<string>();
   criterioRicerca$ = this.criterioRicerca.asObservable();
+
+  notifyCriterion(s: string) {
+    console.log("Siamo in notifyCriterion ", s);
+    this.criterioRicerca.next(s);
+  }
+  
   constructor() {
   }
 
