@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { EsitoUtenteDto } from '../dto/esito-utente-dto';
 import { UtenteRegistratoDto } from '../dto/utente-registrato-dto';
 import { UtenteRegistrato } from '../entità/utente-registrato';
+import { TokenService } from '../token.service';
 
 @Component({
   selector: 'app-login-page',
@@ -22,7 +23,7 @@ export class LoginPageComponent implements OnInit {
   usernameOk : boolean = false;
   passwordOk : boolean = false;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router , public tokeService: TokenService) { }
 
   ngOnInit(): void {
   }
@@ -58,12 +59,14 @@ export class LoginPageComponent implements OnInit {
     
     let dto: UtenteRegistratoDto = new UtenteRegistratoDto();
     dto.utenteRegistrato = this.utenteReg;
+    dto.sessionToken = this.tokeService.token;
     let oss: Observable<EsitoUtenteDto> = this.http.post<EsitoUtenteDto>( 
       "http://localhost:8080/check-login",dto
     );
     oss.subscribe(v => {
       if (v.esito){
         this.utenteReg = v.utenteReg;
+        this.tokeService.token = v.sessionToken;
         this.router.navigateByUrl("/home-page");
         this.errorMsg = "";
       }

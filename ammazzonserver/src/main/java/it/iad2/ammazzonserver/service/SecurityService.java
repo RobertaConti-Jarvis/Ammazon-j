@@ -5,7 +5,7 @@ import it.iad2.ammazzonserver.model.UtenteRegistrato;
 
 public interface SecurityService {
 
-    EsitoUtenteDto checkLogin(UtenteRegistrato utenteRegistrato);
+    EsitoUtenteDto checkLogin(UtenteRegistrato utenteRegistrato, String token);
 
     boolean checkUsername(String username);
     

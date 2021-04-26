@@ -27,7 +27,7 @@ public class SecurityController {
     @RequestMapping("/check-login")
     @ResponseBody
     EsitoUtenteDto checkLogin(@RequestBody UtenteRegistratoDto dto) {
-        return securityService.checkLogin(dto.getUtenteRegistrato());
+        return securityService.checkLogin(dto.getUtenteRegistrato(), dto.getSessionToken());
     }
     
     @RequestMapping("/registrazione")

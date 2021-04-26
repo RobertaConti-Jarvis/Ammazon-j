@@ -29,8 +29,17 @@ public class SecurityServiceImpl implements SecurityService {
     }
 
     @Override
-    public EsitoUtenteDto checkLogin(UtenteRegistrato utenteRegistrato) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public EsitoUtenteDto checkLogin(UtenteRegistrato utenteRegistrato, String token) {
+        UtenteRegistrato uR = utenteRegistratoRepository.findUsernameAndPassword(utenteRegistrato.getUsername(),utenteRegistrato.getPassword());
+        if (uR != null){
+            String tokenRandom = UUID.randomUUID().toString().toUpperCase();
+            uR.setTokenAnonimo(null);
+            uR.setTokenRegistrato(tokenRandom);
+            utenteRegistratoRepository.save(uR);
+            return new EsitoUtenteDto(true, utenteRegistrato , token);
+        }
+        System.out.println("credenziali non trovate!");
+        return new EsitoUtenteDto(false , utenteRegistrato, token);
     }
 
     @Override

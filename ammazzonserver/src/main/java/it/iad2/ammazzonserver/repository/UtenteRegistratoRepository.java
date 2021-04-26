@@ -30,4 +30,8 @@ public interface UtenteRegistratoRepository extends JpaRepository<UtenteRegistra
     @Query("select u from UtenteRegistrato u "
             + "where u.email = :email or u.tokenRegistrato = :token or u.username = :username")
     UtenteRegistrato findEmailOrTokenOrUsername(@Param("email") String email, @Param("token") String token, @Param("username") String username);
+    
+    @Query("select u from UtenteRegistrato u "
+            + "where u.username = :username and u.password = :password")
+    UtenteRegistrato findUsernameAndPassword(@Param("username") String username, @Param("password") String password);
 }
