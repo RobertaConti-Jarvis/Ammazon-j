@@ -6,26 +6,26 @@ import org.springframework.data.domain.Page;
 
 
 public class PageColoriDto {
-    Page<VarianteColore>listaElemPage;
+    Page<VarianteColore>listaElemPag;
 
     public PageColoriDto() {
     }
 
-    public PageColoriDto(Page<VarianteColore> listaElemPage) {
-        this.listaElemPage = listaElemPage;
+    public PageColoriDto(Page<VarianteColore> listaElemPag) {
+        this.listaElemPag = listaElemPag;
     }
 
-    public Page<VarianteColore> getListaElemPage() {
-        return listaElemPage;
+    public Page<VarianteColore> getListaElemPag() {
+        return listaElemPag;
     }
 
-    public void setListaElemPage(Page<VarianteColore> listaElemPage) {
-        this.listaElemPage = listaElemPage;
+    public void setListaElemPag(Page<VarianteColore> listaElemPag) {
+        this.listaElemPag = listaElemPag;
     }
 
     @Override
     public String toString() {
-        return "PageColoriDto{" + "listaElemPage=" + listaElemPage + '}';
+        return "PageColoriDto{" + "listaElemPage=" + listaElemPag + '}';
     }
     
     
