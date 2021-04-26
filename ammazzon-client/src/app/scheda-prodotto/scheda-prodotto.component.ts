@@ -25,6 +25,9 @@ export class SchedaProdottoComponent implements OnInit {
   taglie: ColoreTaglia[] = [];
   prodottoColore: ProdottoColore;
   ordine: Ordine;
+  tagliaSelezionata: ColoreTaglia;
+  coloreSelezionato: ProdottoColore;
+  risposta: string;
 
   constructor(private http: HttpClient, private reduxService: ReduxService, private tokenService: TokenService) {
     //this.selezionaProdotto(this.prodotto)
@@ -46,21 +49,22 @@ export class SchedaProdottoComponent implements OnInit {
     oss.subscribe(r => this.colori = r.listaProdottiColore);
   }
 
-  selezionaColore(c: ProdottoColore) {
+  selezionaColore() {
+    console.log("la descrizione è " + this.coloreSelezionato.id);
     let dto: ProdottoColoreDto = new ProdottoColoreDto();
-    dto.prodottoColore = c;
-    this.prodottoColore = c;
+    dto.prodottoColore = this.coloreSelezionato;
+    this.prodottoColore = this.coloreSelezionato;
     let oss: Observable<ListaColoreTaglieDto> = this.http.post<ListaColoreTaglieDto>('http://localhost:8080/mostra-coloretaglie-associate', dto);
     oss.subscribe(r => this.taglie = r.listaColoreTaglie);
   }
 
-  aggiungi(t: ColoreTaglia) {
+  aggiungi() {
     //richiamo i metodi del redux per incrementare il numero di elementi carrello
     this.reduxService.aggiungiElementoCarrello(this.reduxService.numElementi++);
-  
+    console.log("la taglia è " + this.tagliaSelezionata.id);
     //aggiungo prodotto selezionato al carrello: ColoreTaglia + token
     let dto: ColoreTagliaDto = new ColoreTagliaDto();
-    dto.coloreTaglia = t;
+    dto.coloreTaglia = this.tagliaSelezionata;
     dto.sessionToken = this.tokenService.token;
     let oss: Observable<OrdineDto> = this.http.post<OrdineDto>('http://localhost:8080/aggiungi-carrello', dto);
     oss.subscribe(t => {
@@ -69,6 +73,7 @@ export class SchedaProdottoComponent implements OnInit {
       this.reduxService.leggiElementiCarrello(this.reduxService.numElementi);
       this.tokenService.token = t.sessionToken;
     });
+    this.risposta = "Prodotto aggiunto al carrello";
   }
 
 }

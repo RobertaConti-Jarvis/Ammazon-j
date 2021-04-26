@@ -1,26 +1,19 @@
 <app-header></app-header>
-<body>
-{{prodotto.descrizione}}
-<table>
-    <tr>
-        <th>Colore</th>
-        <th></th>
-    </tr>
-    <tr *ngFor="let c of colori">
-        <th>{{c.varianteColore.descrizione}}</th>
-        <td><button (click)="selezionaColore(c)" class="buttonSel">Seleziona</button></td>
-    </tr>
-</table>
-<table>
-    <tr>
-        <th>Taglia</th>
-        <th></th>
-    </tr>
-    <tr *ngFor="let t of taglie">
-        <th>{{t.varianteTaglia.codice}}</th>
-        <td><button (click)="aggiungi(t)" class="buttoncart"></button></td>
-    </tr>
-</table>
-
-</body>
+<div class="body">
+    <h1>{{prodotto.descrizione}}</h1>
+    <img src="../../assets/pantaloni2.jpg">
+    <div>
+        <select [(ngModel)]="coloreSelezionato">
+            <option *ngFor="let c of colori" [ngValue]="c">{{c.varianteColore.descrizione}}</option>
+        </select>
+        <button (click)="selezionaColore()" class="buttonSel">Seleziona</button>
+    </div>
+    <div>
+        <select [(ngModel)]="tagliaSelezionata">
+            <option *ngFor="let t of taglie" [ngValue]="t">{{t.varianteTaglia.codice}}</option>
+        </select>
+        <button (click)="aggiungi()" class="buttoncart"></button>
+        {{risposta}}
+    </div>
+</div>
 <app-footer></app-footer>
