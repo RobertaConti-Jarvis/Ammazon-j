@@ -16,5 +16,6 @@
         (last)="goToLast($event)" (numPaginaO)="caricaOrdineProdottiPaginati($event)" (pagSize)="setElemPag($event)"
         [numPaginaV]=numPaginaV [totalPages]=totalPages [elemPag]=elemPag>
     </app-pagination>
+    <button (click)="checkout()" routerLink = "/checkout">checkout</button>
 </body>
 <app-footer></app-footer>
