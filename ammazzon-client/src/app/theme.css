@@ -292,17 +292,18 @@ Button:disabled {
     top: 1px;
 }
 .white{ 
-    color:#ffffff;
+    color:#000000;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
     font-weight: bold;
     text-align: center;
     vertical-align:top;
-    background-color: red;
+    border: 3px solid #ff0000;
+    background-color: rgb(255, 255, 255);
     height: 20px;
     width: 20px;
-    padding: 2px 6px 2px 6px;
-    border-radius: 10px;
+    padding: 0px 5px 0px 5px;
+    border-radius: 20px;
     position:relative;
     top:-5px;
     left:-11px;
