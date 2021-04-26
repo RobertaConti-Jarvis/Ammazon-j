@@ -1,10 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {Prodotto} from '../entità/prodotto';
-import {Observable} from 'rxjs';
-import {PageDto} from '../dto/page-dto';
-import {HttpClient} from '@angular/common/http';
-import {CriterioRicercaService} from '../criterio-ricerca.service';
-import {CriterioDatiPageDto} from '../dto/criterio-dati-page-dto';
+import { Component, OnInit } from '@angular/core';
+import { Prodotto } from '../entità/prodotto';
+import { Observable } from 'rxjs';
+import { PageDto } from '../dto/page-dto';
+import { HttpClient } from '@angular/common/http';
+import { CriterioRicercaService } from '../criterio-ricerca.service';
+import { CriterioDatiPageDto } from '../dto/criterio-dati-page-dto';
 import { ColoreTagliaDto } from '../dto/colore-taglia-dto';
 import { Router } from '@angular/router';
 import { ReduxService } from '../redux.service';
@@ -30,13 +30,21 @@ export class RicercaCatalogoComponent implements OnInit {
   // -----------------------------
 
   constructor(private http: HttpClient, private criterioRicercaService: CriterioRicercaService,
-     private router: Router, private reduxService: ReduxService) {
-    this.criterioRicerca = criterioRicercaService.criterioRicerca;
+    private router: Router, private reduxService: ReduxService) {
+    console.log("siamo nel costruttore ricerca catalogo", this.criterioRicercaService.criterioRicerca);
+    this.criterioRicercaService.criterioRicerca$.subscribe(s => { 
+      this.criterioRicerca = s;
+      this.caricaCatalogoPaginati(this.numPaginaV);
+      console.log("stamo nella lambda",s);
+    });
+    if (this.criterioRicerca) { this.criterioRicerca = ""; }
     this.caricaCatalogoPaginati(this.numPaginaV);
   }
 
   ngOnInit(): void {
   }
+
+
 
   // metodi paginazione
   caricaCatalogoPaginati(numPaginaV: number): void { // <--- personalizzare
@@ -46,8 +54,9 @@ export class RicercaCatalogoComponent implements OnInit {
       dto.numPag = this.numPaginaV - 1;
       dto.elemPag = this.elemPag;
       dto.criterio = this.criterioRicerca;
+      console.log(this.criterioRicerca);
       const oss: Observable<PageDto> = this.http.post<PageDto>
-      ('http://localhost:8080/carica-catalogo-paginati', dto); // <--- personalizzare
+        ('http://localhost:8080/carica-catalogo-paginati', dto); // <--- personalizzare
       oss.subscribe(v => {
         this.listaProdotti = v.listaElemPag.content; // <--- Personalizzare
         console.log('lista: ' + this.listaProdotti);
@@ -116,7 +125,7 @@ export class RicercaCatalogoComponent implements OnInit {
     this.caricaCatalogoPaginati(this.numPaginaV); // <--- personalizzare
   }
 
-  selezionaProdotto(p: Prodotto){
+  selezionaProdotto(p: Prodotto) {
     this.reduxService.prodotto = p;
     this.router.navigateByUrl('/scheda-prodotto');
   }

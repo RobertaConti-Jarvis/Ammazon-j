@@ -17,6 +17,7 @@
         *ngIf='cercaVisible'>
     <button (click)="cercaPerCodice()" [disabled]="searchVisible" *ngIf='cercaVisible'>Cerca</button>
     <br>
+    <div class="scrolldown">
     <table *ngIf="tabellaColoriVis">
         <thead>
             <tr>
@@ -40,9 +41,12 @@
             </td>
         </tr>
     </table>
+</div>
     <app-pagination (next)="goToNext($event)" (prev)="goToPrevious($event)" (first)="goToFirst($event)"
     (last)="goToLast($event)" (numPaginaO)="caricaColoriPaginati($event)" (pagSize)="setElemPag($event)"
     [numPaginaV]=numPaginaV [totalPages]=totalPages [elemPag]=elemPag>
   </app-pagination>
+  
+
 </div>
 <app-footer></app-footer>

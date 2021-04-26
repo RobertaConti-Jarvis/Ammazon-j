@@ -12,6 +12,7 @@ import { CriterioRicercaDto } from '../dto/criterio-ricerca-dto';
 import { DatiPageDto } from '../dto/dati-page-dto';
 import { PageDto } from '../dto/page-dto';
 import { PageColoriDto } from '../dto/page-colori-dto';
+import { viewClassName } from '@angular/compiler';
 
 @Component({
   selector: 'app-gestisci-colori',
@@ -56,7 +57,7 @@ numberOfElements: number;
 
 
   ngOnInit(): void {
-   // this.aggiorna();
+    //this.aggiorna();
     this.automa = new Automa(this);
   }
 
@@ -219,7 +220,7 @@ numberOfElements: number;
       dto.elemPag = this.elemPag;
       let oss: Observable<PageColoriDto> = this.http.post<PageColoriDto>
         ("http://localhost:8080/carica-colori-paginati", dto); // <--- personalizzare ok
-      oss.subscribe(v => {
+      oss.subscribe(v=> {
         this.listaColori = v.listaElemPag.content; // <--- Personalizzare ok
         console.log("lista: " + this.listaColori);
         this.totalPages = v.listaElemPag.totalPages;
