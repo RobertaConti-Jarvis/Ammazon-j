@@ -40,6 +40,12 @@ public class UtenteRegistrato extends UtenteAnonimo implements Serializable{
 
     public UtenteRegistrato() {
     }
+    
+    public UtenteRegistrato(String username, String password, String email){
+        this.username = username;
+        this.password = password;
+        this.email = email;
+    }
 
     public UtenteRegistrato(String nome, String cognome, String username, String password, String codiceFiscale, String tokenRegistrato, String email, String tokenAnonimo) {
         super(tokenAnonimo);

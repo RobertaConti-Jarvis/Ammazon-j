@@ -2,7 +2,7 @@ package it.iad2.ammazzonserver.dto;
 
 import it.iad2.ammazzonserver.model.UtenteRegistrato;
 
-public class EsitoUtenteDto {
+public class EsitoUtenteDto extends BaseRequestDto{
     
     private boolean esito;
     private UtenteRegistrato utenteReg;
@@ -15,14 +15,20 @@ public class EsitoUtenteDto {
         this.utenteReg = utenteReg;
     }
 
-    public boolean isEsitoLogin() {
+    public EsitoUtenteDto(boolean esito, UtenteRegistrato utenteReg, String sessionToken) {
+        super(sessionToken);
+        this.esito = esito;
+        this.utenteReg = utenteReg;
+    }
+
+    public boolean isEsito() {
         return esito;
     }
 
-    public void setEsitoLogin(boolean esito) {
+    public void setEsito(boolean esito) {
         this.esito = esito;
     }
-
+    
     public UtenteRegistrato getUtenteReg() {
         return utenteReg;
     }

@@ -11,7 +11,7 @@ import it.iad2.ammazzonserver.model.UtenteRegistrato;
  *
  * @author utente
  */
-public class UtenteRegistratoDto {
+public class UtenteRegistratoDto extends BaseRequestDto{
    UtenteRegistrato utenteRegistrato;
 
     public UtenteRegistratoDto() {

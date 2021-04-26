@@ -7,6 +7,7 @@ import it.iad2.ammazzonserver.repository.UtenteAnonimoRepository;
 import it.iad2.ammazzonserver.repository.UtenteRegistratoRepository;
 import it.iad2.ammazzonserver.service.SecurityService;
 import java.time.LocalDateTime;
+import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,9 +24,8 @@ public class SecurityServiceImpl implements SecurityService {
         UtenteRegistrato u = utenteRegistratoRepository.findUsername(username);
         if (u != null) {
             return false;
-        } else {
-            return true;
         }
+        return true;
     }
 
     @Override
@@ -34,28 +34,16 @@ public class SecurityServiceImpl implements SecurityService {
     }
 
     @Override
-    public EsitoUtenteDto registrazione(UtenteRegistrato utenteRegistrato) {
-        /*UtenteAnonimo uA = (UtenteAnonimo) utenteRegistrato;
-        UtenteAnonimo uATrovato = utenteAnonimoRepository.findId(uA.getId());
-        String tkA = null;
-        if(uATrovato !=null){
-           tkA = uATrovato.getTokenAnonimo(); 
+    public EsitoUtenteDto registrazione(UtenteRegistrato utenteRegistrato, String token) {
+        UtenteRegistrato uR = utenteRegistratoRepository.findEmailOrTokenOrUsername(utenteRegistrato.getEmail(), token, utenteRegistrato.getUsername()); 
+        if (uR == null) {
+            uR = new UtenteRegistrato(utenteRegistrato.getUsername(), utenteRegistrato.getPassword(), utenteRegistrato.getEmail());
+            utenteRegistratoRepository.save(uR);
+            return new EsitoUtenteDto(true, uR, token);
+
         }
-        if (tkA == null) {
-            UtenteRegistrato uR = utenteRegistratoRepository.findEmail(utenteRegistrato.getEmail());
-            if (uR != null) {
-                return new EsitoUtenteDto(false, utenteRegistrato);
-            } else {
-                utenteRegistrato.setTokenRegistrato(utenteRegistrato.getId().toString() + LocalDateTime.now());
-                utenteRegistratoRepository.save(utenteRegistrato);
-                return new EsitoUtenteDto(true, utenteRegistrato);
-            }
-        }
-        else{
-            utenteRegistrato.setTokenRegistrato(utenteRegistrato.getId().toString() + LocalDateTime.now());
-            
-        }*/
-        throw new UnsupportedOperationException("Not supported yet.");
+        System.out.println("l'email utilizzata o utente loggato!");
+        return new EsitoUtenteDto(false, utenteRegistrato, token);
     }
 
 }

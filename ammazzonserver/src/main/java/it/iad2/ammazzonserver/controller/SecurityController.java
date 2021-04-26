@@ -33,6 +33,6 @@ public class SecurityController {
     @RequestMapping("/registrazione")
     @ResponseBody
     EsitoUtenteDto registrazione(@RequestBody UtenteRegistratoDto dto) {
-        return securityService.registrazione(dto.getUtenteRegistrato());
+        return securityService.registrazione(dto.getUtenteRegistrato(), dto.getSessionToken());
     }
 }

@@ -102,13 +102,15 @@ export class RegistrazionePageComponent implements OnInit {
     );
     oss.subscribe(r => {
       this.utenteReg = r.utenteReg;
+      console.log("valore esito: ", r.esito);
       if (r.esito){
         this.tokenService.token = r.sessionToken;
+        this.errorEmail = "";
+        this.tokenService.token = r.sessionToken;
         this.router.navigateByUrl("/login");
-        this.errorMsg = "";
       }
       else{
-        this.errorMsg = "Email già utilizzata!";
+        this.errorEmail = "Email utilizzata o Utente loggato!";
       }
     });
   }
