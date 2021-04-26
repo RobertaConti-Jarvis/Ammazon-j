@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {CriterioRicercaService} from '../criterio-ricerca.service';
-import {Router} from '@angular/router';
+import { CriterioRicercaService } from '../criterio-ricerca.service';
+import { Router } from '@angular/router';
 import { ReduxService } from '../redux.service';
 
 @Component({
@@ -12,18 +12,20 @@ export class HeaderComponent implements OnInit {
   elementiCarrello: number = this.reduxService.numElementi;
 
   constructor(private criterioRicercaService: CriterioRicercaService,
-     private router: Router,
-     private reduxService: ReduxService) {
+    private router: Router,
+    private reduxService: ReduxService) {
 
-      reduxService.leggiCarrello$.subscribe(
-        n => {this.elementiCarrello = n}
-      )
-     }
+    reduxService.leggiCarrello$.subscribe(
+      n => { this.elementiCarrello = n }
+    )
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   goToResultPage(criterio: string): void {
-    this.criterioRicercaService.criterioRicerca = criterio;
+    console.log("siamo nel result page", criterio);
+    this.criterioRicercaService.criterioRicerca.next(criterio);
     this.router.navigateByUrl('/ricerca-catalogo');
+    console.log("siamo in result page", this.router.url);
   }
 }

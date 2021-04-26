@@ -1,6 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {CriterioRicercaService} from '../criterio-ricerca.service';
-import {Router} from '@angular/router';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { CriterioRicercaService } from '../criterio-ricerca.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-barra-ricerca',
@@ -8,7 +8,7 @@ import {Router} from '@angular/router';
   styleUrls: ['../theme.css']
 })
 export class BarraRicercaComponent implements OnInit {
-  @Input() criterioRicerca: string;
+  @Input() criterioRicerca = "";
   @Output() search: EventEmitter<string> = new EventEmitter<string>();
   constructor() { }
 

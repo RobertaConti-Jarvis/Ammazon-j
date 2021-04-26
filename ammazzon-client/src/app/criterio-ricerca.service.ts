@@ -1,11 +1,12 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CriterioRicercaService {
-  criterioRicerca: string;
-
+  criterioRicerca = new Subject<string>();
+  criterioRicerca$ = this.criterioRicerca.asObservable();
   constructor() {
   }
 
