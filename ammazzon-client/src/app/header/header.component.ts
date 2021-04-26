@@ -24,8 +24,8 @@ export class HeaderComponent implements OnInit {
 
   goToResultPage(criterio: string): void {
     console.log("siamo nel result page", criterio);
-    this.criterioRicercaService.notifyCriterion(criterio);
     this.router.navigateByUrl('/ricerca-catalogo');
+    this.criterioRicercaService.notifyCriterion(criterio);
     console.log("siamo in result page", this.router.url);
   }
 }
