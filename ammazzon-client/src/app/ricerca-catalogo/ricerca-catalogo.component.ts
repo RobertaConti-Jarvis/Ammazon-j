@@ -15,7 +15,7 @@ import { ReduxService } from '../redux.service';
   styleUrls: ['../theme.css']
 })
 export class RicercaCatalogoComponent implements OnInit {
-  listaProdotti: Prodotto[] = [];
+  listaProdotti: Prodotto[] = undefined;
   criterioRicerca: string;
   // variabili paginazione--------
   numPag = 0;
@@ -37,8 +37,10 @@ export class RicercaCatalogoComponent implements OnInit {
       this.criterioRicerca = s;
       this.caricaCatalogoPaginati(this.numPaginaV);
     });
-    // if (!this.criterioRicerca) { this.criterioRicerca = ""; }
-    // this.caricaCatalogoPaginati(this.numPaginaV);
+    if (this.listaProdotti === undefined) { 
+      this.criterioRicerca= this.criterioRicercaService.criterio;
+      this.caricaCatalogoPaginati(this.numPaginaV);
+    };
   }
 
   ngOnInit(): void {
