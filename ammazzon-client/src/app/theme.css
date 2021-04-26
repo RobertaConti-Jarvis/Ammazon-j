@@ -298,7 +298,7 @@ Button:disabled {
     font-weight: bold;
     text-align: center;
     vertical-align:top;
-    border: 3px solid #ff0000;
+    border: 2px solid #000000;
     background-color: rgb(255, 255, 255);
     height: 20px;
     width: 20px;
