@@ -39,7 +39,7 @@ public interface ProdottoRepository extends JpaRepository<Prodotto, Long> {
             " where o.id =:idOrdine")
     Page<Prodotto> trovaProdottiOrdine(@Param("idOrdine") Long id, Pageable p);
     
-    @Query("select new it.iad2.ammazzonserver.model.TotaleOrdine(sum(p.prezzo)) from Prodotto p"
+    @Query("select new it.iad2.ammazzonserver.model.TotaleOrdine(sum(p.prezzo * qta.qta)) from Prodotto p"
             + " join p.listaProdottoColore pc"
             + " join pc.listaColoreTaglia ct"
             + " join ct.listaQtaOrdineVariante qta"

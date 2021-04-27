@@ -52,6 +52,8 @@ public class GestioneCarrelloServiceImpl implements GestioneCarrelloService {
         if (token == null) {
             token = UUID.randomUUID().toString().toUpperCase();
             ordine = new Ordine();
+            ordine.setNumero(ordineRepository.findMaxNumeroOrdine() + 1);
+            ordine.setData(LocalDate.now());
             ordine = ordineRepository.save(ordine);
             ua = new UtenteAnonimo(token);
             ua.setOrdine(ordine);
@@ -84,6 +86,8 @@ public class GestioneCarrelloServiceImpl implements GestioneCarrelloService {
                 qta.setQta(qta.getQta() + 1);
             } else {
                 qta = new QtaOrdineVariante(1);
+                qta.setColoreTaglia(ct);
+                qta.setOrdine(ordine);
                 qta = qtaOrdineVarianteRepository.save(qta);
             }
             logger.debug("#qta = " + qta.getQta());
