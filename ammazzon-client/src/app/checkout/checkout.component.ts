@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { EsitoDto } from '../dto/esito-dto';
 import { OrdineDto } from '../dto/ordine-dto';
@@ -19,7 +20,11 @@ export class CheckoutComponent implements OnInit {
   secondoTotale: number = 0;
   esitoPagamento: boolean;
   
-  constructor(private http: HttpClient, private reduxService: ReduxService, private tokenService: TokenService) { 
+  constructor(private http: HttpClient, private reduxService: ReduxService, 
+    private tokenService: TokenService, private router: Router) { 
+    //Controllo se l'utente è loggato, in caso contrario lo reinderizzo
+    //alla pagina registrazione
+    this.verificaSeUtenteLoggato();
     //visualizzo il totale del carrello
     this.visualizzaTotaleCarrello();
   }
@@ -42,6 +47,12 @@ export class CheckoutComponent implements OnInit {
         this.secondoTotale = this.primoTotale;
     }
     
+  }
+
+  verificaSeUtenteLoggato(){
+    //devo verificare su server o da sessione se l'utente è loggato
+    //se non lo è lo mando alla pagina di login
+    //this.router.navigateByUrl('/login');
   }
 
   visualizzaTotaleCarrello(){
