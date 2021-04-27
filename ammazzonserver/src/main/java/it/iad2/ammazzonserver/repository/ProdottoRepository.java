@@ -1,6 +1,7 @@
 package it.iad2.ammazzonserver.repository;
 
 import it.iad2.ammazzonserver.model.Prodotto;
+import it.iad2.ammazzonserver.model.TotaleOrdine;
 import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -37,4 +38,13 @@ public interface ProdottoRepository extends JpaRepository<Prodotto, Long> {
             " left join pc.prodotto p" +
             " where o.id =:idOrdine")
     Page<Prodotto> trovaProdottiOrdine(@Param("idOrdine") Long id, Pageable p);
+    
+    @Query("select new it.iad2.ammazzonserver.model.TotaleOrdine(sum(p.prezzo)) from Prodotto p"
+            + " join p.listaProdottoColore pc"
+            + " join pc.listaColoreTaglia ct"
+            + " join ct.listaQtaOrdineVariante qta"
+            + " join qta.ordine o"
+            + " join o.utenteRegistrato ur"
+            + " where o.stato = 'CARRELLO' and ur.tokenRegistrato = :token")
+    List<TotaleOrdine> recuperaTotaleOrdine(@Param("token") String token);
 }

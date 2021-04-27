@@ -6,6 +6,7 @@ public class OrdineDto extends BaseRequestDto {
 
     private Ordine ordine;
     private int numElem;
+    private double totale;
 
     public OrdineDto() {
     }
@@ -21,6 +22,20 @@ public class OrdineDto extends BaseRequestDto {
         this.numElem = numElem;
     }
 
+    public OrdineDto(Ordine ordine, int numElem, double totale) {
+        this.ordine = ordine;
+        this.numElem = numElem;
+        this.totale = totale;
+    }
+
+    public OrdineDto(Ordine ordine, int numElem, double totale, String sessionToken) {
+        super(sessionToken);
+        this.ordine = ordine;
+        this.numElem = numElem;
+        this.totale = totale;
+    }
+    
+
     public Ordine getOrdine() {
         return ordine;
     }
@@ -35,6 +50,14 @@ public class OrdineDto extends BaseRequestDto {
 
     public void setNumElem(int numElem) {
         this.numElem = numElem;
+    }
+
+    public double getTotale() {
+        return totale;
+    }
+
+    public void setTotale(double totale) {
+        this.totale = totale;
     }
 
 }

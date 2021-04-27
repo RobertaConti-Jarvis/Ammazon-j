@@ -1,7 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { EsitoDto } from '../dto/esito-dto';
+import { OrdineDto } from '../dto/ordine-dto';
+import { UtenteRegistratoDto } from '../dto/utente-registrato-dto';
 import { ReduxService } from '../redux.service';
+import { TokenService } from '../token.service';
 
 @Component({
   selector: 'app-checkout',
@@ -14,28 +18,39 @@ export class CheckoutComponent implements OnInit {
   primoTotale: number = 0;
   secondoTotale: number = 0;
   esitoPagamento: boolean;
-
-  constructor(private http: HttpClient, private reduxService: ReduxService) { }
-
-  //visualizzare totale carrello
-  //mostrare tre tipi di spedizione, con costo diverso
-  //calcolare totale con spedizione
-  //inserimento carta di credito
-  //risposta true o false random
-
+  
+  constructor(private http: HttpClient, private reduxService: ReduxService, private tokenService: TokenService) { 
+    //visualizzo il totale del carrello
+    this.visualizzaTotaleCarrello();
+  }
+  
   ngOnInit(): void {
   }
 
-  selezionaStandard(){
-    this.secondoTotale = this.primoTotale + 2;
-  }
-  
-  selezionaExpress(){
-    this.secondoTotale = this.primoTotale + 5;
+  selezionaSpedizione(tipo: number){
+    switch(tipo){
+      case 1:
+        this.secondoTotale = this.primoTotale + 2;
+        break;
+      case 2:
+        this.secondoTotale = this.primoTotale + 5;
+        break;
+      case 3:
+        this.secondoTotale = this.primoTotale + 8;
+        break;
+      default:
+        this.secondoTotale = this.primoTotale;
+    }
+    
   }
 
-  seleziona1Giorno(){
-    this.secondoTotale = this.primoTotale + 8;
+  visualizzaTotaleCarrello(){
+    let dto: UtenteRegistratoDto = new UtenteRegistratoDto();
+    //dto.sessionToken = this.tokenService.token;
+    dto.sessionToken = "tokenRegsistrato 0";  // --> TEST utente registrato
+    let oss: Observable<OrdineDto> = this.http.post<OrdineDto>(
+      "http://localhost:8080/totale-ordine", dto);
+    oss.subscribe(o => this.primoTotale = o.totale);
   }
 
   pagamento(){

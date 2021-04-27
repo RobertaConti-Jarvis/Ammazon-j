@@ -13,4 +13,6 @@ public interface GestioneCarrelloService {
     boolean esitoPagamento(Ordine ordine);
 
     ListaQtaOrdineVarianteDto rimuoviElemento(QtaOrdineVariante qov);
+    
+    OrdineDto calcolaTotaleOrdine(String token);
 }

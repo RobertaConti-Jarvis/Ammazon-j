@@ -5,9 +5,11 @@ import it.iad2.ammazzonserver.dto.OrdineDto;
 import it.iad2.ammazzonserver.model.ColoreTaglia;
 import it.iad2.ammazzonserver.model.Ordine;
 import it.iad2.ammazzonserver.model.QtaOrdineVariante;
+import it.iad2.ammazzonserver.model.TotaleOrdine;
 import it.iad2.ammazzonserver.model.UtenteAnonimo;
 import it.iad2.ammazzonserver.model.UtenteRegistrato;
 import it.iad2.ammazzonserver.repository.OrdineRepository;
+import it.iad2.ammazzonserver.repository.ProdottoRepository;
 import it.iad2.ammazzonserver.repository.QtaOrdineVarianteRepository;
 import it.iad2.ammazzonserver.repository.UtenteAnonimoRepository;
 import it.iad2.ammazzonserver.repository.UtenteRegistratoRepository;
@@ -38,6 +40,9 @@ public class GestioneCarrelloServiceImpl implements GestioneCarrelloService {
 
     @Autowired
     QtaOrdineVarianteRepository qtaOrdineVarianteRepository;
+    
+    @Autowired
+    ProdottoRepository prodottoRepository;
 
     @Override
     public OrdineDto aggiungiCarrello(ColoreTaglia ct, String token) {
@@ -130,6 +135,19 @@ public class GestioneCarrelloServiceImpl implements GestioneCarrelloService {
         List<QtaOrdineVariante>listaQov = qtaOrdineVarianteRepository.findByordine(qov.getOrdine().getId());
         return new ListaQtaOrdineVarianteDto(listaQov);
         
+    }
+
+    @Override
+    public OrdineDto calcolaTotaleOrdine(String token) {
+        List<TotaleOrdine> listaTotaleOrdine = prodottoRepository.recuperaTotaleOrdine(token);
+        Double totale;
+        totale = listaTotaleOrdine.stream()
+                .mapToDouble(t -> t.getTotale())
+                .sum();
+        OrdineDto dto = new OrdineDto();
+        dto.setSessionToken(token);
+        dto.setTotale(totale);
+        return dto;
     }
 
 }

@@ -5,6 +5,7 @@ import it.iad2.ammazzonserver.dto.EsitoDto;
 import it.iad2.ammazzonserver.dto.ListaQtaOrdineVarianteDto;
 import it.iad2.ammazzonserver.dto.OrdineDto;
 import it.iad2.ammazzonserver.dto.QtaOrdineVarianteDto;
+import it.iad2.ammazzonserver.dto.UtenteRegistratoDto;
 import it.iad2.ammazzonserver.service.GestioneCarrelloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -36,5 +37,11 @@ public class GestioneCarrelloController {
     @ResponseBody
     public ListaQtaOrdineVarianteDto rimuovi(@RequestBody QtaOrdineVarianteDto dto) {
         return gestioneCarrelloService.rimuoviElemento(dto.getQtaOrdineVariante());
+    }
+
+    @RequestMapping("/totale-ordine")
+    @ResponseBody
+    public OrdineDto calcolaTotaleOrdine(@RequestBody UtenteRegistratoDto dto) {
+        return gestioneCarrelloService.calcolaTotaleOrdine(dto.getSessionToken());
     }
 }
