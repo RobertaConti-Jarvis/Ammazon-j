@@ -6,6 +6,8 @@
 package it.iad2.ammazzonserver.controller;
 
 import it.iad2.ammazzonserver.dto.DatiOrdinePageDto;
+import it.iad2.ammazzonserver.dto.ListaQtaOrdineVarianteDto;
+import it.iad2.ammazzonserver.dto.OrdineDto;
 import org.springframework.web.bind.annotation.RestController;
 import it.iad2.ammazzonserver.dto.PageDto;
 import it.iad2.ammazzonserver.service.MostraCarrelloService;
@@ -28,10 +30,15 @@ public class MostraCarrelloController {
     @Autowired
     MostraCarrelloService mostraCarrelloService;
 
-    @RequestMapping("/mostra-carrello")
+    @RequestMapping("/mostra-carrello-page")
     @ResponseBody
-    public PageDto mostraCarrello(@RequestBody DatiOrdinePageDto dto) {
+    public PageDto mostraCarrelloPage(@RequestBody DatiOrdinePageDto dto) {
         return new PageDto(mostraCarrelloService.mostraCarrello(dto.getElemPag(), dto.getNumPag(), dto.getOrdine()));
     }
-
+    
+    @RequestMapping("/mostra-carrello")
+    @ResponseBody
+    public ListaQtaOrdineVarianteDto mostraCarrello(@RequestBody OrdineDto dto){
+    return new ListaQtaOrdineVarianteDto(mostraCarrelloService.mostaListaCarrello(dto.getOrdine()));
+    }
 }
