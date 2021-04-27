@@ -42,4 +42,10 @@ public class SecurityController {
     EsitoUtenteDto checkTokenReg(@RequestBody BaseRequestDto dto) {
         return securityService.checkTokenReg(dto.getSessionToken());
     }
+    
+    @RequestMapping("/logout")
+    @ResponseBody
+    EsitoDto logout(@RequestBody BaseRequestDto dto) {
+        return securityService.logout(dto.getSessionToken());
+    }
 }

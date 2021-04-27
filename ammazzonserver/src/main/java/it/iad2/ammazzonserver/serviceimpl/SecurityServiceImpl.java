@@ -1,5 +1,6 @@
 package it.iad2.ammazzonserver.serviceimpl;
 
+import it.iad2.ammazzonserver.dto.EsitoDto;
 import it.iad2.ammazzonserver.dto.EsitoUtenteDto;
 import it.iad2.ammazzonserver.model.Ordine;
 import it.iad2.ammazzonserver.model.UtenteAnonimo;
@@ -77,7 +78,18 @@ public class SecurityServiceImpl implements SecurityService {
         if (uR != null) {
             return new EsitoUtenteDto(true, uR, token);
         }
-        return new EsitoUtenteDto(false,null, token);
+        return new EsitoUtenteDto(false, null, token);
+    }
+
+    @Override
+    public EsitoDto logout(String token) {
+        UtenteRegistrato uR = utenteRegistratoRepository.cercaUtenteRegistratoPerToken(token);
+        if (uR != null) {
+            uR.setTokenRegistrato(null);
+            utenteRegistratoRepository.save(uR);
+            return new EsitoDto(true, token);
+        }
+        return new EsitoDto(false, token);
     }
 
 }
