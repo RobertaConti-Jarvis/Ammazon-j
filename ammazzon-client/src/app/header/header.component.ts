@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CriterioRicercaService } from '../criterio-ricerca.service';
 import { Router } from '@angular/router';
 import { ReduxService } from '../redux.service';
@@ -21,6 +21,8 @@ export class HeaderComponent implements OnInit {
   isTokenReg : boolean = false;
   utenteLoggato : UtenteRegistrato;
 
+  @Output() uR: EventEmitter<UtenteRegistrato> = new EventEmitter<UtenteRegistrato>();
+
   constructor(private criterioRicercaService: CriterioRicercaService,
     private router: Router,
     private reduxService: ReduxService,
@@ -33,6 +35,7 @@ export class HeaderComponent implements OnInit {
 
     if (tokenService.token != null) {
       this.checkTokenReg();
+      this.sendUR();
     }
   }
 
@@ -87,5 +90,10 @@ export class HeaderComponent implements OnInit {
         console.log("errore inatteso!");
       }
     });
+  }
+
+  sendUR(){
+    console.log("sono in sendUR");
+    this.uR.emit(this.utenteLoggato);
   }
 }

@@ -16,7 +16,7 @@
       <button class="buttoncart" routerLink="/gestione-carrello"></button>
       <a class="white">{{elementiCarrello}}</a>
       <a routerLink="/registrazione" class="link2 margine2" *ngIf="!isTokenReg">Registrati</a>
-      <a routerLink="/home" class="link2 margine2" (click)="logout()" *ngIf="isTokenReg">Logout</a>
+      <a routerLink="/home-page" class="link2 margine2" (click)="logout()" *ngIf="isTokenReg">Logout</a>
     </div>
   </div>
   <div class="floatdestra2">

@@ -13,13 +13,21 @@ export class GestioneAccountComponent implements OnInit {
 
   utenteLoggato: UtenteRegistrato = new UtenteRegistrato();
 
-  constructor(private http: HttpClient , private router: Router, public tokenService: TokenService) { }
+  constructor(private http: HttpClient , private router: Router, public tokenService: TokenService) { 
+  }
 
   ngOnInit(): void {
+  }
+
+  receiveUR(uR : UtenteRegistrato){
+    console.log("sono in receiveUR()");
+    this.utenteLoggato = uR;
   }
 
   save(){
 
   }
+
+
 
 }
