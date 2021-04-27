@@ -3,12 +3,21 @@
   <img alt="" routerLink="/home-page" src="assets/Logo_Ammazzon3.png" />
 
   <div class="floatdestra">
-    <label *ngIf="isTokenReg" class="white1" >Ciao {{utenteLoggato.username}}</label>
-    <button class="buttonlogin" routerLink="/login" *ngIf="!isTokenReg"></button>
-    <button class="buttoncart" routerLink="/gestione-carrello"></button>
-    <a class="white">{{elementiCarrello}}</a>
-    <a routerLink="/registrazione" class="link2 margine2" *ngIf="!isTokenReg">Registrati</a>
-    <a class="link2 margine2" (click)= "logout()" *ngIf="isTokenReg">Logout</a>
+    <div class="floatsinistra">
+      <div class="white1">
+        <label *ngIf="isTokenReg">Ciao {{utenteLoggato.username}}</label>
+      </div>
+      <div class="white1">
+        <a *ngIf="isTokenReg" routerLink="/gestione-account" class="link2">Account</a>
+      </div>
+    </div>
+    <div class="floatsinistra">
+      <button class="buttonlogin" routerLink="/login" *ngIf="!isTokenReg"></button>
+      <button class="buttoncart" routerLink="/gestione-carrello"></button>
+      <a class="white">{{elementiCarrello}}</a>
+      <a routerLink="/registrazione" class="link2 margine2" *ngIf="!isTokenReg">Registrati</a>
+      <a routerLink="/home" class="link2 margine2" (click)="logout()" *ngIf="isTokenReg">Logout</a>
+    </div>
   </div>
   <div class="floatdestra2">
     <app-barra-ricerca (search)="goToResultPage($event)"></app-barra-ricerca>

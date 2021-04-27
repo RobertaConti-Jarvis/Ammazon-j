@@ -24,6 +24,7 @@ import { GestioneCarrelloComponent } from './gestione-carrello/gestione-carrello
 import { GruppoDueReduxComponent } from './gruppo-due-redux/gruppo-due-redux.component';
 import { SchedaProdottoComponent } from './scheda-prodotto/scheda-prodotto.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { GestioneAccountComponent } from './gestione-account/gestione-account.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
     GruppoDueReduxComponent,
     SchedaProdottoComponent,
     CheckoutComponent,
+    GestioneAccountComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],

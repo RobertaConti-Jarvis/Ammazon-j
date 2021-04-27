@@ -4,6 +4,7 @@ import { AnagraficaProdottoComponent } from './anagrafica-prodotto/anagrafica-pr
 import { AssociaColoriAProdottiComponent } from './associa-colori-a-prodotti/associa-colori-a-prodotti.component';
 import { AssociaTaglieColoriComponent } from './associa-taglie-colori/associa-taglie-colori.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { GestioneAccountComponent } from './gestione-account/gestione-account.component';
 import { GestioneCarrelloComponent } from './gestione-carrello/gestione-carrello.component';
 import { GestioneUtenteRegistratoComponent } from './gestione-utente-registrato/gestione-utente-registrato.component';
 import { GestisciColoriComponent } from './gestisci-colori/gestisci-colori.component';
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: 'redux-due', component: GruppoDueReduxComponent },
   { path: 'scheda-prodotto', component: SchedaProdottoComponent },
   { path: 'checkout', component: CheckoutComponent},
+  { path: 'gestione-account', component: GestioneAccountComponent},
   { path: '', redirectTo: '/home-page', pathMatch: 'full' }
   
 

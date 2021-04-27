@@ -1,0 +1,51 @@
+<app-header></app-header>
+<div class="body">
+    <div>
+        <h2> Il Mio Account </h2>
+        <hr>
+
+        <div class="divLogReg">
+            <table class="divLogReg">
+                <tr>
+                    <td class="td1"><label>Username</label></td>
+                    <td><input readonly="text" [(ngModel)]="utenteLoggato.username" [disabled]=true/></td>
+                </tr>
+            </table>
+            <table class="divLogReg">
+                <tr>
+                    <td class="td1"><label>Password</label></td>
+                    <td><input readonly="password" [(ngModel)]="utenteLoggato.password" [disabled]=true/></td>
+                </tr>
+            </table>
+            <table class="divLogReg">
+                <tr>
+                    <td class="td1"><label> Email </label></td>
+                    <td><input readonly="text" [(ngModel)]="utenteLoggato.email" [disabled]=true /></td>
+                </tr>
+            </table>
+            <table class="divLogReg">
+                <tr>
+                    <td class="td1"><label> Nome </label></td>
+                    <td><input type="text" [(ngModel)]="utenteLoggato.nome"  /></td>
+                </tr>
+            </table>
+            <table class="divLogReg">
+                <tr>
+                    <td class="td1"><label> Cognome </label></td>
+                    <td><input type="text" [(ngModel)]="utenteLoggato.cognome" /></td>
+                </tr>
+            </table>
+            <table class="divLogReg">
+                <tr>
+                    <td class="td1"><label> Codice Fiscale </label></td>
+                    <td><input type="text" [(ngModel)]="utenteLoggato.codiceFiscale" /></td>
+                </tr>
+            </table>
+            <div class="margine">
+                <button (click)="save()">Salva</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>
