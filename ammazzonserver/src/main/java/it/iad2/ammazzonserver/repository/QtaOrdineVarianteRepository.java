@@ -3,6 +3,7 @@ package it.iad2.ammazzonserver.repository;
 import it.iad2.ammazzonserver.model.ColoreTaglia;
 import it.iad2.ammazzonserver.model.Ordine;
 import it.iad2.ammazzonserver.model.QtaOrdineVariante;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -13,4 +14,6 @@ public interface QtaOrdineVarianteRepository extends JpaRepository<QtaOrdineVari
 
     @Query("select q from QtaOrdineVariante q where q.coloreTaglia = :coloreTaglia AND q.ordine= :ordine")
     QtaOrdineVariante cercaQtaOrdine(@Param("coloreTaglia") ColoreTaglia coloreTaglia, @Param("ordine") Ordine ordine);
+    
+    List<QtaOrdineVariante> findByordine(Long id);
 }

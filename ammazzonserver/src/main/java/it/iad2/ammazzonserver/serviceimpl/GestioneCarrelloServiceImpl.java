@@ -1,6 +1,6 @@
 package it.iad2.ammazzonserver.serviceimpl;
 
-import it.iad2.ammazzonserver.dto.EsitoDto;
+import it.iad2.ammazzonserver.dto.ListaQtaOrdineVarianteDto;
 import it.iad2.ammazzonserver.dto.OrdineDto;
 import it.iad2.ammazzonserver.model.ColoreTaglia;
 import it.iad2.ammazzonserver.model.Ordine;
@@ -14,7 +14,9 @@ import it.iad2.ammazzonserver.repository.UtenteRegistratoRepository;
 import it.iad2.ammazzonserver.service.GestioneCarrelloService;
 import java.time.LocalDate;
 import java.util.Random;
+import java.util.List;
 import java.util.UUID;
+import javax.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -118,6 +120,16 @@ public class GestioneCarrelloServiceImpl implements GestioneCarrelloService {
             ordine.setStato("Non Pagato");
         }
         return esito;
+    }
+
+    @Override
+    @Transactional
+    public ListaQtaOrdineVarianteDto rimuoviElemento(QtaOrdineVariante qov) {
+        qov = qtaOrdineVarianteRepository.findById(qov.getId()).get();
+        qtaOrdineVarianteRepository.delete(qov);
+        List<QtaOrdineVariante>listaQov = qtaOrdineVarianteRepository.findByordine(qov.getOrdine().getId());
+        return new ListaQtaOrdineVarianteDto(listaQov);
+        
     }
 
 }
