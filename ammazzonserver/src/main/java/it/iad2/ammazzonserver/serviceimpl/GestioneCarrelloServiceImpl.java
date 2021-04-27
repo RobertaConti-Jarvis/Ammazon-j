@@ -1,5 +1,6 @@
 package it.iad2.ammazzonserver.serviceimpl;
 
+import it.iad2.ammazzonserver.dto.EsitoDto;
 import it.iad2.ammazzonserver.dto.OrdineDto;
 import it.iad2.ammazzonserver.model.ColoreTaglia;
 import it.iad2.ammazzonserver.model.Ordine;
@@ -12,6 +13,7 @@ import it.iad2.ammazzonserver.repository.UtenteAnonimoRepository;
 import it.iad2.ammazzonserver.repository.UtenteRegistratoRepository;
 import it.iad2.ammazzonserver.service.GestioneCarrelloService;
 import java.time.LocalDate;
+import java.util.Random;
 import java.util.UUID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -100,8 +102,22 @@ public class GestioneCarrelloServiceImpl implements GestioneCarrelloService {
         int numElementi = ordine.getListaQtaOrdineVariante().size();
         logger.debug("#num elementi" + numElementi);
         OrdineDto ordineDto = new OrdineDto(ordine, numElementi, token);
-//      TODO: modifica Giacenza in tabella colore taglia
         return ordineDto;
+    }
+    
+    @Override
+    public boolean esitoPagamento(Ordine ordine){
+        
+        Random r = new Random();
+        boolean esito = r.nextBoolean();
+        if (esito == true){
+            ordine.setId(ordineRepository.findMaxNumeroOrdine().longValue());
+            ordine.setStato("Pagato");
+        } else {
+            ordine.setId(ordineRepository.findMaxNumeroOrdine().longValue());
+            ordine.setStato("Non Pagato");
+        }
+        return esito;
     }
 
 }

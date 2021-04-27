@@ -1,1 +1,50 @@
-<p>checkout works!</p>
+<app-header></app-header>
+<div class="body">
+    <h2>CHECKOUT</h2>
+    <h3>Numero Prodotti: {{prodotti}}</h3>
+    <h3>Totale: {{primoTotale}}</h3>
+    <div class="scrolldown">
+    <table>
+        <thead>
+            <tr>
+            <th>Tipo di Spedizione</th>
+            <th>Prezzo</th>
+            <th>Tempo di consegna stimato</th>
+            <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <td>Spedizione Standard</td>
+            <td>2€</td>
+            <td>3-5 giorni lavorativi</td>
+            <td><button  (click)= "selezionaStandard()" class="buttonSel">Seleziona</button></td>
+            </tr>
+        </tbody>
+        <tbody>
+            <tr>
+            <td>Spedizione Express</td>
+            <td>5€</td>
+            <td>48 ore</td>
+            <td><button  (click)= "selezionaExpress()" class="buttonSel">Seleziona</button></td>
+            </tr>
+        </tbody>
+        <tbody>
+            <tr>
+            <td>Spedizione di 1 giorno</td>
+            <td>8€</td>
+            <td>24 ore</td>
+            <td><button  (click)= "seleziona1Giorno()" class="buttonSel">Seleziona</button></td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    <h3>Totale(inclusa spedizione): {{secondoTotale}}</h3>
+    <div>
+    <input type="text" placeholder="Numero Carta">
+    <input type="text" placeholder="Scadenza">
+    <input type="text" placeholder="CVC">
+    <button  (click) = "pagamento()" class="buttonSel">Paga</button>
+    </div>
+</div>
+<app-footer></app-footer>

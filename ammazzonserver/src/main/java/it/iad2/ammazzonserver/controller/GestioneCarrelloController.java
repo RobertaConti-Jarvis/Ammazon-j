@@ -1,6 +1,7 @@
 package it.iad2.ammazzonserver.controller;
 
 import it.iad2.ammazzonserver.dto.ColoreTagliaDto;
+import it.iad2.ammazzonserver.dto.EsitoDto;
 import it.iad2.ammazzonserver.dto.OrdineDto;
 import it.iad2.ammazzonserver.service.GestioneCarrelloService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,5 +22,11 @@ public class GestioneCarrelloController {
     @ResponseBody
     public OrdineDto aggiungiCarrello(@RequestBody ColoreTagliaDto dto) {
         return gestioneCarrelloService.aggiungiCarrello(dto.getColoreTaglia(), dto.getSessionToken());
+    }
+    
+    @RequestMapping("/esito-pagamento")
+    @ResponseBody
+    public EsitoDto esitoPagamento(@RequestBody OrdineDto dto){
+        return new EsitoDto(gestioneCarrelloService.esitoPagamento(dto.getOrdine()));
     }
 }
