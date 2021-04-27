@@ -94,6 +94,7 @@ export class RegistrazionePageComponent implements OnInit {
 
 
   signIn(){
+    console.log("sono in signIn()");
     let dto: UtenteRegistratoDto = new UtenteRegistratoDto();
     dto.utenteRegistrato = this.utenteReg;
     dto.sessionToken = this.tokenService.token;

@@ -10,5 +10,7 @@ public interface SecurityService {
     boolean checkUsername(String username);
     
     EsitoUtenteDto registrazione(UtenteRegistrato utenteRegistrato, String token);
+    
+    EsitoUtenteDto checkTokenReg(String token);
 
 }

@@ -23,7 +23,7 @@ export class LoginPageComponent implements OnInit {
   usernameOk : boolean = false;
   passwordOk : boolean = false;
 
-  constructor(private http: HttpClient, private router: Router , public tokeService: TokenService) { }
+  constructor(private http: HttpClient, private router: Router , public tokenService: TokenService) { }
 
   ngOnInit(): void {
   }
@@ -56,17 +56,18 @@ export class LoginPageComponent implements OnInit {
   }
 
   checkLogin(){
-    
+    console.log("Sono in checkLogin()");
     let dto: UtenteRegistratoDto = new UtenteRegistratoDto();
     dto.utenteRegistrato = this.utenteReg;
-    dto.sessionToken = this.tokeService.token;
+    dto.sessionToken = this.tokenService.token;
     let oss: Observable<EsitoUtenteDto> = this.http.post<EsitoUtenteDto>( 
       "http://localhost:8080/check-login",dto
     );
     oss.subscribe(v => {
       if (v.esito){
         this.utenteReg = v.utenteReg;
-        this.tokeService.token = v.sessionToken;
+        this.tokenService.token = v.sessionToken;
+        console.log ("tokenService: ", this.tokenService.token);
         this.router.navigateByUrl("/home-page");
         this.errorMsg = "";
       }

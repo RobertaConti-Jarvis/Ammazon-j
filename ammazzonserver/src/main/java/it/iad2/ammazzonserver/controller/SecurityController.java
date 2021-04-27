@@ -1,5 +1,6 @@
 package it.iad2.ammazzonserver.controller;
 
+import it.iad2.ammazzonserver.dto.BaseRequestDto;
 import it.iad2.ammazzonserver.dto.EsitoDto;
 import it.iad2.ammazzonserver.dto.EsitoUtenteDto;
 import it.iad2.ammazzonserver.dto.UsernameDto;
@@ -34,5 +35,11 @@ public class SecurityController {
     @ResponseBody
     EsitoUtenteDto registrazione(@RequestBody UtenteRegistratoDto dto) {
         return securityService.registrazione(dto.getUtenteRegistrato(), dto.getSessionToken());
+    }
+    
+    @RequestMapping("/check-token-reg")
+    @ResponseBody
+    EsitoUtenteDto checkTokenReg(@RequestBody BaseRequestDto dto) {
+        return securityService.checkTokenReg(dto.getSessionToken());
     }
 }

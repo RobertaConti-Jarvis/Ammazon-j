@@ -3,10 +3,12 @@
   <img alt="" routerLink="/home-page" src="assets/Logo_Ammazzon3.png" />
 
   <div class="floatdestra">
-    <button class="buttonlogin" routerLink="/login"></button>
+    <label *ngIf="isTokenReg" class="BGffffff" >Ciao {{utenteLoggato.username}}</label>
+    <button class="buttonlogin" routerLink="/login" *ngIf="!isTokenReg"></button>
     <button class="buttoncart" routerLink="/gestione-carrello"></button>
     <a class="white">{{elementiCarrello}}</a>
-    <a routerLink="/registrazione" class="link2 margine2">Registrati</a>
+    <a routerLink="/registrazione" class="link2 margine2" *ngIf="!isTokenReg">Registrati</a>
+    <button class="buttonlogout" (click)= "logout()" *ngIf="isTokenReg">Logout</button>
   </div>
   <div class="floatdestra2">
     <app-barra-ricerca (search)="goToResultPage($event)"></app-barra-ricerca>
