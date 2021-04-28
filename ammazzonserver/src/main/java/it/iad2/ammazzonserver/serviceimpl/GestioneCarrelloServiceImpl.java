@@ -69,11 +69,11 @@ public class GestioneCarrelloServiceImpl implements GestioneCarrelloService {
             } else {
                 ua = utenteRegistratoRepository.cercaUtenteRegistratoPerToken(token);
                 ordine = ordineRepository.findOrdineDaUtenteRegistrato((UtenteRegistrato) ua);
+                if (ordine == null) {
+                    ordine = new Ordine();
+                }
                 token = ordine.getUtenteRegistrato().getTokenRegistrato();
                 logger.debug("#utente registrato");
-            }
-            if (ordine == null) {
-                ordine = new Ordine();
             }
         }
         QtaOrdineVariante qta;
