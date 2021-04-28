@@ -18,10 +18,10 @@ public class UtenteRegistrato extends UtenteAnonimo implements Serializable{
     @Column
     private String cognome;
 
-    @Column
+    @Column (columnDefinition = "VARCHAR(250) COLLATE latin1_general_cs")
     private String username;
 
-    @Column
+    @Column (columnDefinition = "VARCHAR(250) COLLATE latin1_general_cs")
     private String password;
 
     @Column
