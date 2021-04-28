@@ -32,14 +32,13 @@ export class HeaderComponent implements OnInit {
     reduxService.leggiCarrello$.subscribe(
       n => { this.elementiCarrello = n }
     );
-
-    if (tokenService.token != null) {
-      this.checkTokenReg();
-      this.sendUR();
-    }
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    if (this.tokenService.token != null) {
+      this.checkTokenReg();
+    }
+  }
 
   goToResultPage(criterio: string): void {
     console.log("siamo nel result page", criterio);
@@ -69,6 +68,7 @@ export class HeaderComponent implements OnInit {
         this.isTokenReg = false;
       }
       this.tokenService.token = t.sessionToken;  //chiedere se serve farlo
+      this.sendUR();
     });
   }
 
@@ -95,5 +95,6 @@ export class HeaderComponent implements OnInit {
   sendUR(){
     console.log("sono in sendUR");
     this.uR.emit(this.utenteLoggato);
+    console.log(this.utenteLoggato);
   }
 }

@@ -27,7 +27,7 @@ public class UtenteAnonimo implements Serializable {
     private String tokenAnonimo;
 
     // relazione OneToOne con Ordine
-    @JsonIgnoreProperties(value = "utenteAnonimo", allowGetters = true, allowSetters = true)
+    @JsonIgnore
     @OneToOne
     @JoinColumn(referencedColumnName = "id")
     private Ordine ordine;

@@ -5,6 +5,7 @@ import it.iad2.ammazzonserver.dto.EsitoUtenteDto;
 import it.iad2.ammazzonserver.model.Ordine;
 import it.iad2.ammazzonserver.model.UtenteAnonimo;
 import it.iad2.ammazzonserver.model.UtenteRegistrato;
+import it.iad2.ammazzonserver.repository.OrdineRepository;
 import it.iad2.ammazzonserver.repository.UtenteAnonimoRepository;
 import it.iad2.ammazzonserver.repository.UtenteRegistratoRepository;
 import it.iad2.ammazzonserver.service.SecurityService;
@@ -20,6 +21,8 @@ public class SecurityServiceImpl implements SecurityService {
     UtenteRegistratoRepository utenteRegistratoRepository;
     @Autowired
     UtenteAnonimoRepository utenteAnonimoRepository;
+    @Autowired
+    OrdineRepository ordineRepository;
 
     @Override
     public boolean checkUsername(String username) {
@@ -40,6 +43,8 @@ public class SecurityServiceImpl implements SecurityService {
                 List<Ordine> ordini = uR.getListaOrdine();
                 ordini.add(uA.getOrdine());
                 uR.setListaOrdine(ordini);
+                uR.setOrdine(uA.getOrdine());
+                ordineRepository.getOne(uA.getOrdine().getId()).setUtenteRegistrato(uR);
                 utenteAnonimoRepository.delete(uA);     //cancellazione utente anonimo
             }
             //controllo se il tokenRandom creato è già stato utilizzato
@@ -90,6 +95,39 @@ public class SecurityServiceImpl implements SecurityService {
             return new EsitoDto(true, token);
         }
         return new EsitoDto(false, token);
+    }
+
+    @Override
+    public EsitoUtenteDto aggiornaDati(UtenteRegistrato utenteRegistrato, String token) {
+        UtenteRegistrato uR = utenteRegistratoRepository.cercaUtenteRegistratoPerToken(token);
+        if (uR != null) {
+            uR.setNome(utenteRegistrato.getNome());
+            uR.setCognome(utenteRegistrato.getCognome());
+            uR.setCodiceFiscale(utenteRegistrato.getCodiceFiscale());
+            utenteRegistratoRepository.save(uR);
+            return new EsitoUtenteDto(true, uR, token);
+        }
+        return new EsitoUtenteDto(false, uR, token);
+    }
+
+    @Override
+    public EsitoUtenteDto eliminaAccount(UtenteRegistrato utenteRegistrato, String token) {
+        UtenteRegistrato uR = utenteRegistratoRepository.cercaUtenteRegistratoPerToken(token);
+        if (uR != null) {
+            List<Ordine> o = ordineRepository.findAll();
+            o.forEach(f -> {
+                if (f.getUtenteRegistrato() != null) {
+                    if (f.getUtenteRegistrato().getId()==uR.getId()) {
+                        f.setUtenteRegistrato(null);
+                    }
+                }
+            });
+            uR.setOrdine(null);
+            utenteRegistratoRepository.save(uR);
+            utenteRegistratoRepository.delete(uR);
+            return new EsitoUtenteDto(true, new UtenteRegistrato(), null);
+        }
+        return new EsitoUtenteDto(false, utenteRegistrato, token);
     }
 
 }

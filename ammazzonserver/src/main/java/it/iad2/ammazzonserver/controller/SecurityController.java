@@ -48,4 +48,17 @@ public class SecurityController {
     EsitoDto logout(@RequestBody BaseRequestDto dto) {
         return securityService.logout(dto.getSessionToken());
     }
+    
+    @RequestMapping("/aggiorna-dati")
+    @ResponseBody
+    EsitoUtenteDto aggiornaDati(@RequestBody UtenteRegistratoDto dto) {
+        return securityService.aggiornaDati(dto.getUtenteRegistrato(),dto.getSessionToken());
+    }
+    
+    @RequestMapping("/elimina-account")
+    @ResponseBody
+    EsitoUtenteDto eliminaAccount(@RequestBody UtenteRegistratoDto dto) {
+        return securityService.eliminaAccount(dto.getUtenteRegistrato(),dto.getSessionToken());
+    }
+    
 }
