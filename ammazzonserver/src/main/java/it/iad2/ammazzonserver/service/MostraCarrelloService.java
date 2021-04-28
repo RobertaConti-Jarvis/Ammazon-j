@@ -1,5 +1,6 @@
 package it.iad2.ammazzonserver.service;
 
+import antlr.Token;
 import it.iad2.ammazzonserver.model.Ordine;
 import it.iad2.ammazzonserver.model.Prodotto;
 import it.iad2.ammazzonserver.model.QtaOrdineVariante;
@@ -10,5 +11,5 @@ public interface MostraCarrelloService {
 
     Page<Prodotto> mostraCarrello(int numPag, int elemPag, Ordine ordine);
 
-    List<QtaOrdineVariante> mostaListaCarrello(Ordine ordine);
+    List<QtaOrdineVariante> mostaListaCarrello(String token);
 }

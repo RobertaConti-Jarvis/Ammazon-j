@@ -1,6 +1,6 @@
 <app-header></app-header>
 <body>
-    <table>
+    <!--<table>
         <tr>
             <th>Codice</th>
             <th>Descrizione</th>
@@ -11,7 +11,7 @@
             <td>{{p.descrizione}}</td>
             <td>{{p.prezzo}}</td>
         </tr>
-    </table>
+    </table>-->
     
 
 <!--Opzione 2-->
@@ -28,10 +28,10 @@
     </tr>
 </table>
 <!--fine opzione2-->
-<app-pagination (next)="goToNext($event)" (prev)="goToPrevious($event)" (first)="goToFirst($event)"
+<!--<app-pagination (next)="goToNext($event)" (prev)="goToPrevious($event)" (first)="goToFirst($event)"
         (last)="goToLast($event)" (numPaginaO)="caricaOrdineProdottiPaginati($event)" (pagSize)="setElemPag($event)"
         [numPaginaV]=numPaginaV [totalPages]=totalPages [elemPag]=elemPag>
     </app-pagination>
-    <button routerLink = "/checkout">Checkout</button>
+    <button routerLink = "/checkout">Checkout</button>-->
 </body>
 <app-footer></app-footer>

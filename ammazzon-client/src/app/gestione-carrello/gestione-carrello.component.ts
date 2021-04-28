@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { BaseRequestDto } from '../dto/base-request-dto';
 import { DatiOrdinePageDto } from '../dto/dati-ordine-page-dto';
 import { ListaQtaOrdineVarianteDto } from '../dto/lista-qta-ordine-variante-dto';
 import { OrdineDto } from '../dto/ordine-dto';
@@ -24,7 +25,7 @@ export class GestioneCarrelloComponent implements OnInit {
   listaQuantitaOrdineVariante: QtaOrdineVariante[] = [];
   quantitaOrdineVariante: QtaOrdineVariante = new QtaOrdineVariante();
   coloreTaglia: ColoreTaglia;
-  
+
 
 
 
@@ -40,7 +41,7 @@ export class GestioneCarrelloComponent implements OnInit {
   numberOfElements: number;
   //-----------------------------
 
-  constructor(private http: HttpClient, public tokenService: TokenService) {}
+  constructor(private http: HttpClient, public tokenService: TokenService) { this.mostraCarrello() }
 
   ngOnInit(): void {
   }
@@ -58,18 +59,17 @@ export class GestioneCarrelloComponent implements OnInit {
     });
 
   }
-  mostraCarrello(ordine: Ordine) {
-    this.ordine = ordine;
-    const dto: OrdineDto = new OrdineDto();
-    dto.ordine = this.ordine;
+  mostraCarrello() {
+    const dto: BaseRequestDto = new BaseRequestDto();
+    dto.sessionToken = this.tokenService.token;
+    console.log("mostraCarrello token", this.tokenService.token);
     const os: Observable<ListaQtaOrdineVarianteDto> = this.http
-    .post<ListaQtaOrdineVarianteDto>("http://localhost:8080/mostra-carrello",dto);
-    os.subscribe(q => {
-      this.listaQuantitaOrdineVariante = q.listaQtaOrdineVariante
+      .post<ListaQtaOrdineVarianteDto>("http://localhost:8080/mostra-carrello", dto);
+    os.subscribe(l => {
+      this.listaQuantitaOrdineVariante = l.listaQtaOrdineVariante
     });
-
-
   }
+
   //metodi paginazione
   caricaOrdineProdottiPaginati(numPaginaV: number) { // <--- personalizzare 
     this.numPaginaV = numPaginaV;
