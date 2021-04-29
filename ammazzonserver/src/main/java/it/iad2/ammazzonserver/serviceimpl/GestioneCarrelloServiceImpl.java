@@ -150,6 +150,7 @@ public class GestioneCarrelloServiceImpl implements GestioneCarrelloService {
 
         //Si cancellano l'entità aggiornata dal db;
         qtaOrdineVarianteRepository.delete(qov);
+       // coloreTagliaRepository.delete(coloreTaglia);
         //Si crea una nuova lista senza il record già rimosso
         List<QtaOrdineVariante> listaQov = new ArrayList<>();
         qtaOrdineVarianteRepository.findAll().stream().filter(qto -> (qto.getOrdine() == ordine)).forEachOrdered(qto -> {
@@ -158,7 +159,6 @@ public class GestioneCarrelloServiceImpl implements GestioneCarrelloService {
         //Si aggiorna l'ordine e si salva nel db senza il record rimosso
         ordine.setListaQtaOrdineVariante(listaQov);
         ordineRepository.save(ordine);
-       coloreTagliaRepository.delete(coloreTaglia);
         return new ListaQtaOrdineVarianteDto(listaQov);
 
     }
