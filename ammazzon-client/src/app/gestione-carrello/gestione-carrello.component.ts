@@ -48,15 +48,19 @@ export class GestioneCarrelloComponent implements OnInit {
 
   eliminaProdotto(qov: QtaOrdineVariante) {
     this.quantitaOrdineVariante = qov;
-    qov.ordine = this.ordine;
-    qov.coloreTaglia = this.coloreTaglia;
-    let dto: QtaOrdineVarianteDto;
+    this.ordine = qov.ordine; 
+    this.coloreTaglia= qov.coloreTaglia 
+    let dto: QtaOrdineVarianteDto = new QtaOrdineVarianteDto();
     dto.qtaOrdineVariante = this.quantitaOrdineVariante;
+    console.log("Siamo in elimina prodotto");
     let ox: Observable<ListaQtaOrdineVarianteDto> = this.http.post<ListaQtaOrdineVarianteDto>(
       "http://localhost:8080/rimuovi-prodotto-ordine", dto);
     ox.subscribe(q => {
-      this.listaQuantitaOrdineVariante = q.listaQtaOrdineVariante
+      this.listaQuantitaOrdineVariante = q.listaQtaOrdineVariante;
+      
     });
+
+  
 
   }
   mostraCarrello() {

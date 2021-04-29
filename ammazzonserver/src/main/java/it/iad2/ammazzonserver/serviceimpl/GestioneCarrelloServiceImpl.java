@@ -8,6 +8,7 @@ import it.iad2.ammazzonserver.model.QtaOrdineVariante;
 import it.iad2.ammazzonserver.model.TotaleOrdine;
 import it.iad2.ammazzonserver.model.UtenteAnonimo;
 import it.iad2.ammazzonserver.model.UtenteRegistrato;
+import it.iad2.ammazzonserver.repository.ColoreTagliaRepository;
 import it.iad2.ammazzonserver.repository.OrdineRepository;
 import it.iad2.ammazzonserver.repository.ProdottoRepository;
 import it.iad2.ammazzonserver.repository.QtaOrdineVarianteRepository;
@@ -15,6 +16,7 @@ import it.iad2.ammazzonserver.repository.UtenteAnonimoRepository;
 import it.iad2.ammazzonserver.repository.UtenteRegistratoRepository;
 import it.iad2.ammazzonserver.service.GestioneCarrelloService;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.List;
 import java.util.UUID;
@@ -40,9 +42,12 @@ public class GestioneCarrelloServiceImpl implements GestioneCarrelloService {
 
     @Autowired
     QtaOrdineVarianteRepository qtaOrdineVarianteRepository;
-    
+
     @Autowired
     ProdottoRepository prodottoRepository;
+
+    @Autowired
+    ColoreTagliaRepository coloreTagliaRepository;
 
     @Override
     public OrdineDto aggiungiCarrello(ColoreTaglia ct, String token) {
@@ -115,13 +120,13 @@ public class GestioneCarrelloServiceImpl implements GestioneCarrelloService {
         OrdineDto ordineDto = new OrdineDto(ordine, numElementi, token);
         return ordineDto;
     }
-    
+
     @Override
-    public boolean esitoPagamento(Ordine ordine){
-        
+    public boolean esitoPagamento(Ordine ordine) {
+
         Random r = new Random();
         boolean esito = r.nextBoolean();
-        if (esito == true){
+        if (esito == true) {
             ordine.setId(ordineRepository.findMaxNumeroOrdine().longValue());
             ordine.setStato("Pagato");
         } else {
@@ -134,11 +139,28 @@ public class GestioneCarrelloServiceImpl implements GestioneCarrelloService {
     @Override
     @Transactional
     public ListaQtaOrdineVarianteDto rimuoviElemento(QtaOrdineVariante qov) {
+        //Si fa una verifica nel db per aggiornare le entità nel caso siano state modificate 
         qov = qtaOrdineVarianteRepository.findById(qov.getId()).get();
+        logger.debug("qov: " + qov.getId());
+        Ordine ordine =  qtaOrdineVarianteRepository.cercaOrdine(qov.getOrdine());
+       // logger.debug("#ordine id: " + ordine.getId());
+        ColoreTaglia coloreTaglia = qov.getColoreTaglia();
+        coloreTaglia = coloreTagliaRepository.findById(qov.getColoreTaglia().getId()).get();
+        logger.debug("ColoreTaglia id: " + coloreTaglia.getId());
+
+        //Si cancellano l'entità aggiornata dal db;
         qtaOrdineVarianteRepository.delete(qov);
-        List<QtaOrdineVariante>listaQov = qtaOrdineVarianteRepository.findByordine(qov.getOrdine().getId());
+        //Si crea una nuova lista senza il record già rimosso
+        List<QtaOrdineVariante> listaQov = new ArrayList<>();
+        qtaOrdineVarianteRepository.findAll().stream().filter(qto -> (qto.getOrdine() == ordine)).forEachOrdered(qto -> {
+            listaQov.add(qto);
+        });
+        //Si aggiorna l'ordine e si salva nel db senza il record rimosso
+        ordine.setListaQtaOrdineVariante(listaQov);
+        ordineRepository.save(ordine);
+       coloreTagliaRepository.delete(coloreTaglia);
         return new ListaQtaOrdineVarianteDto(listaQov);
-        
+
     }
 
     @Override
