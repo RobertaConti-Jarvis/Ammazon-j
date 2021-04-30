@@ -11,6 +11,7 @@ import { ColoreTaglia } from '../entità/colore-taglia';
 import { Ordine } from '../entità/ordine';
 import { Prodotto } from '../entità/prodotto';
 import { QtaOrdineVariante } from '../entità/qta-ordine-variante';
+import { ReduxService } from '../redux.service';
 import { TokenService } from '../token.service';
 
 @Component({
@@ -41,15 +42,24 @@ export class GestioneCarrelloComponent implements OnInit {
   numberOfElements: number;
   //-----------------------------
 
-  constructor(private http: HttpClient, public tokenService: TokenService) { this.mostraCarrello() }
+  constructor(private http: HttpClient, public tokenService: TokenService,
+    private reduxService: ReduxService) {
+      reduxService.elementiCarrello$.subscribe(
+        n => { reduxService.numElementi = n -1; }
+      );
+      this.mostraCarrello() }
 
   ngOnInit(): void {
   }
 
   eliminaProdotto(qov: QtaOrdineVariante) {
     this.quantitaOrdineVariante = qov;
-    this.ordine = qov.ordine; 
-    this.coloreTaglia= qov.coloreTaglia 
+    this.ordine = qov.ordine;
+    this.coloreTaglia = qov.coloreTaglia
+
+    //richiamo i metodi del redux per reimpostare il numero di elementi carrello
+    this.reduxService.aggiungiElementoCarrello(this.reduxService.numElementi--);
+
     let dto: QtaOrdineVarianteDto = new QtaOrdineVarianteDto();
     dto.qtaOrdineVariante = this.quantitaOrdineVariante;
     console.log("Siamo in elimina prodotto");
@@ -57,10 +67,9 @@ export class GestioneCarrelloComponent implements OnInit {
       "http://localhost:8080/rimuovi-prodotto-ordine", dto);
     ox.subscribe(q => {
       this.listaQuantitaOrdineVariante = q.listaQtaOrdineVariante;
-      
-    });
+      this.reduxService.leggiElementiCarrello(this.reduxService.numElementi);
 
-  
+    });
 
   }
   mostraCarrello() {

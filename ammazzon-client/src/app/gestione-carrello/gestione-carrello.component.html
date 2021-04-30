@@ -1,5 +1,7 @@
 <app-header></app-header>
-<body>
+
+<div class="body">
+    <h2>Gestione carrello:</h2>
     <!--<table>
         <tr>
             <th>Codice</th>
@@ -12,26 +14,33 @@
             <td>{{p.prezzo}}</td>
         </tr>
     </table>-->
-    
 
-<!--Opzione 2-->
-<table>
-    <tr>
-        <th>id</th>
-        <th>qta</th>
-        <th>select</th>
-    </tr>
-    <tr *ngFor="let qov of  listaQuantitaOrdineVariante">
-        <td>{{qov.id}}</td>
-        <td>{{qov.qta}}</td>
-        <td> <button (click)="eliminaProdotto(qov)">Rimuovi prodotto</button></td>
-    </tr>
-</table>
-<!--fine opzione2-->
-<!--<app-pagination (next)="goToNext($event)" (prev)="goToPrevious($event)" (first)="goToFirst($event)"
+
+    <!--Opzione 2-->
+    <div class="scrolldown">
+        <table>
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>qta</th>
+                    <th>select</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let qov of  listaQuantitaOrdineVariante">
+                <td>{{qov.id}}</td>
+                <td>{{qov.qta}}</td>
+                <td> <button class="button" (click)="eliminaProdotto(qov)">Rimuovi prodotto</button></td>
+            </tr>
+        </tbody>
+        </table>
+        <br>
+    </div>
+    <!--fine opzione2-->
+    <!--<app-pagination (next)="goToNext($event)" (prev)="goToPrevious($event)" (first)="goToFirst($event)"
         (last)="goToLast($event)" (numPaginaO)="caricaOrdineProdottiPaginati($event)" (pagSize)="setElemPag($event)"
         [numPaginaV]=numPaginaV [totalPages]=totalPages [elemPag]=elemPag>
     </app-pagination>-->
-    <button routerLink = "/checkout">Checkout</button>
-</body>
+    <button  class="button" routerLink="/checkout">Checkout</button>
+</div>
 <app-footer></app-footer>
